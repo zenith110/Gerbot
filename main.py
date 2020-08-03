@@ -13,7 +13,7 @@ load_dotenv(dotenv_path)
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 
 # creates bot instance as well as a command prefix
-bot = commands.Bot("-")
+bot = commands.Bot("!")
 
 # terminal stuff
 print("[!] Awakening Gerb's, standby...")
