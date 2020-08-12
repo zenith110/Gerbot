@@ -17,25 +17,45 @@ class Dog(commands.Cog):
     """
     deletes the role that is selected
     @self - self obj
-    @ctx - how we'll send messages
+    @context - how we'll send messages
     @arg - arguments following the command
     return - nothing
     """
     @commands.command()
-    async def getDog(self, context, arg):
-        if(len(arg) > 0):
+    async def getDog(self, context, arg = None):
+        """
+        Checks if we have input
+        """
+        if(arg is None):
+            await context.send(f"{context.author.mention} seems you have provided no breed, try again!")
+        else:
             try:
-                dog = dogs.returnDog(arg)
-                dog_name = dogs.getName(arg)
-                dog_message = discord.Embed(title=dog_name + " image", description="Beep beep, I am a " + dog_name + " waiting to be booped!")
-                dog_message.add_field(name="Image url", value=dog["message"])
-                dog_message.set_image(url=dog["message"])
+
+                dog = dogs.returnDog(arg.lower())
+                dog_name = dogs.getName(arg.lower())
+                await context.send(f"{context.author.mention}, here is your {dog_name} that you asked for!")
+                dog_message = discord.Embed(title=dog_name[0].upper() + dog_name[1:], description="Beep beep, I am a " + dog_name + " waiting to be booped!")
+                dog_message.add_field(name="Image url", value=dog)
+                dog_message.set_image(url=dog)
                 await context.send(embed=dog_message)
             except:
                 await context.send("The API we use doesn't have that breed, check out https://dog.ceo/dog-api/breeds-list for a full list")
-        else:
-            await context.send("Empty input provided, please pass in a breed!")
-    
+    """
+    returns all dogbreeds to a discord message
+    @self - self obj
+    @context - how we'll send messages
+    returns - nothing
+    """
+    # @commands.command()
+    # async def allDogs(self, context):
+    #     dog_obj = dogs.returnAll()
+    #     json.dumps(dog_obj)
+    #     dog_message = discord.Embed(title="Dog breeds", description="Beep beep, here's all the dog breeds that we have!")
+    #     for i in dog_obj["message"]:
+    #         dog_message.add_field(name="___", value=i, inline=True)
+    #     await context.send(embed=dog_message)
+        
+
 
 """
 setup for the command

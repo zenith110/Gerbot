@@ -1,11 +1,29 @@
 import json
 import requests
 """
-Strip it of the extra flutter that comes with lists
+fetches name
+@arg - argument passed by user
+returns - name
 """
 def getName(arg):
     return arg
+"""
+fetches name
+@arg - argument passed by user
+returns - image
+"""
 def returnDog(arg):
     url = "https://dog.ceo/api/breed/" + arg + "/images/random" 
     response = requests.get(url).json()
-    return response
+    image = response["message"]
+    return image
+"""
+fetches all breeds
+returns - name
+"""
+def returnAll():
+    url = "https://dog.ceo/api/breeds/list/all"
+    response = requests.get(url).json()
+    for i in response["message"]:
+        names = i 
+    return names
