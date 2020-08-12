@@ -1,3 +1,5 @@
+# imports what we need for the bot
+# use pip install -r requirement.txt to install everything
 from dotenv import load_dotenv
 from os.path import join, dirname
 import os 
@@ -38,6 +40,7 @@ async def on_ready():
     # change the discord status because why not
     await bot.change_presence(activity=discord.Game(name="in development"))
 
+# error handling whenever the command is not found
 @bot.event
 async def on_error(event, *args, **kwargs):
     print("[!] Error Caused by:  ", event)

@@ -2,14 +2,27 @@ import discord
 import parking
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
-
+"""
+creates the class for admin commands
+"""
 class Administration(commands.Cog):
-    
+    """
+    Creates the instance of admin including its fields
+    @bot - the bot itself
+    @last_member - last member to use this
+    return - nothing
+    """
     def __init__(self, bot):
         self.bot = bot
         self._last_member = None
         
-
+    """
+    command that deletes the channel
+    checks the permission of the user before deleting it
+    @self - self obj
+    @ctx - how we'll send the message
+    return - nothing
+    """
     @commands.command()
     @commands.has_permissions(manage_channels=True)
     async def deleteChan(self, ctx):
@@ -18,7 +31,13 @@ class Administration(commands.Cog):
         except:
             await ctx.channel.send("[!] Please check your syntax...")
     
-
+    """
+    deletes the role that is selected
+    @self - self obj
+    @ctx - how we'll send messages
+    @arg - arguments following the command
+    return - nothing
+    """
     @commands.command()
     @commands.has_permissions(manage_channels=True)
     async def deleteRole(self, ctx, arg):
@@ -32,7 +51,13 @@ class Administration(commands.Cog):
             await ctx.channel.send("[!] Please check your role name")
   
 
-    
+    """
+    spawns a class
+    @self - self obj
+    @ctx - how we'll send messages
+    @*arg - arguments following the command
+    return - nothing
+    """
     @commands.command()
     @commands.has_permissions(manage_roles=True)
     async def spawnClass(self, ctx, *arg):
@@ -62,7 +87,13 @@ class Administration(commands.Cog):
             except:
                 await ctx.channel.send("[<3] Please check your syntax")
     
-
+    """
+    deletes channel and role
+    @self - self object
+    @ctx - how we'll send messages
+    @name - name of role
+    return - nothing
+    """
     @commands.command()
     @commands.has_permissions(manage_channels=True)
     async def deleteAll(self, ctx, name):
@@ -74,7 +105,9 @@ class Administration(commands.Cog):
 
 
 
-
+"""
+setup for the command
+"""
 def setup(bot):
     bot.add_cog(Administration(bot))
     
