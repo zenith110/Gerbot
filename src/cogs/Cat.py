@@ -24,14 +24,14 @@ class Cat(commands.Cog):
     @commands.command(pass_context = True)
     async def getCat(self, context, arg = None):
         """
-        Checks if we have input
+        Fetches a cat breed using provided input
         """
         if(arg is None):
             await context.send(f"{context.author.mention} seems you have provided no breed, try again!")
         else:
             try:
                 cat_picture = cats.returnCat(arg.lower())
-                cat_name = cats.getName(arg.lower())
+                cat_name = arg.lower()
                 await context.send(f"{context.author.mention}, here is your {cat_name} that you asked for!")
                 cat_message = discord.Embed(title=cat_name[0].upper() + cat_name[1:], description="Beep beep, I am a " + cat_name)
                 cat_message.add_field(name="Image url", value=cat_picture)

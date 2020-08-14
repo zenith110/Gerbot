@@ -1,0 +1,9 @@
+# byte-compiled files
+__pycache__
+
+# virtual environments
+env/
+
+# global variables
+.env
+

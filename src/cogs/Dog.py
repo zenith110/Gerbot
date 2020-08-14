@@ -24,7 +24,7 @@ class Dog(commands.Cog):
     @commands.command()
     async def getDog(self, context, arg = None):
         """
-        Checks if we have input
+        Fetches a dog breed using the provided input
         """
         if(arg is None):
             await context.send(f"{context.author.mention} seems you have provided no breed, try again!")
@@ -32,7 +32,7 @@ class Dog(commands.Cog):
             try:
 
                 dog = dogs.returnDog(arg.lower())
-                dog_name = dogs.getName(arg.lower())
+                dog_name = arg.lower()
                 await context.send(f"{context.author.mention}, here is your {dog_name} that you asked for!")
                 dog_message = discord.Embed(title=dog_name[0].upper() + dog_name[1:], description="Beep beep, I am a " + dog_name + " waiting to be booped!")
                 dog_message.add_field(name="Image url", value=dog)
