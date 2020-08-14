@@ -22,6 +22,9 @@ class MLH(commands.Cog):
     """
     @commands.command()
     async def getMlh(self, context):
+        """
+        Fetches the current the current MLH events till October 2020
+        """
         url = "https://mlh.io/seasons/na-2020/events"
         mlh_obj = mlh.parse_data(url)
         mlh_message = discord.Embed(title="MLH events till October", description="Current MLH events for the 2020 year")

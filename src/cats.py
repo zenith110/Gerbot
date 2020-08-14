@@ -1,13 +1,6 @@
 import json
 import requests
 """
-Fetches name
-@arg - argument passed by user
-returns - name
-"""
-def getName(arg):
-    return arg
-"""
 @arg - argument passed in by user
 returns - string of image
 """

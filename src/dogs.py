@@ -3,19 +3,13 @@ import requests
 """
 fetches name
 @arg - argument passed by user
-returns - name
-"""
-def getName(arg):
-    return arg
-"""
-fetches name
-@arg - argument passed by user
 returns - image
 """
 def returnDog(arg):
     url = "https://dog.ceo/api/breed/" + arg + "/images/random" 
     response = requests.get(url).json()
     image = response["message"]
+    print(image)
     return image
 """
 fetches all breeds
