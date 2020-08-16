@@ -41,15 +41,12 @@ class Cat(commands.Cog):
                 await context.send("The API we use doesn't have that breed, check out https://api.thecatapi.com/v1/breeds for a full list")
         
 
-    # @commands.command()
-    # async def allCats(self, context):
-    #     cat_name = cats.returnAll()
-    #     cat_message = discord.Embed(title="Cat breeds", description="Beep beep, here are all the cat's ids")
-    #     for i in response:
-    #         final_result = i["id"]
-    #         print(final_result)
-    #         cat_message.add_field(name = "Id", value = final_result, inline = True)
-    #     await context.send(embed=cat_message)
+    @commands.command()
+    async def allCats(self, context):
+        cat_name = cats.returnAll()
+        cat_message = discord.Embed(title="Cat breeds", description="Beep beep, here are all the cat's ids")
+        cat_message.add_field(name = "cat ids", value = cat_name, inline = True)
+        await context.send(embed=cat_message)
     
 
 """

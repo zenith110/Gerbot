@@ -13,6 +13,7 @@ class mlh_events():
         self.states = []
         self.full_events = []
         self.current_month_events = []
+
     def get_names(self):
         for names in self.names:
             print(names)
@@ -24,8 +25,8 @@ class mlh_events():
     def get_locations(self):
         for location in locations:
             print(location)
-        
-mlh = mlh_events()
+    
+
 def combine_data(mlh):
     for i in range(0, 18):
         mlh.full_events.append("[" + str(mlh.names[0][i]) + "](" + str(mlh.links[0][i]) + "), " + str(mlh.dates[0][i]) +  ", "  + str(mlh.cities[0][i]) + ", " + str(mlh.states[0][i]))
@@ -62,17 +63,20 @@ def parse_name(soup, events_names, mlh):
         events_names.append(data)
     mlh.names.append(events_names[1:19])
 
-def get_relevent_date():
+def get_relevent_date(url):
     month = datetime.now().month
     year = datetime.now().year
     day = datetime.now().day
     full = datetime(year, month, day)
     month_pattern = re.compile(".*" + full.strftime("%b"))
+    mlh = create_mlh(url)
     mlh.current_month_events = list(filter(month_pattern.match, mlh.full_events))
     return mlh
-def parse_data(url):
+
+def create_mlh(url):
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
+    mlh = mlh_events()
     links = []
     events_names = []
     dates = []
@@ -84,6 +88,10 @@ def parse_data(url):
     parse_city(soup, mlh, cities)
     parse_state(soup, mlh, states)
     combine_data(mlh)
+    return mlh
+    
+def parse_data(url):
+    mlh = create_mlh(url)
     return mlh
    
 
