@@ -48,6 +48,9 @@ class Dog(commands.Cog):
     """
     @commands.command()
     async def allDogs(self, context):
+        """
+        Gives a list of all the dog breeds available to be picked.
+        """
         dog_obj = dogs.returnAll()
         dog_message = discord.Embed(title="Dog breeds", description="Beep beep, here's all the dog breeds that we have!")
         dog_message.add_field(name="All dog breeds", value=dog_obj, inline=True)

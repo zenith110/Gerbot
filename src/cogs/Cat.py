@@ -43,6 +43,9 @@ class Cat(commands.Cog):
 
     @commands.command()
     async def allCats(self, context):
+        """
+        Fetches all the cat breeds available
+        """
         cat_name = cats.returnAll()
         cat_message = discord.Embed(title="Cat breeds", description="Beep beep, here are all the cat's ids")
         cat_message.add_field(name = "cat ids", value = cat_name, inline = True)
