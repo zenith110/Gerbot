@@ -59,7 +59,7 @@ def parse_link(soup, mlh, links):
 def parse_name(soup, events_names, mlh):
     for event_name in soup.findAll("h3"):
         # Replace all the stuff we don't need
-        data = ''.join(str(i) for i in event_name).replace('<h3 class="event-name" itemprop="name"', "").replace("</h3>", "").replace(">", "").replace("\t", "").replace('<span class="__cf_email__', "").replace('" data-cfemail=', "").replace('e4ac85878fa4a7a1b3adb0341d1f173c3f392b3528d3faf8f0dbd8deccd2cf91b8bab2999a9c8e908d98b1b3bb9093958799846a220b09012a292f3d233e', "").replace('7f371e1c143f3c3a28362b"[email\xa0protected]</span', "").replace("c78fa6a4ac878482908e93", "").replace("703811131b303335273924", "").replace("[email\xa0protected]</span", "").replace("4f072e2c240f0c0a18061b", "").replace("246c45474f646761736d70", "").replace("f5bd94969eb5b6b0a2bca1", "").replace('"165e77757d565553415f42"', "")
+        data = ''.join(str(i) for i in event_name).replace('<h3 class="event-name" itemprop="name"', "").replace("</h3>", "").replace(">", "").replace("\t", "").replace('<span class="__cf_email__', "").replace('" data-cfemail=', "")
         events_names.append(data)
     mlh.names.append(events_names[1:19])
 

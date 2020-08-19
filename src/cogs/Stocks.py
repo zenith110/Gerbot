@@ -29,7 +29,7 @@ class Stocks(commands.Cog):
             stonk = stocks.basic_stock_return(argument)
             try:
                 stonk_message = discord.Embed(title=stonk.name + " stonk report", description="Data information about " + stonk.name + " stock")
-                stonk_message.add_field(name="Stock data", value="**Current price**: $" + str(stonk.current_price) + "\n**Open price of the day**: $" + str(stonk.open_price) + "\n**Low price of the day**: $" + str(stonk.low_price), inline=True)       
+                stonk_message.add_field(name="Stock data", value="Current price: $" + str(stonk.current_price) + "\nOpen price of the day: $" + str(stonk.open_price) + "\nLow price of the day: $" + str(stonk.low_price) + "\nHigh price of the day: $" + str(stonk.high_price), inline=True)       
                 await context.send(embed=stonk_message)
             except:
                 await context.send("It seems the stock you have tried to use is not a proper stock, please try again")

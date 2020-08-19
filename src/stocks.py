@@ -20,5 +20,5 @@ def basic_stock_return(name_of_company):
     stonk.high_price = quote_data["h"]
     stonk.low_price = quote_data["l"]
     stonk.image = company_profile["logo"]
-    print(stonk.image)
+    stonk.high_price = quote_data["h"]
     return stonk
