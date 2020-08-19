@@ -17,4 +17,5 @@ soupsieve==2.0.1
 urllib3==1.25.9
 websockets==8.1
 yarl==1.4.2
-python-dotenv==0.13.0
+python-dotenv
+finnhub-python

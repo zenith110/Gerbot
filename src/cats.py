@@ -16,6 +16,8 @@ returns all cat breeds
 def returnAll():
     url = "https://api.thecatapi.com/v1/breeds"
     response = requests.get(url, headers={"x-api-key":"08b216cd-8951-4381-b1ec-ab05de908ae2"}).json()
+    names = []
     for i in response:
-        final_result = i["id"]
-    return final_result
+        names.append(i["id"])
+    final_names = ", ".join(names)
+    return final_names

@@ -46,14 +46,15 @@ class Dog(commands.Cog):
     @context - how we'll send messages
     returns - nothing
     """
-    # @commands.command()
-    # async def allDogs(self, context):
-    #     dog_obj = dogs.returnAll()
-    #     json.dumps(dog_obj)
-    #     dog_message = discord.Embed(title="Dog breeds", description="Beep beep, here's all the dog breeds that we have!")
-    #     for i in dog_obj["message"]:
-    #         dog_message.add_field(name="___", value=i, inline=True)
-    #     await context.send(embed=dog_message)
+    @commands.command()
+    async def allDogs(self, context):
+        """
+        Gives a list of all the dog breeds available to be picked.
+        """
+        dog_obj = dogs.returnAll()
+        dog_message = discord.Embed(title="Dog breeds", description="Beep beep, here's all the dog breeds that we have!")
+        dog_message.add_field(name="All dog breeds", value=dog_obj, inline=True)
+        await context.send(embed=dog_message)
         
 
 
