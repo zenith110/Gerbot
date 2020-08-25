@@ -7,3 +7,6 @@ env/
 # global variables
 .env
 
+# api keys
+api_keys/
+

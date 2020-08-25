@@ -27,7 +27,16 @@ class Dog(commands.Cog):
         Fetches a dog breed using the provided input
         """
         if(arg is None):
-            await context.send(f"{context.author.mention} seems you have provided no breed, try again!")
+            dog_obj = dogs.return_random_dog()
+            dog_name = dog_obj[0].lower()
+            print(dog_name)
+            dog_picture = dog_obj[1]
+            print(dog_picture)
+            await context.send(f"{context.author.mention}, here is your {dog_name} that you asked for!")
+            cat_message = discord.Embed(title=dog_name[0].upper() + dog_name[1:], description="Beep beep, I am a " + dog_name)
+            cat_message.add_field(name="Image url", value=dog_picture)
+            cat_message.set_image(url=dog_picture)
+            await context.send(embed=cat_message)
         else:
             try:
 
@@ -51,7 +60,7 @@ class Dog(commands.Cog):
         """
         Gives a list of all the dog breeds available to be picked.
         """
-        dog_obj = dogs.returnAll()
+        dog_obj = dogs.return_all()
         dog_message = discord.Embed(title="Dog breeds", description="Beep beep, here's all the dog breeds that we have!")
         dog_message.add_field(name="All dog breeds", value=dog_obj, inline=True)
         await context.send(embed=dog_message)
