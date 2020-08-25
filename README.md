@@ -17,10 +17,14 @@ python3 -m venv env
 ```
 Once the virtual environment has been created, activate it:
 
+Linux:
 ```bash
 source env/bin/activate
 ```
-
+Window's 10:
+```bash
+.\env\Scripts\activate
+```
 Upon being activated you should see `(env)` besides your terminal. Now install the dependencies:
 
 ```bash
