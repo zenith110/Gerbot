@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+
+name: AWS deployment
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to EC2
+        run: |
+          ssh -i "${{secrets.AWS_LOGIN}}" ubuntu@ec2-3-135-18-68.us-east-2.compute.amazonaws.com
+          sudo apt-get update
+          sudo apt install python3
+          sudo apt install python3-pip
+          cd Gerbot/src
+          touch .env && echo 'BOT_TOKEN = "${{ secrets.BOT_TOKEN}}"' >> .env
+          pip3 install -r requirements.txt
+          mkdir api_keys
+          cd mkdir api_keys
+          touch __init__.py
+          touch cat.py && echo 'api key = "${{secrets.CAT_KEY}}"' >> cat.py
+          python3 main.py
+          
+          
+          
+          
+          
+          
+      
