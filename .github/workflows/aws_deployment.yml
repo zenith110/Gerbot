@@ -10,7 +10,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to EC2 and run
+      - name: Enter EC2
         run: |
           export AWS_KEY="${{secrets.AWS_SECRET_ACCESS_KEY}}"
           echo "$AWS_KEY" >> key.pem
