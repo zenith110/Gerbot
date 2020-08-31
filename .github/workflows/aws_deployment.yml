@@ -14,8 +14,8 @@ jobs:
         run: |
           export AWS_KEY="${{secrets.AWS_SECRET_ACCESS_KEY}}"
           echo "$AWS_KEY" >> key.pem
-          echo "$AWS_KEY"
-          sudo ssh -i "key.pem" ubuntu@ec2-3-135-18-68.us-east-2.compute.amazonaws.com
+          echo key.pem
+          sudo ssh -tt -i "key.pem" ubuntu@ec2-3-135-18-68.us-east-2.compute.amazonaws.com
       - name: Run commands
         run: |  
           cd Gerbot
