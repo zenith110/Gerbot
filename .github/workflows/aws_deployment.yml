@@ -10,12 +10,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to EC2
+      - name: Deploy to EC2 and run
         run: |
           ssh -i "${{secrets.AWS_LOGIN}}" ubuntu@ec2-3-135-18-68.us-east-2.compute.amazonaws.com
           sudo apt-get update
           sudo apt install python3
           sudo apt install python3-pip
+          git clone https://github.com/s1ag/Gerbot
           cd Gerbot/src
           touch .env && echo 'BOT_TOKEN = "${{ secrets.BOT_TOKEN}}"' >> .env
           pip3 install -r requirements.txt
@@ -23,7 +24,13 @@ jobs:
           cd mkdir api_keys
           touch __init__.py
           touch cat.py && echo 'api key = "${{secrets.CAT_KEY}}"' >> cat.py
+          touch twitter_keys && echo 'api key ="${{secrets.TWITTER_API_KEY}}"' >> twitter_keys.py
+          touch twitter_keys && echo 'api_secret ="${{secrets.TWITTER_API_SECRETS}}"' >> twitter_keys.py
+          touch twitter_keys && echo 'bearer_token ="${{secrets.TWITTER_BEARER_TOKEN}}"' >> twitter_keys.py
+          touch twitter_keys && echo 'access_token ="${{secrets.TWITTER_ACCESS_TOKEN}}"' >> twitter_keys.py
+          touch twitter_keys && echo 'access_token_secret ="${{secrets.TWITTER_ACCESS_TOKEN_SECRET}}"' >> twitter_keys.py
           python3 main.py
+          cd ../../
           
           
           
