@@ -14,7 +14,7 @@ class AntiCheat(commands.Cog):
         self._last_member = None
         
     """  
-    Scans every message for links to possible cheating websites if a user 
+    Scans every message for links to possible cheating websites. If a user 
     is found cheating they are reported to the report channel      
     @self - self obj
     @message - the message being scanned by the function
@@ -30,7 +30,7 @@ class AntiCheat(commands.Cog):
         """  
         Setup the channel where the reports will be sent to
         """
-        reportChannel = self.bot.get_channel(751495912299430020)
+        reportChannel = self.bot.get_channel(747527184113205288)
         cheating = 0
 
         """  
@@ -42,7 +42,7 @@ class AntiCheat(commands.Cog):
                 cheating = 1
 
         """  
-        If the message is cheating a report will be sent to the report channel
+        If the message is considered cheating, a report will be sent to the report channel
         and the message will be deleted
         """
         if cheating == 1:
@@ -50,7 +50,7 @@ class AntiCheat(commands.Cog):
             embed = discord.Embed(title = 'User Report')
             embed.add_field(name = message.author, value = 'User has sent <' + message.content + '> in channel <' + str(message.channel) + '>', inline = True)
             await reportChannel.send(embed = embed)
-            await self.bot.delete_message(message)
+            await message.channel.purge(limit=1)
             
 
 """
@@ -58,3 +58,4 @@ setup for the command
 """
 def setup(bot):
     bot.add_cog(AntiCheat(bot))
+
