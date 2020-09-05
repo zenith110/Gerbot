@@ -25,7 +25,7 @@ class AntiCheat(commands.Cog):
         """  
         Blacklist of known cheating websites
         """
-        blacklist = ['chegg.com','coursehero.com']
+        blacklist = ['https://www.chegg.com/homework-help/questions-and-answers/','https://www.coursehero.com/']
 
         """  
         Setup the channel where the reports will be sent to
