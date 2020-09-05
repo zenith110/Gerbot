@@ -30,7 +30,7 @@ class AntiCheat(commands.Cog):
         """  
         Setup the channel where the reports will be sent to
         """
-        reportChannel = self.bot.get_channel(747527184113205288)
+        reportChannel = self.bot.get_channel(751495912299430020)
         cheating = 0
 
         """  
