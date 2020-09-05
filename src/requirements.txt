@@ -20,3 +20,4 @@ yarl==1.4.2
 python-dotenv
 finnhub-python
 tweepy
+requests-cache
