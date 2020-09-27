@@ -10,3 +10,5 @@ env/
 # api keys
 api_keys/
 
+__pycache__/
+
