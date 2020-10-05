@@ -22,4 +22,6 @@ jobs:
           pip install -r src/requirements.txt
 
       - name: Hit up the webhook
-        run: curl ${{ secrets.AWS_IP}} 
+        run: |
+          echo "Time to chill here while Gerbot is deployed"
+          curl ${{ secrets.AWS_IP}} 
