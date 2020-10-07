@@ -20,19 +20,14 @@ class Pubsub(commands.Cog):
                 sub = pubsub.get_pub_sub(sub_name)
                 original_sub_name = sub_name.replace("-", " ")
                 sub_name_changed = sub_name.replace(" ", "-")
-                within = sub[sub_name_changed][0]
-                last_sale = within["last_sale"]
-                status = within["status"]
-                price = within["price"]
-                image = within["image"]
-                if(status == "True"):
+                if(sub.status == "True"):
                     await context.send(f"{context.author.mention}, here is your {original_sub_name}, it's on sale!")
                     pubsub_message = discord.Embed(title="Latest deal for pubsubs" , description="Beep beep, I bring you the most current pubsub deals!")
                     pubsub_message.add_field(name="Latest news on " + original_sub_name, value="Current sale last from " + last_sale + " with a price of " + price)
-                    pubsub_message.set_image(url=image)
+                    pubsub_message.set_image(url=sub.image)
                     await context.send(embed=pubsub_message)
                 else:
-                    await context.send("The sub you're looking for hasn't been on sale since " + last_sale + "!")
+                    await context.send("The sub you're looking for hasn't been on sale since " + sub.last_sale + "!")
             except:
                 await context.send("Looks like " + sub_name + " isn't in the database yet, try again another time!")
         else:
