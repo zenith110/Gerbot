@@ -23,7 +23,7 @@ class mlh_events():
             print(dates)
 
     def get_locations(self):
-        for location in locations:
+        for location in self.locations:
             print(location)
     
 
