@@ -25,6 +25,14 @@ jobs:
       - name: Dockerize
         run: |
           docker build --tag gerbot .
+      - name: docker push
+        env:
+          REPO: ${{ secrets.REPO }}
+        run: |
+          docker tag gerbot $REPO
+          docker push $REPO
+
+
       
         
 
