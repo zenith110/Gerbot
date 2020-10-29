@@ -1,5 +1,5 @@
 # Deploys a payload to the server to get the latest data
-name: Deploy to Gerbot server
+name: Deploy to Docker
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
           python-version: 3.7.9
       - name: Dockerize
         run: |
-          docker build ./Dockerfile -t Gerbot
+          docker build ./Dockerfile -t gerbot
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
