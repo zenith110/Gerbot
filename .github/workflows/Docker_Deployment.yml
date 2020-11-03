@@ -1,0 +1,40 @@
+# Deploys a payload to the server to get the latest data
+name: Deploy to Docker
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  Deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7.9 
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7.9
+      - name: Docker Login
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - name: Dockerize
+        run: |
+          docker build --tag gerbot .
+      - name: docker push
+        env:
+          REPO: ${{ secrets.REPO }}
+        run: |
+          docker tag gerbot $REPO
+          docker push $REPO
+
+
+      
+        
+
+          
+
