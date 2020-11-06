@@ -1,5 +1,5 @@
 # set base image (host OS)
-FROM python:3.7.9-alpine
+FROM python:3.7.9
 
 # set the working directory in the container
 WORKDIR /updater/
@@ -11,8 +11,7 @@ COPY src/ .
 RUN pip install -r requirements.txt
 
 
-# Make sure we use the virtualenv:
-ENV PATH="/opt/venv/bin:$PATH"
+
 
 # command to run on container start
 CMD [ "python", "./main.py" ]
