@@ -1,7 +1,6 @@
 # set base image (host OS)
 FROM python:3.7.9-alpine
-RUN apt-get update
-RUN apt-get install -y --no-install-recommends build-essential gcc
+
 # set the working directory in the container
 WORKDIR /updater/
 
