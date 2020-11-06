@@ -33,9 +33,6 @@ def update_data():
         client.containers.create(dockerhub_login.repo + ":latest")
     
     
-    
-
-    print("Git pull is done, now let's run the bot and the site!")
     up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again!')
     up_response = up.execute()
 
@@ -43,6 +40,7 @@ def update_data():
     going_down = DiscordWebhook(url=discord_key.api_key, content='Gerbot is back')
     
     client.containers.run("zenith110/gerbot:latest")
+    print("Running the site now!")
     subprocess.Popen("sudo", "nohup", "python3", "app.py", stdout=subprocess.PIPE)
     return "Now running Gerbot!"	
 

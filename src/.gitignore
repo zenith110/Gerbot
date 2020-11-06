@@ -7,7 +7,7 @@ env/
 # global variables
 .env
 
-
+api_keys/
 
 __pycache__/
 
