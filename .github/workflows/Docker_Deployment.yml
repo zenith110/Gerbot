@@ -29,8 +29,9 @@ jobs:
           cd api_keys
           cat_api_key='"${{ secrets.CAT_KEY }}"'
           echo "api_key = $cat_api_key" > cat.py
-          cat cat.py
-          cd ../../
+          cd ../
+          bot_token='"${{ secrets.BOT_TOKEN }}"'
+          echo "BOT_TOKEN = $bot_token" > .env
           docker build --tag gerbot .
       - name: docker push
         env:
