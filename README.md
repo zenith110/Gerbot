@@ -32,7 +32,7 @@ pip3 install -r requirements.txt
 ```
 
 ## Usage
-To use Gerbot, you must supply a valid Bot token. First create a file in the `src directory` called `.env`. Inside this file populate it as follows: 
+To use Gerbot, you must supply a valid bot token. First create a file in the `src directory` called `.env`. Inside this file populate it as follows: 
 
 ```bash
 BOT_TOKEN=DISCORD_TOKEN_HERE
