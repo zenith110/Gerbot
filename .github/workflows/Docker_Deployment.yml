@@ -27,6 +27,7 @@ jobs:
           mkdir api_keys
           cd api_keys
           echo -n -e "api_key = ${{ secrets.CAT_KEY }}" > cat.py
+          mv cat.py api_keys
           ls
           cd ../
           ls
