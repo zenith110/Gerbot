@@ -5,7 +5,7 @@ from os.path import join, dirname
 import os 
 import discord
 from discord.ext import commands
-import parking
+# import parking
 
 # import hidden variables
 dotenv_path = join(dirname(__file__), '.env')
