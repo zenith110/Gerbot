@@ -16,31 +16,24 @@ def update_data():
 
     going_down = DiscordWebhook(url=discord_key.api_key, content='Gerbot going down for a bit')
     going_down_response = going_down.execute()
-    print(client.images.list())
+    
     if(docker.errors.ImageNotFound):
-        print("Image not found!")
-        print("Let's pull!")
         client.images.pull(dockerhub_login.repo)
     else:
          client.images.remove("zenith110/gerbot:latest")
 
-    print(client.images.list())
-    print("Making a new container based off this image...")
+
     if(not docker.errors.ImageNotFound):
-        print("Container exist, let's remove it!")
         client.containers.remove(dockerhub_login.repo + ":latest")
     else:
         client.containers.create(dockerhub_login.repo + ":latest")
     
     
-    up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again!')
-    up_response = up.execute()
-
     
-    going_down = DiscordWebhook(url=discord_key.api_key, content='Gerbot is back')
     
     client.containers.run("zenith110/gerbot:latest")
-    print("Running the site now!")
+    up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again!')
+    up_response = up.execute()
     subprocess.Popen("sudo", "nohup", "python3", "app.py", stdout=subprocess.PIPE)
     return "Now running Gerbot!"	
 
