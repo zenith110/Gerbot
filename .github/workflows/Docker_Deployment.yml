@@ -22,14 +22,17 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-      - name: API folder
-        run: |
-          mkdir api_keys
-          cd api_keys
-          echo -n -e "api_key = ${{ secrets.CAT_KEY }}" > cat.py
-          cd ../
       - name: Dockerize
         run: |
+          cd src/
+          mkdir api_keys
+          cd api_keys
+          cat_api_key='"${{ secrets.CAT_KEY }}"'
+          echo "api_key = $cat_api_key" > cat.py
+          cd ../
+          bot_token='"${{ secrets.BOT_TOKEN }}"'
+          echo "BOT_TOKEN = $bot_token" > .env
+          cd ../
           docker build --tag gerbot .
       - name: docker push
         env:
