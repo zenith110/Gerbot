@@ -22,6 +22,12 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - name: API folder
+        run: |
+          mkdir api_keys
+          cd api_keys
+          echo -n -e "api_key = ${{ secrets.CAT_KEY }}" > cat.py
+          cd ../
       - name: Dockerize
         run: |
           docker build --tag gerbot .
