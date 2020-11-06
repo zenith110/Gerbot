@@ -1,11 +1,7 @@
 beautifulsoup4==4.9.1
 bs4==0.0.1
 discord.py
-idna==2.9
-multidict==4.7.6
 requests==2.24.0
 urllib3==1.25.9
 python-dotenv
 finnhub-python
-tweepy
-requests-cache
