@@ -12,7 +12,7 @@ RUN python -m venv /opt/venv
 # Make sure we use the virtualenv:
 ENV PATH="/opt/venv/bin:$PATH"
 
-COPY requirements.txt .
+COPY src/requirements.txt .
 RUN pip install -r requirements.txt
 
 FROM python:3.7.9-slim AS build-image
