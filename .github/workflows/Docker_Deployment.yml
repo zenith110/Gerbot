@@ -28,7 +28,7 @@ jobs:
           mkdir api_keys
           cd api_keys
           cat_api_key = "${{ secrets.CAT_KEY }}"
-          echo "api_key = cat_api_key" > cat.py
+          echo "api_key = $cat_api_key" > cat.py
           cat cat.py
           cd ../../
           docker build --tag gerbot .
