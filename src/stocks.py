@@ -1,5 +1,4 @@
 import finnhub
-import requests_cache
 class Stock():
     def __init__(self):
         self.name = None
