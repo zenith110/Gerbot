@@ -6,3 +6,4 @@ urllib3==1.25.9
 python-dotenv
 finnhub-python
 pandas
+

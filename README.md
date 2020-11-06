@@ -1,6 +1,6 @@
 # Gerbot
 
-Gerbot is a python-based Discord bot written for the University of Central Florida's IT Discord. It's main functionality is to make our lives easier. It's private classroom functionality allows for the creation and management of private text channels modeled after technology classes that are accessible only by individuals with the corresponding class role. It has has some other quality of life features which are in development. 
+Gerbot is a python-based Discord bot written for the University of Central Florida's IT Discord. It's main functionality is to make our lives easier. It's private classroom functionality allows for the creation and management of private text channels modeled after technology classes that are accessible only by individuals with the corresponding class role. It has has some other quality of life features which are currently in development. 
 
 ## Installation
 
@@ -32,7 +32,7 @@ pip3 install -r requirements.txt
 ```
 
 ## Usage
-To use Gerbot, you must supply a valid Bot token. First create a file in the `src directory` called `.env`. Inside this file populate it as follows: 
+To use Gerbot, you must supply a valid bot token. First create a file in the `src directory` called `.env`. Inside this file populate it as follows: 
 
 ```bash
 BOT_TOKEN=DISCORD_TOKEN_HERE
