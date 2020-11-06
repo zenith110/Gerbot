@@ -32,6 +32,7 @@ jobs:
           cd ../
           bot_token='"${{ secrets.BOT_TOKEN }}"'
           echo "BOT_TOKEN = $bot_token" > .env
+          cd ../
           docker build --tag gerbot .
       - name: docker push
         env:
