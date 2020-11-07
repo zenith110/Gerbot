@@ -28,12 +28,10 @@ def update_data():
     else:
         client.containers.create(dockerhub_login.repo + ":latest")
     
-    
-    
-    
-    client.containers.run("zenith110/gerbot:latest")
     up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again!')
     up_response = up.execute()
+    client.containers.run("zenith110/gerbot:latest")
+    
     subprocess.Popen("sudo", "nohup", "python3", "app.py", stdout=subprocess.PIPE)
     return "Now running Gerbot!"	
 
