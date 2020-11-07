@@ -22,8 +22,10 @@ def update_data():
         client.images.pull(dockerhub_login.repo)
     else:
          client.images.remove("zenith110/gerbot:latest")
-
-    if(docker.errors.ImageNotFound):
+    try:
+         print("Let's make a new container!")
+         client.containers.run(dockerhub_login.repo + ":latest", name= "ger")
+    except:
        print("Container exist, let's remove it!")
        updating = DiscordWebhook(url=discord_key.api_key, content='Updating Gerbot container!')
        updating_response = updating.execute()
