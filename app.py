@@ -23,10 +23,10 @@ def update_data():
          client.images.remove("zenith110/gerbot:latest")
 
 
-    if(docker.errors.ImageNotFound):
+    try:
        print("Container exist, let's make it!")
        client.containers.create(dockerhub_login.repo + ":latest") 
-    else:
+    except:
        print("Container exist, let's remove it!")
        client.containers.remove(dockerhub_login.repo + ":latest")
         
