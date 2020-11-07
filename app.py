@@ -33,6 +33,7 @@ def update_data():
        print("Container exist, let's remove it!")
        updating = DiscordWebhook(url=discord_key.api_key, content='Updating Gerbot container!')
        updating_response = updating.execute()
+       client.containers.stop("ger")
        client.containers.remove("ger")
        up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again!')
        up_response = up.execute()
