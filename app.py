@@ -24,16 +24,17 @@ def update_data():
 
 
     try:
-       print("Container exist, let's make it!")
-       client.containers.create(dockerhub_login.repo + ":latest") 
+       print("Container doesn't exist, let's make it!")
+       up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again!')
+       up_response = up.execute()
+       client.containers.run(dockerhub_login.repo + ":latest")
     except:
        print("Container exist, let's remove it!")
        client.containers.remove(dockerhub_login.repo + ":latest")
         
     
-    up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again!')
-    up_response = up.execute()
-    client.containers.run("zenith110/gerbot:latest")
+    
+    
     
     subprocess.Popen("sudo", "nohup", "python3", "app.py", stdout=subprocess.PIPE)
     return "Now running Gerbot!"	
