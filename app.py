@@ -25,6 +25,10 @@ def update_data():
 
 
     try:
+       print("Container doesn't exist, let's make it!")
+       up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again!')
+       up_response = up.execute()
+       client.containers.run(dockerhub_login.repo + ":latest", name="ger") 
        print("Container exist, let's remove it!")
        updating = DiscordWebhook(url=discord_key.api_key, content='Updating Gerbot container!')
        updating_response = updating.execute()
@@ -33,7 +37,10 @@ def update_data():
        up_response = up.execute()
        client.containers.run(dockerhub_login.repo + ":latest")
     except:
-       print("Container doesn't exist, let's make it!")
+       print("Container exist, let's remove it!")
+       updating = DiscordWebhook(url=discord_key.api_key, content='Updating Gerbot container!')
+       updating_response = updating.execute()
+       client.containers.remove("ger")
        up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again!')
        up_response = up.execute()
        client.containers.run(dockerhub_login.repo + ":latest", name="ger")
