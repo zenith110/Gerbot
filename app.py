@@ -24,11 +24,11 @@ def update_data():
 
 
     if(docker.errors.ImageNotFound):
+       print("Container exist, let's make it!")
+       client.containers.create(dockerhub_login.repo + ":latest") 
+    else:
        print("Container exist, let's remove it!")
        client.containers.remove(dockerhub_login.repo + ":latest")
-    else:
-        print("Container exist, let's make it!")
-        client.containers.create(dockerhub_login.repo + ":latest") 
         
     
     up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again!')
