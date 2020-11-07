@@ -31,7 +31,8 @@ def update_data():
        updating_response = updating.execute()
        for container in client.containers.list():
             container.stop()
-            client.containers.remove("ger")
+       
+       client.containers.remove("ger")
        up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again!')
        up_response = up.execute()
        client.containers.run(dockerhub_login.repo + ":latest", name= "ger")
