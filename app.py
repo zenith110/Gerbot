@@ -23,9 +23,7 @@ def update_data():
     else:
          client.images.remove("zenith110/gerbot:latest")
 
-
     try:
-       up_response = up.execute()
        client.containers.run(dockerhub_login.repo + ":latest", name="ger") 
     except:
        print("Container exist, let's remove it!")
