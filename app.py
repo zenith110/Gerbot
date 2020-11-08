@@ -18,16 +18,20 @@ def update_data():
     going_down = DiscordWebhook(url=discord_key.api_key, content='Gerbot going down for a bit')
     going_down_response = going_down.execute()
     
-    if(docker.errors.ImageNotFound):
-        print("Pulling the latest image")
+    """
+    If there's a docker instance, pull the latest image from the repo
+    """
+    try:
         client.images.pull(dockerhub_login.repo)
-    else:
-        client.images.remove("zenith110/gerbot:latest")
+    # Removes the last instance and pulls the new one
+    except:
+        client.images.remove(dockerhub_login.repo + ":latest")
+        client.images.pull(dockerhub_login.repo)
 
-    print("Let's make the container")
+    # Attempts to deploys a docker container
     try:
         docker_container = client.containers.run(dockerhub_login.repo + ":latest", name= "ger")
-        return docker_container
+    # If a docker container exist with the name, remove it and make a new instance
     except:
         ger = client.containers.get("ger")
         updating = DiscordWebhook(url=discord_key.api_key, content='Updating Gerbot container!')
@@ -37,34 +41,7 @@ def update_data():
         up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again!')
         up_response = up.execute()
         docker_container = client.containers.run(dockerhub_login.repo + ":latest", name= "ger")
-   
-    # print(" hi" + str(ger))
-    # if(ger == docker.errors.ImageNotFound):
-    #     print("Let's let the containers be shown!")
-    #     ger.stop()
-    #     ger.remove("ger")
-        # ger = client.containers.run(dockerhub_login.repo + ":latest", name= "ger")
-        # print("Let's let the containers be shown!")
-        # ger.stop()
-        # ger.remove("ger")
-    
-    
-    # if(docker.errors.ImageNotFound):
-    #     print("If this exist already, return error and let's get going!")
-    #     print("Container exist, let's remove it!")
-    #     updating = DiscordWebhook(url=discord_key.api_key, content='Updating Gerbot container!')
-    #     updating_response = updating.execute()
-    #     for container in client.containers.list():
-    #             container.stop()
-    #     print(ger)
-    #     ger.remove("ger")
-    #     print("Stopped the container, let's remove it now!")
-        up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again!')
-        up_response = up.execute()
-    #     client.containers.run(dockerhub_login.repo + ":latest", name= "ger")
-   
      
-    # subprocess.Popen("sudo", "nohup", "python3", "app.py", stdout=subprocess.PIPE)
     return "Now running Gerbot!"
 
 def docker_stuff(client):
