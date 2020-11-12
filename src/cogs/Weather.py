@@ -21,7 +21,7 @@ class Weather(commands.Cog):
     @*args - arguments following the command
     return - nothing
     """
-    @commands.command()
+    @commands.command(aliases = ['weather'])
     async def getWeather(self, context, *args):
         """
         If no argument is given give the forecast for Orlando, Florida

@@ -16,7 +16,7 @@ class Roadmap(commands.Cog):
     @context = how we'll send messages
     return - nothing
     """
-    @commands.command()
+    @commands.command(aliases = ['certifications', 'certs'])
     async def certRoadmap(self, context, argument = None):
         """
         Returns the CompTIA cert roadmap
