@@ -40,7 +40,7 @@ def update_data():
         ger.stop()
         ger.remove()
         now = datetime.datetime.now()
-        time_stamp = str(now.strftime("%Y%m%d_%H:%M:%S"))
+        time_stamp = str(now.strftime("%d/%m/%Y - %H:%M:%S"))
         up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again! Done at:\n' + time_stamp)
         up_response = up.execute()
         docker_container = client.containers.run(dockerhub_login.repo + ":latest", name= "ger")
