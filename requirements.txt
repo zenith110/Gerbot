@@ -1,0 +1,6 @@
+bs4
+discord.py
+requests
+python-dotenv
+finnhub-python
+

@@ -7,10 +7,12 @@ env/
 # global variables
 .env
 
-api_keys/
+
 
 __pycache__/
 
-parking.py
+discord_key.py
 
-cogs/Parking.py
+dockerhub_login.py
+
+

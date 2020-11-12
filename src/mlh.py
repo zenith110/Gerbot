@@ -26,7 +26,6 @@ class mlh_events():
         for location in self.locations:
             print(location)
     
-
 def combine_data(mlh):
     for i in range(0, 18):
         mlh.full_events.append("[" + str(mlh.names[0][i]) + "](" + str(mlh.links[0][i]) + "), " + str(mlh.dates[0][i]) +  ", "  + str(mlh.cities[0][i]) + ", " + str(mlh.states[0][i]))

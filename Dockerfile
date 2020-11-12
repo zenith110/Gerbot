@@ -1,14 +1,14 @@
 # set base image (host OS)
-FROM python:3.7.9
+FROM python:3.7.9-slim
+
+
 # set the working directory in the container
-WORKDIR /code
+WORKDIR /updater/
 
 # copy the content of the local src directory to the working directory
-COPY src/ .
-
-# install dependencies
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
+COPY src/ .
 
-# command to run on container start
 CMD [ "python", "./main.py" ]

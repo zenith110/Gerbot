@@ -23,6 +23,7 @@ def return_all():
         names.append(i)
     final_names = ", ".join(names)
     return final_names
+    
 def return_random_dog():
     url = "https://dog.ceo/api/breeds/list/all"
     response = requests.get(url).json()
