@@ -6,6 +6,7 @@ from discord_webhook import DiscordWebhook, DiscordEmbed
 import discord_key
 import docker
 import dockerhub_login
+import datetime
 app = Flask(__name__, static_url_path='/static')
 @app.route("/update/", methods =["POST", "GET"])
 def update_data():
@@ -38,7 +39,9 @@ def update_data():
         updating_response = updating.execute()
         ger.stop()
         ger.remove()
-        up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again!')
+        now = datetime.datetime.now()
+        time_stamp = str(now.strftime("%Y%m%d_%H:%M:%S"))
+        up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again! Done at:\n' + time_stamp)
         up_response = up.execute()
         docker_container = client.containers.run(dockerhub_login.repo + ":latest", name= "ger")
      
