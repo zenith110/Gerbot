@@ -4,8 +4,6 @@ name: Deploy to Docker
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   Deployment:
