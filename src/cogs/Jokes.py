@@ -14,7 +14,7 @@ class Jokes(commands.Cog):
         self.bot = bot
         self._last_member = None
 
-    @commands.command(pass_context = True)
+    @commands.command(pass_context = True, aliases = ['joke', 'dadJoke', 'dadjoke'])
     async def getJoke(self, context, *args):
         if not args:
             url = 'https://icanhazdadjoke.com/'

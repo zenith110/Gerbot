@@ -21,7 +21,7 @@ class MLH(commands.Cog):
     @context = how we'll send messages
     return - nothing
     """
-    @commands.command()
+    @commands.command(aliases = ['mlh'])
     async def getMlh(self, context):
         """
         Fetches the current the current MLH events till October 2020
@@ -33,7 +33,7 @@ class MLH(commands.Cog):
             mlh_message.add_field(name=str(mlh_obj.dates[0][i]), value="[" + str(mlh_obj.names[0][i]) + "](" + str(mlh_obj.links[0][i]) + ")\n" + str(mlh_obj.cities[0][i]) + ", " + str(mlh_obj.states[0][i]), inline=True)
         await context.send(embed=mlh_message)
 
-    @commands.command()
+    @commands.command(aliases = ['currentMlh'])
     async def getCurrentMlh(self, context):
         url = "https://mlh.io/seasons/2021/events"
         mlh_obj = mlh.get_relevent_date(url)

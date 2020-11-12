@@ -14,7 +14,7 @@ class Pubsub(commands.Cog):
         self.bot = bot
         self._last_member = None
         
-    @commands.command()
+    @commands.command(aliases = ['pubsub', 'pubSub', 'getPubSub'])
     async def getPubsub(self, context, *, sub_name = None):
         """
         Fetches a delicious pubsub
@@ -58,7 +58,7 @@ class Pubsub(commands.Cog):
                 await context.send(embed=pubsub_message)
 
     
-    @commands.command()
+    @commands.command(aliases = ['allSubs', 'pubsubs', 'pubSubs'])
     async def subs(self, context):
         """
         Gets the names of all the pubsubs

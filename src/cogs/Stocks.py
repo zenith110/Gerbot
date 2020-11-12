@@ -17,7 +17,7 @@ class Stocks(commands.Cog):
     @context = how we'll send messages
     return - nothing
     """
-    @commands.command()
+    @commands.command(aliases = ['stock', 'stonk'])
     async def getStock(self, context, argument = None):
         """
         Returns the name of the stock, and some information about it

@@ -21,7 +21,7 @@ class Dog(commands.Cog):
     @arg - arguments following the command
     return - nothing
     """
-    @commands.command()
+    @commands.command(aliases = ['getDoggo', 'dog', 'doggo', 'puppy', 'getPuppy'])
     async def getDog(self, context, arg = None):
         """
         Fetches a dog breed using the provided input
@@ -55,7 +55,7 @@ class Dog(commands.Cog):
     @context - how we'll send messages
     returns - nothing
     """
-    @commands.command()
+    @commands.command(aliases = ['doggos', 'dogs', 'puppies', 'allDoggos', 'allPuppies'])
     async def allDogs(self, context):
         """
         Gives a list of all the dog breeds available to be picked.

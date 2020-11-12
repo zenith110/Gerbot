@@ -22,7 +22,7 @@ class Calendar(commands.Cog):
     @context = how we'll send messages
     return - nothing
     """
-    @commands.command()
+    @commands.command(aliases = ['calendar', 'academicCalendar', 'ucfCalendar'])
     async def getCalendar(self, context):
         """
         Create calendar object with strings containing the information to the
@@ -49,10 +49,10 @@ class Calendar(commands.Cog):
         """
         Send the discord embeds
         """
-        await context.send(embed = embed1)
-        await context.send(embed = embed2)
-        await context.send(embed = embed3)
-        await context.send(embed = embed4)
+        await context.author.send(embed=embed1)
+        await context.author.send(embed=embed2)
+        await context.author.send(embed=embed3)
+        await context.author.send(embed=embed4)
 
 def setup(bot):
     bot.add_cog(Calendar(bot))
