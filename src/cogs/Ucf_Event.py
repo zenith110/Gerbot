@@ -7,7 +7,7 @@ class Ucf_Events(commands.Cog):
         self.bot = bot
         self._last_member = None
 
-    @commands.command()
+    @commands.command(aliases = ['event', 'ucfEvent', 'getEvent'])
     async def getUcfEvent(self, context, argument):
         """
         Allows us to get events happening at UCF. Uses day and weekly.

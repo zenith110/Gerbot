@@ -21,7 +21,7 @@ class Cat(commands.Cog):
     @arg - arguments following the command
     return - nothing
     """
-    @commands.command(pass_context = True)
+    @commands.command(pass_context = True, aliases = ['cat', 'kitten', 'getKitten'])
     async def getCat(self, context, arg = None):
         """
         Fetches a cat breed using provided input
@@ -48,7 +48,7 @@ class Cat(commands.Cog):
                 await context.send("The API we use doesn't have that breed, check out https://api.thecatapi.com/v1/breeds for a full list")
         
 
-    @commands.command()
+    @commands.command(aliases = ['cats', 'kittens', 'allKittens'])
     async def allCats(self, context):
         """
         Fetches all the cat breeds available
