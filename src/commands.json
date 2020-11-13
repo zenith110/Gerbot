@@ -1,0 +1,29 @@
+{
+	"commands": [{
+			"command-prefix": "!calander",
+			"name": "calander",
+			"description": "Get the entire term calander delivered to you by Gerbot!",
+			"example": "!calander",
+			"sub-commands": [
+				""
+			],
+			"names": [
+				"calendar", 
+				"academicCalendar", 
+				"ucfCalendar"
+			]
+		},
+		{
+			"command-prefix": "!weather",
+			"name": "weather",
+			"description": "Displays the weather from a specific city!",
+			"example": "!weather <city>",
+			"sub-commands": [
+				""
+			],
+			"names": [
+				"weather"
+			]
+		}
+	]
+}

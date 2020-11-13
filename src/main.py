@@ -16,7 +16,7 @@ BOT_TOKEN = os.getenv('BOT_TOKEN')
 
 # creates bot instance as well as a command prefix
 bot = commands.Bot("!")
-
+bot.remove_command('help')
 # terminal stuff
 print("[!] Awakening Gerb's, standby...")
 print("="*40)
