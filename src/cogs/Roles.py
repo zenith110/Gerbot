@@ -27,7 +27,7 @@ class Roles(commands.Cog):
             await  member.remove_roles(role)
             await ctx.send(f"{member.mention}, took away that role.")
         
-        # if !role returns no arguments then
+        # if !role returns no arguments 
         elif role is None:
            embedded = showRoles(ctx)
            await ctx.send(embed=embedded)
@@ -91,6 +91,6 @@ def showRoles(ctx):
 # Pew pew, sends the embed to the chat
     return embeded
 
-
+# setup
 def setup(bot):
     bot.add_cog(Roles(bot))
