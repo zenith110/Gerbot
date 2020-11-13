@@ -76,7 +76,7 @@ class Administration(commands.Cog):
             try:
 
                 # The category where the classes will go under 
-                category = discord.utils.get(ctx.guild.categories, name="Classes")        
+                category = discord.utils.get(ctx.guild.categories, name="Classes 2")        
 
                 channel = await ctx.guild.create_text_channel(lowername, overwrites=custom_settings, category=category)
                 # Creates role with the same name as the channel
@@ -86,6 +86,7 @@ class Administration(commands.Cog):
                 await ctx.channel.send(f"Created: {lowername} channel and {lowername} role")
             except:
                 await ctx.channel.send("[<3] Please check your syntax")
+            return role
     
     """
     deletes channel and role
