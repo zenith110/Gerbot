@@ -39,6 +39,7 @@ def update_data():
         updating_response = updating.execute()
         ger.stop()
         ger.remove()
+        prune = client.containers.prune()
         now = datetime.datetime.now()
         time_stamp = str(now.strftime("%d/%m/%Y - %H:%M:%S"))
         up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again! Done at:\n' + time_stamp)
