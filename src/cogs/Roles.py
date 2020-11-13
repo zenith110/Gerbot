@@ -27,7 +27,7 @@ class Roles(commands.Cog):
             await  member.remove_roles(role)
             await ctx.send(f"{member.mention}, took away that role.")
         
-        # if !role returns no arguments
+        # if !role returns no arguments 
         elif role is None:
            embedded = showRoles(ctx)
            await ctx.send(embed=embedded)
@@ -42,15 +42,15 @@ class Roles(commands.Cog):
         # if the !role argument wasn't valid
         if isinstance(error, commands.BadArgument):
             # strip the error for only the role name portion
-            body = ctx.message.content.replace('!role','')
+            body = ctx.message.content.replace('!role ','')
             member = ctx.message.author
             
             # valid classes must be detected in this format to be valid, and thus be created
             if  re.search(r"[\w]+\d{4}[-]+\w", body):
+                # create the class
                 role = await admin.Administration.spawnClass(self, ctx, body)
-
-                await ctx.send(f"{member.mention}, you're the first one in {role}. You have been given this role. Feel free to spread the word on your Webcourse's Discussions for this class.")
                 await member.add_roles(role)
+                await ctx.send(f"{member.mention}, you're the first one in {body}. You have been given this role. Feel free to spread the word on your Webcourse's Discussions for this class.")
 
             else:
                 await ctx.send(f"{member.mention} That role was not found.")
@@ -88,9 +88,9 @@ def showRoles(ctx):
     embeded.add_field(name="Certification Roles", value = ("\n".join(cert_roles)))
     embeded.add_field(name="Misc Roles", value = ("\n".join(misc_roles)))
 
-#     # Pew pew, sends the embed to the chat
-    # await ctx.send(embed=embeded)
+# Pew pew, sends the embed to the chat
     return embeded
 
+# Setup function
 def setup(bot):
     bot.add_cog(Roles(bot))
