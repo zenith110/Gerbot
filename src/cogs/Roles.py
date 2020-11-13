@@ -91,6 +91,6 @@ def showRoles(ctx):
 # Pew pew, sends the embed to the chat
     return embeded
 
-# setup
+# Setup function
 def setup(bot):
     bot.add_cog(Roles(bot))
