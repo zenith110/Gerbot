@@ -47,13 +47,14 @@ class Administration(commands.Cog):
             await ctx.invoke(self.bot.get_command('deleteRole'), arg = name.lower())
         
        # Deletes current channel
-        try:
-            role_name = arg.lower()
-            role_object = discord.utils.get(ctx.message.guild.roles, name=role_name)
-            await role_object.delete()
-        except:
-            await ctx.channel.send("[!] Please check your role name")
-        await ctx.channel.send(f"[<3] Successfully deleted {role_name} role.")
+        else:
+            try:
+                role_name = arg.lower()
+                role_object = discord.utils.get(ctx.message.guild.roles, name=role_name)
+                await role_object.delete()
+                await ctx.channel.send(f"[<3] Successfully deleted {role_name} role.")
+            except:
+                await ctx.channel.send("[!] Please check your role name")
 
     """
     spawns a class
@@ -103,7 +104,7 @@ class Administration(commands.Cog):
     @commands.has_permissions(manage_channels=True)
     async def deleteAll(self, ctx, name=None):
         try:
-            await ctx.invoke(self.bot.get_command('deleteRole'), arg = name.lower())
+            await ctx.invoke(self.bot.get_command('deleteRole'), arg = name)
             await ctx.invoke(self.bot.get_command('deleteChan'))
         except:
             await ctx.channel.send("[!] Check yo syntax")
