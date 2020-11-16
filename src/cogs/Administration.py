@@ -41,15 +41,19 @@ class Administration(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_channels=True)
     async def deleteRole(self, ctx, arg):
-        role_name = arg.lower()
+        # by default, delete the role with the same name as where the command is being ran (be careful)
+        if arg is None:
+            name = ctx.channel.name
+            await ctx.invoke(self.bot.get_command('deleteRole'), arg = name.lower())
+        
        # Deletes current channel
         try:
+            role_name = arg.lower()
             role_object = discord.utils.get(ctx.message.guild.roles, name=role_name)
             await role_object.delete()
-            await ctx.channel.send(f"[<3] Successfully deleted {role_name} role.")
         except:
             await ctx.channel.send("[!] Please check your role name")
-  
+        await ctx.channel.send(f"[<3] Successfully deleted {role_name} role.")
 
     """
     spawns a class
@@ -97,13 +101,12 @@ class Administration(commands.Cog):
     """
     @commands.command()
     @commands.has_permissions(manage_channels=True)
-    async def deleteAll(self, ctx, name):
+    async def deleteAll(self, ctx, name=None):
         try:
-            await ctx.invoke(self.bot.get_command('deleteRole'), arg = name.lower() )
+            await ctx.invoke(self.bot.get_command('deleteRole'), arg = name.lower())
             await ctx.invoke(self.bot.get_command('deleteChan'))
         except:
             await ctx.channel.send("[!] Check yo syntax")
-
 
 
 """
