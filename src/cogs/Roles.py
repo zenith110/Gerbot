@@ -56,15 +56,14 @@ class Roles(commands.Cog):
                 await ctx.send(f"{member.mention} That role was not found.")
 
     @commands.command()
-    async def printRole(self, ctx):
+    async def printRoles(self, ctx):
         """
         Command variant of the showRoles helper function; to diagnose showRoles bug on main server.
         """
-        x = [role.name for role in ctx.guild.roles]
+        x = [role.name for role in ctx.guild.roles if role.name != '@everyone']
         
         for i in x:
-            print(i)
-        print(ctx.message.channel) 
+            await ctx.send(i)
 
 def showRoles(ctx):
     # Prohibited roles for regular users
