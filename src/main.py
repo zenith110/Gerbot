@@ -47,7 +47,11 @@ async def on_ready():
 async def on_error(event, *args, **kwargs):
     print("[!] Error Caused by:  ", event)
     print(args, kwargs)
-    up = DiscordWebhook(url=discord_key.api_key, content="Error caused by: \n" + event)
+    webhook = DiscordWebhook(url=discord_key.api_key)
+    embed = DiscordEmbed(title='Error report', description = event, color=242424)
+    webhook.add_embed(embed)
+
+    response = webhook.execute()
 
 
 bot.run(BOT_TOKEN)

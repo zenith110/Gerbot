@@ -65,8 +65,6 @@ def docker_stuff(client):
 @app.route("/run/", methods = ["POST", "GET"])    
 def run():
     print("Showing instance of containers")
-   
-    
     return "Gerbot is running"
     
 @app.route("/", methods =["POST", "GET"])
