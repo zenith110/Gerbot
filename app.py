@@ -7,6 +7,7 @@ import discord_key
 import docker
 import dockerhub_login
 import datetime
+import pytz  
 app = Flask(__name__, static_url_path='/static')
 @app.route("/update/", methods =["POST", "GET"])
 def update_data():
@@ -41,7 +42,7 @@ def update_data():
         client.containers.prune()
         subprocess.Popen("sudo", "killall", "./main.py")
         prune = client.containers.prune()
-        now = datetime.datetime.now()
+        now = datetime.datetime.now(pytz.timezone('America/New_York'))
         time_stamp = str(now.strftime("%d/%m/%Y - %H:%M:%S"))
         up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again! Done at:\n' + time_stamp)
         up_response = up.execute()
