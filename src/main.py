@@ -5,6 +5,8 @@ from os.path import join, dirname
 import os 
 import discord
 from discord.ext import commands
+from discord_webhook import DiscordWebhook, DiscordEmbed
+import discord_key
 # import parking
 
 # import hidden variables
@@ -45,6 +47,7 @@ async def on_ready():
 async def on_error(event, *args, **kwargs):
     print("[!] Error Caused by:  ", event)
     print(args, kwargs)
+    up = DiscordWebhook(url=discord_key.api_key, content="Error caused by: \n" + event)
 
 
 bot.run(BOT_TOKEN)
