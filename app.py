@@ -43,8 +43,10 @@ def update_data():
         client.containers.prune()
         # subprocess.Popen("sudo", "killall", "./main.py")
         now = datetime.datetime.now(pytz.timezone('America/New_York'))
-        up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again! Done at:\n')
-        up_response = up.execute()
+        if(now.hour > 12):
+            hour = now.hour - 12
+            up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again! Done at:\n' + hour + ":" + now.minute)
+            up_response = up.execute()
     docker_container = client.containers.run(dockerhub_login.repo + ":latest", name= "ger")
      
     return "Now running Gerbot!"
