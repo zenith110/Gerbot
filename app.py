@@ -40,7 +40,7 @@ def update_data():
         updating_response = updating.execute()
         ger.stop()
         client.containers.prune()
-        subprocess.Popen("sudo", "killall", "./main.py")
+        subprocess.Popen(["sudo", "killall", "./main.py"])
         now = datetime.datetime.now(pytz.timezone('America/New_York'))
         if(now.hour > 12):
             hour = now.hour - 12
