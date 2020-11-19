@@ -39,7 +39,7 @@ def update_data():
         updating_response = updating.execute()
         ger.stop()
         client.containers.prune()
-        subprocess.Popen("sudo", "killall", "./main.go")
+        subprocess.Popen("sudo", "killall", "./main.py")
         prune = client.containers.prune()
         now = datetime.datetime.now()
         time_stamp = str(now.strftime("%d/%m/%Y - %H:%M:%S"))
