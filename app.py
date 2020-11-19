@@ -45,8 +45,8 @@ def update_data():
         if(now.hour > 12):
             hour = now.hour - 12
             up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again! Done at:\n' + str(hour) + ":" + str(now.minute) + "PM - " + str(now.day) + "/" + str(now.month) + "/" + str(now.year))
-            docker_container = client.containers.run(dockerhub_login.repo + ":latest", name= "ger")
             up_response = up.execute()
+            docker_container = client.containers.run(dockerhub_login.repo + ":latest", name= "ger")
         elif(now.hour < 12):
             up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again! Done at:\n' + str(now.hour) + ":" + str(now.minute) + " AM - " + str(now.day) + "/" + str(now.month) + "/" + str(now.year))
             up_response = up.execute()
