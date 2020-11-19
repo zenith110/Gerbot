@@ -42,7 +42,6 @@ def update_data():
         ger.stop()
         client.containers.prune()
         subprocess.Popen("sudo", "killall", "./main.py")
-        prune = client.containers.prune()
         now = datetime.datetime.now(pytz.timezone('America/New_York'))
         up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again! Done at:\n')
         up_response = up.execute()
