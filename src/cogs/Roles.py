@@ -60,10 +60,10 @@ class Roles(commands.Cog):
         """
         Command variant of the showRoles helper function; to diagnose showRoles bug on main server.
         """
-        x = [role.name for role in ctx.guild.roles if role.name != '@everyone']
-        
-        for i in x:
-            await ctx.send(i)
+        # x = [role.name for role in ctx.guild.roles if role.name != '@everyone']
+        embeded = discord.Embed(title="Roles")
+        embeded.add_field(name="Served Hot and Ready", value = ("\n".join(role.name for role in ctx.guild.roles if role.name != '@everyone')))
+        await ctx.send(embed=embeded)
 
 def showRoles(ctx):
     # Prohibited roles for regular users
