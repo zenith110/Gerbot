@@ -3,4 +3,4 @@ discord.py
 requests
 python-dotenv
 finnhub-python
-
+discord_webhook

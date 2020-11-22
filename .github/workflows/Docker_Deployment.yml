@@ -23,6 +23,8 @@ jobs:
       - name: Dockerize
         run: |
           cd src/
+          discord_key='"${{ secrets.ERROR_DUMP }}"'
+          echo "api_key = $discord_key" > discord_key.py
           mkdir api_keys
           cd api_keys
           cat_api_key='"${{ secrets.CAT_KEY }}"'

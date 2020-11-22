@@ -24,6 +24,20 @@
 			"names": [
 				"weather"
 			]
+		},
+		{
+			"command-prefix": "!pubsub",
+			"name": "pubsub",
+			"description": "Get information on the delicious subs!",
+			"example": "!pubsub <sub-argument>",
+			"sub-commands": [
+				"help"
+			],
+			"names": [
+				"pubsub",
+				"pubSub",
+				"getPubSub"
+			]
 		}
 	]
 }

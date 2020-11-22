@@ -7,6 +7,7 @@ import discord_key
 import docker
 import dockerhub_login
 import datetime
+import pytz  
 app = Flask(__name__, static_url_path='/static')
 @app.route("/update/", methods =["POST", "GET"])
 def update_data():
@@ -39,13 +40,18 @@ def update_data():
         updating_response = updating.execute()
         ger.stop()
         client.containers.prune()
-        subprocess.Popen("sudo", "killall", "./main.go")
-        prune = client.containers.prune()
-        now = datetime.datetime.now()
-        time_stamp = str(now.strftime("%d/%m/%Y - %H:%M:%S"))
-        up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again! Done at:\n' + time_stamp)
-        up_response = up.execute()
-    docker_container = client.containers.run(dockerhub_login.repo + ":latest", name= "ger")
+        subprocess.Popen(["sudo", "killall", "./main.py"])
+        now = datetime.datetime.now(pytz.timezone('America/New_York'))
+        if(now.hour > 12):
+            hour = now.hour - 12
+            up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again! Done at:\n' + str(now.month) + "/" + str(now.day) + "/" + str(now.year) + "- " + str(hour) + ":" + str(now.minute) + " PM")
+            up_response = up.execute()
+            docker_container = client.containers.run(dockerhub_login.repo + ":latest", name= "ger")
+        elif(now.hour < 12):
+            hour = now.hour - 12
+            up = DiscordWebhook(url=discord_key.api_key, content='Gerbot is up again! Done at:\n' + str(now.month) + "/" + str(now.day) + "/" + str(now.year) + "- " + str(hour) + ":" + str(now.minute) + " AM")
+            up_response = up.execute()
+            docker_container = client.containers.run(dockerhub_login.repo + ":latest", name= "ger")
      
     return "Now running Gerbot!"
 
@@ -60,8 +66,6 @@ def docker_stuff(client):
 @app.route("/run/", methods = ["POST", "GET"])    
 def run():
     print("Showing instance of containers")
-   
-    
     return "Gerbot is running"
     
 @app.route("/", methods =["POST", "GET"])

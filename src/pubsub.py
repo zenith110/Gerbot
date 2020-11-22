@@ -13,13 +13,16 @@ class randomsub():
         self.status_code = ""
 
 def get_all_subs():
-    url = "https://pubsub-api.dev/allsubs/"
-    response = requests.get(url).json()
-    sub_names = []
-    for i in range(len(response)):
-        sub_names.append(response[i]["name"])
-    subs = ", ".join(sub_names)
-    return subs
+    try:
+        url = "https://pubsub-api.dev/allsubs/"
+        response = requests.get(url).json()
+        sub_names = []
+        for i in range(len(response)):
+            sub_names.append(response[i]["name"])
+        subs = ", ".join(sub_names)
+        return subs
+    except:
+        return "API is down..."
 
 def get_pub_sub(sub_name):
     sub_name = sub_name.replace(" ", "-")
