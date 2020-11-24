@@ -46,7 +46,7 @@ class Roles(commands.Cog):
             member = ctx.message.author
             
             # valid classes must be detected in this format to be valid, and thus be created
-            if  re.search(r"[\w]+\d{4}[-]+\w", body):
+            if  re.search(r"\w+\d{4}c?-+\w", body):
                 # create the class
                 role = await admin.Administration.spawnClass(self, ctx, body)
                 await member.add_roles(role)
