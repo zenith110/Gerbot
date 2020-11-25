@@ -6,7 +6,7 @@ import os
 import discord
 from discord.ext import commands
 from discord_webhook import DiscordWebhook, DiscordEmbed
-import discord_key
+#import discord_key
 # import parking
 
 # import hidden variables
@@ -47,7 +47,7 @@ async def on_ready():
 async def on_error(event, *args, **kwargs):
     print("[!] Error Caused by:  ", event)
     print(args, kwargs)
-    webhook = DiscordWebhook(url=discord_key.api_key)
+    #webhook = DiscordWebhook(url=discord_key.api_key)
     embed = DiscordEmbed(title='Error report', description = event, color=242424)
     webhook.add_embed(embed)
 
