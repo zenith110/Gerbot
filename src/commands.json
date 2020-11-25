@@ -38,6 +38,19 @@
 				"pubSub",
 				"getPubSub"
 			]
+		},
+		{
+			"command-prefix": "!xkcd",
+			"name": "xkcd",
+			"description": "Get an xkcd comic!",
+			"example": "!xkcd <comic-number>",
+			"sub-commands": [
+				""
+			],
+			"names": [
+				"xkcd",
+				"randxkcd"
+			]
 		}
 	]
 }
