@@ -24,7 +24,7 @@ class Report(commands.Cog):
     async def report(self, context, *args):
         """  
         Setup the channel where the reports will be sent to
-        """5
+        """
         reportChannel = self.bot.get_channel(751495912299430020)
 
         """  
