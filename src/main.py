@@ -10,7 +10,6 @@ import discord_key
 import traceback
 import datetime
 import pytz 
-# import parking
 
 # import hidden variables
 dotenv_path = join(dirname(__file__), '.env')

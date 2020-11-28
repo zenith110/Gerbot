@@ -38,6 +38,32 @@
 				"pubSub",
 				"getPubSub"
 			]
+		},
+		{
+			"command-prefix": "!report",
+			"name": "report",
+			"description": "DM Gerbot to send an anonymous report to the staff!",
+			"example": "!report",
+			"sub-commands": [
+				""
+			],
+			"names": [
+				"report",
+				"Report"
+			]
+		},
+		{
+			"command-prefix": "!xkcd",
+			"name": "xkcd",
+			"description": "Grab a xkcd comic of your choice. Use randxkcd to get a random xkcd comic!",
+			"example": "!xkcd <specific comic>",
+			"sub-commands": [
+				""
+			],
+			"names": [
+				"xkcd",
+				"randxkcd"
+			]
 		}
 	]
 }
