@@ -23,6 +23,7 @@ class Roles(commands.Cog):
     
         member = ctx.message.author
         
+        print(role)
         # if the message author already has the role
         if role in member.roles:
             await  member.remove_roles(role)
@@ -30,10 +31,8 @@ class Roles(commands.Cog):
         
         # if !role returns no arguments 
         elif role is None:
-           embedded = printRoles(ctx)
-           await ctx.send(embed=embedded)
-        
-        # gives user the valid, specified role
+            await ctx.invoke(self.bot.get_command('printRoles'))           
+
         else:
             await member.add_roles(role)
             await ctx.send(f"{member.mention}, you have been given the {role} role.")
@@ -84,7 +83,7 @@ class Roles(commands.Cog):
         list2 = class_roles[1::2]
 
         embeds = [
-            discord.Embed(title="Squad Rolse", description="\n".join(squad_roles), color=0x115599),
+            discord.Embed(title="Squad Roles", description="\n".join(squad_roles), color=0x115599),
             discord.Embed(title="Cert Roles", description="\n".join(cert_roles), color=0x5599ff),
             discord.Embed(title="Class List 1", description="\n".join(list1), color=0x191638),
             discord.Embed(title="Class List 2", description="\n".join(list2), color=0x191638)
@@ -95,40 +94,6 @@ class Roles(commands.Cog):
         await paginator.run()
 
 
-def showRoles(ctx):
-    # Prohibited roles for regular users
-    acl = ['Administrator', 'Moderator', '@everyone', 'Epic Counselor', 'Sith-Gopher']
-    
-    # Creates a list of roles from the server that aren't in the acl.
-    server_roles = [role.name for role in ctx.guild.roles if role.name not in acl]
-    
-    # Uses regex and siphons out class roles from the server_roles list.
-    class_roles=[o for o in server_roles if re.search('\d\d\d\d', o)]
-
-    # Roles which are used for the server's squads.
-    squad_roles=[o for o in server_roles if re.search("squad",o)]
-    
-    # Roles which are for certificaitons must have the checkmark to be able to be displayed correctly.
-    cert_roles = [o for o in server_roles if re.search("🗸", o)]
-    
-    # Any roles not in the other lists will go here.
-    misc_roles=[o for o in server_roles if o not in acl and o not in class_roles and o not in squad_roles and o not in cert_roles]        
-    
-    # Alphabetizes the list for clarity.
-    class_roles.sort()
-    squad_roles.sort()
-    cert_roles.sort()
-    misc_roles.sort()
-
-    # Creates the embeded discord message. 
-    embeded = discord.Embed(title="Roles")
-    embeded.add_field(name="Classes", value = ("\n".join(class_roles)))
-    embeded.add_field(name="Squad Roles", value = ("\n".join(squad_roles)))
-    embeded.add_field(name="Certification Roles", value = ("\n".join(cert_roles)))
-    embeded.add_field(name="Misc Roles", value = ("\n".join(misc_roles)))
-
-# Pew pew, sends the embed to the chat
-    return embeded
 
 
 # Setup function
