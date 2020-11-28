@@ -48,3 +48,64 @@ While development should be done using the venv, persistent deployment can be ac
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. Feel free to join the Discord at https://discord.gg/YM5QRzx <3
 
+## Creating a sample plugin
+
+The plugins live within the cog directory, while the helper functions live outside the cog directory.
+
+The code begins with imports 
+```py
+import discord 
+from discord.ext import commands
+```
+Proceeded by a class based structure
+```py
+class Plugin(commands.Cog):
+```
+
+Create a init function within the class
+```py
+def __init__(self, bot):
+  self.bot = bot
+  self._last_member = None
+ ```
+ 
+ Use @commands.command to signify that it's a command, and assign it a list of aliases to use for others to reference upon:
+ ```py
+ @commands.command(aliases = ['example', 'test', 'sample'])
+ ```
+ Create a function, naming it anything. In this case, we'll call it first_plugin
+ ```py
+ async def simple_plugin(self, context, arg):
+ ```
+ Context is how we will send messages and access everything involving message data, async is referencing to async programming and is needed for discord.py to work. Arg is what will be passed in after our command. In this case it will be ping.
+ 
+```py
+if(arg == "ping"):
+  await context.send("pong!")
+```
+We check to see if the argument passed is ping, and respond accordingly. 
+To make sure that this plugin is loaded, we have to create a setup point like so:
+```py 
+def setup(bot):
+    bot.add_cog(FirstPlugin(bot))
+```
+Full code:
+```py
+import discord
+from discord.ext import commands
+from system_utils.container_logger import container_logger
+class FirstPlugin(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+        self._last_member = None
+
+    @commands.command(aliases = ['example', 'test', 'sample'])
+    async def first_plugin(self, context, arg = None):
+        if(arg == "ping"):
+            await context.send("pong")
+        
+def setup(bot):
+    bot.add_cog(FirstPlugin(bot))
+```
+
+Congrulations! You've made your first plugin and dipped your toes into working with Gerbot.
