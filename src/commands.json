@@ -1,9 +1,9 @@
 {
 	"commands": [{
-			"command-prefix": "!calander",
-			"name": "calander",
-			"description": "Get the entire term calander delivered to you by Gerbot!",
-			"example": "!calander",
+			"command-prefix": "!calendar",
+			"name": "calendar",
+			"description": "Get the entire term calendar delivered to you by Gerbot!",
+			"example": "!calendar",
 			"sub-commands": [
 				""
 			],

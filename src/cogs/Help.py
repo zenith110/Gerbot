@@ -6,7 +6,7 @@ import weather
 import json
 import os
 import help
-from disputils import BotEmbedPaginator, BotConfirmation, BotMultipleChoice
+from disputils import BotEmbedPaginator
 class Help(commands.Cog):
     """
     Creates the instance of admin including its fields
