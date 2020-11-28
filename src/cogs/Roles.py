@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord.utils import get 
 import re
 import cogs.Administration as admin
+from disputils import BotEmbedPaginator
 
 class Roles(commands.Cog):
     """
@@ -14,7 +15,7 @@ class Roles(commands.Cog):
         self._last_member = None
  
 
-    @commands.command()
+    @commands.command(aliases=['r'])
     async def role(self, ctx, role: discord.Role = None):
         """
         Allows for Discord users to add, modify, remove, or inquire about roles on the server.
@@ -29,7 +30,7 @@ class Roles(commands.Cog):
         
         # if !role returns no arguments 
         elif role is None:
-           embedded = showRoles(ctx)
+           embedded = printRoles(ctx)
            await ctx.send(embed=embedded)
         
         # gives user the valid, specified role
@@ -76,24 +77,23 @@ class Roles(commands.Cog):
         
         # Any roles not in the other lists will go here.
         misc_roles=[o for o in server_roles if o not in acl and o not in class_roles and o not in squad_roles and o not in cert_roles]        
-        # x = [role.name for role in ctx.guild.roles if role.name != '@everyone']
-        firstembed = discord.Embed(title="Misc Roles")
-        firstembed.add_field(name="Squad Roles", value = ("\n".join(squad_roles)))
-        firstembed.add_field(name="Certification Roles", value = ("\n".join(cert_roles)))
-        firstembed.add_field(name="Misc Roles", value = ("\n".join(misc_roles)))
-        await ctx.send(embed=firstembed)
-        
-        classembed = discord.Embed(title="Classes")
+  
 
-        for message in paginate(class_roles):
-        # classembed.add_field(name="Served Hot and Ready", value = (class_roles))
-            classembed.description = ('\n'.join(message))
-            # print("Added")
+        # splitting the class list into two separate lists for two embed entries
+        list1 = class_roles[::2]
+        list2 = class_roles[1::2]
 
-            await ctx.send(embed=classembed)
+        embeds = [
+            discord.Embed(title="Squad Rolse", description="\n".join(squad_roles), color=0x115599),
+            discord.Embed(title="Cert Roles", description="\n".join(cert_roles), color=0x5599ff),
+            discord.Embed(title="Class List 1", description="\n".join(list1), color=0x191638),
+            discord.Embed(title="Class List 2", description="\n".join(list2), color=0x191638)
+        ]
 
-        
-        # await ctx.send(embed=embeded)
+        # create the menu embed object
+        paginator = BotEmbedPaginator(ctx, embeds)
+        await paginator.run()
+
 
 def showRoles(ctx):
     # Prohibited roles for regular users
@@ -129,22 +129,6 @@ def showRoles(ctx):
 
 # Pew pew, sends the embed to the chat
     return embeded
-
-
-
-def paginate(lines, chars=1000):
-    size = 0
-    message = []
-    for line in lines:
-        if len(line) + size > chars:
-            yield message
-            message = []
-            size = 0
-        message.append(line)
-        size += len(line)
-    yield message
-
-
 
 
 # Setup function
