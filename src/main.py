@@ -6,15 +6,10 @@ import os
 import discord
 from discord.ext import commands
 from discord_webhook import DiscordWebhook, DiscordEmbed
-<<<<<<< HEAD
-from discord import discord_key
-# import parking
-=======
 import discord_key
 import traceback
 import datetime
 import pytz 
->>>>>>> 73452984faaa133c53dacb6ace3f57ec29f23a3a
 
 # import hidden variables
 dotenv_path = join(dirname(__file__), '.env')
