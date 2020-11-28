@@ -6,7 +6,7 @@ import os
 import discord
 from discord.ext import commands
 from discord_webhook import DiscordWebhook, DiscordEmbed
-import discord_key
+from discord import discord_key
 # import parking
 
 # import hidden variables

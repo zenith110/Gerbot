@@ -56,6 +56,17 @@ class Administration(commands.Cog):
             except:
                 await ctx.channel.send("[!] Please check your role name")
 
+    @commands.command()
+    async def createRole(self, ctx, *args):
+        for role in args:
+            lowername = role.lower()
+            if discord.utils.get(ctx.guild.text_channels, name=lowername):
+                await ctx.channel.send(f"Channel {lowername} already exists, aborting")
+                return
+            else:
+                role = await ctx.guild.create_role(name=lowername)
+        await ctx.channel.send(f"Done creating the roles uwu.")
+
     """
     spawns a class
     @self - self obj

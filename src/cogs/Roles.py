@@ -55,15 +55,45 @@ class Roles(commands.Cog):
             else:
                 await ctx.send(f"{member.mention} That role was not found.")
 
+
     @commands.command()
     async def printRoles(self, ctx):
         """
         Command variant of the showRoles helper function; to diagnose showRoles bug on main server.
         """
+        acl = ['Administrator', 'Moderator', '@everyone', 'Epic Counselor', 'Sith-Gopher']
+    
+        # Creates a list of roles from the server that aren't in the acl.
+        server_roles = [role.name for role in ctx.guild.roles if role.name not in acl]
+        
+        # Uses regex and siphons out class roles from the server_roles list.
+        class_roles=[o for o in server_roles if re.search('\d\d\d\d', o)]
+        # Roles which are used for the server's squads.
+        squad_roles=[o for o in server_roles if re.search("squad",o)]
+        
+        # Roles which are for certificaitons must have the checkmark to be able to be displayed correctly.
+        cert_roles = [o for o in server_roles if re.search("🗸", o)]
+        
+        # Any roles not in the other lists will go here.
+        misc_roles=[o for o in server_roles if o not in acl and o not in class_roles and o not in squad_roles and o not in cert_roles]        
         # x = [role.name for role in ctx.guild.roles if role.name != '@everyone']
-        embeded = discord.Embed(title="Roles")
-        embeded.add_field(name="Served Hot and Ready", value = ("\n".join(role.name for role in ctx.guild.roles if role.name != '@everyone')))
-        await ctx.send(embed=embeded)
+        firstembed = discord.Embed(title="Misc Roles")
+        firstembed.add_field(name="Squad Roles", value = ("\n".join(squad_roles)))
+        firstembed.add_field(name="Certification Roles", value = ("\n".join(cert_roles)))
+        firstembed.add_field(name="Misc Roles", value = ("\n".join(misc_roles)))
+        await ctx.send(embed=firstembed)
+        
+        classembed = discord.Embed(title="Classes")
+
+        for message in paginate(class_roles):
+        # classembed.add_field(name="Served Hot and Ready", value = (class_roles))
+            classembed.description = ('\n'.join(message))
+            # print("Added")
+
+            await ctx.send(embed=classembed)
+
+        
+        # await ctx.send(embed=embeded)
 
 def showRoles(ctx):
     # Prohibited roles for regular users
@@ -99,6 +129,23 @@ def showRoles(ctx):
 
 # Pew pew, sends the embed to the chat
     return embeded
+
+
+
+def paginate(lines, chars=1000):
+    size = 0
+    message = []
+    for line in lines:
+        if len(line) + size > chars:
+            yield message
+            message = []
+            size = 0
+        message.append(line)
+        size += len(line)
+    yield message
+
+
+
 
 # Setup function
 def setup(bot):
