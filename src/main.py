@@ -10,7 +10,7 @@ import discord_key
 import traceback
 import datetime
 import pytz 
-
+from system_utils.container_logger import container_logger
 # import hidden variables
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
@@ -31,18 +31,7 @@ try:
             bot.load_extension(f'cogs.{filename[:-3]}')
             print("[<3] Loaded ", filename)
 except:
-    webhook = DiscordWebhook(url=discord_key.api_key)
-    now = datetime.datetime.now(pytz.timezone('America/New_York'))
-    if(now.hour > 12):
-        hour = now.hour - 12
-        embed = DiscordEmbed(title='Error report on ' + str(now.month) + "/" + str(now.day) + "/" + str(now.year) + " - " + str(hour) + ":" + str(now.minute) + " PM", description = '```py\n%s\n```' % traceback.format_exc(), color=242424)
-        webhook.add_embed(embed)
-        response = webhook.execute()
-    else:
-        hour = now.hour - 12
-        embed = DiscordEmbed(title='Error report on ' + str(now.month) + "/" + str(now.day) + "/" + str(now.year) + " - " + str(hour) + ":" + str(now.minute) + " AM", description = '```py\n%s\n```' % traceback.format_exc(), color=242424)
-        webhook.add_embed(embed)
-        response = webhook.execute()
+    container_logger()
 
 # terminal functions
 @bot.event
@@ -60,11 +49,7 @@ async def on_ready():
 # error handling whenever the command is not found
 @bot.event
 async def on_error(event, *args, **kwargs):
-    print("hi")
-    webhook = DiscordWebhook(url=discord_key.api_key)
-    embed = DiscordEmbed(title='Error report', description = event, color=242424)
-    webhook.add_embed(embed)
-    response = webhook.execute()
+    container_logger()
     
 
 bot.run(BOT_TOKEN)
