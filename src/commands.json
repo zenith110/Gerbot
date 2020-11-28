@@ -1,9 +1,9 @@
 {
 	"commands": [{
-			"command-prefix": "!calander",
-			"name": "calander",
-			"description": "Get the entire term calander delivered to you by Gerbot!",
-			"example": "!calander",
+			"command-prefix": "!calendar",
+			"name": "calendar",
+			"description": "Get the entire term calendar delivered to you by Gerbot!",
+			"example": "!calendar",
 			"sub-commands": [
 				""
 			],
@@ -37,6 +37,32 @@
 				"pubsub",
 				"pubSub",
 				"getPubSub"
+			]
+		},
+		{
+			"command-prefix": "!report",
+			"name": "report",
+			"description": "DM Gerbot to send an anonymous report to the staff!",
+			"example": "!report",
+			"sub-commands": [
+				""
+			],
+			"names": [
+				"report",
+				"Report"
+			]
+		},
+		{
+			"command-prefix": "!xkcd",
+			"name": "xkcd",
+			"description": "Grab a xkcd comic of your choice. Use randxkcd to get a random xkcd comic!",
+			"example": "!xkcd <specific comic>",
+			"sub-commands": [
+				""
+			],
+			"names": [
+				"xkcd",
+				"randxkcd"
 			]
 		}
 	]

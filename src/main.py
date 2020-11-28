@@ -6,8 +6,15 @@ import os
 import discord
 from discord.ext import commands
 from discord_webhook import DiscordWebhook, DiscordEmbed
+<<<<<<< HEAD
 from discord import discord_key
 # import parking
+=======
+import discord_key
+import traceback
+import datetime
+import pytz 
+>>>>>>> 73452984faaa133c53dacb6ace3f57ec29f23a3a
 
 # import hidden variables
 dotenv_path = join(dirname(__file__), '.env')
@@ -22,12 +29,25 @@ bot.remove_command('help')
 # terminal stuff
 print("[!] Awakening Gerb's, standby...")
 print("="*40)
-
-# import cogs 
-for filename in os.listdir('./cogs'):
-    if filename.endswith('.py'):
-        bot.load_extension(f'cogs.{filename[:-3]}')
-        print("[<3] Loaded ", filename)
+try:
+    # import cogs 
+    for filename in os.listdir('./cogs'):
+        if filename.endswith('.py'):
+            bot.load_extension(f'cogs.{filename[:-3]}')
+            print("[<3] Loaded ", filename)
+except:
+    webhook = DiscordWebhook(url=discord_key.api_key)
+    now = datetime.datetime.now(pytz.timezone('America/New_York'))
+    if(now.hour > 12):
+        hour = now.hour - 12
+        embed = DiscordEmbed(title='Error report on ' + str(now.month) + "/" + str(now.day) + "/" + str(now.year) + " - " + str(hour) + ":" + str(now.minute) + " PM", description = '```py\n%s\n```' % traceback.format_exc(), color=242424)
+        webhook.add_embed(embed)
+        response = webhook.execute()
+    else:
+        hour = now.hour - 12
+        embed = DiscordEmbed(title='Error report on ' + str(now.month) + "/" + str(now.day) + "/" + str(now.year) + " - " + str(hour) + ":" + str(now.minute) + " AM", description = '```py\n%s\n```' % traceback.format_exc(), color=242424)
+        webhook.add_embed(embed)
+        response = webhook.execute()
 
 # terminal functions
 @bot.event
@@ -45,13 +65,11 @@ async def on_ready():
 # error handling whenever the command is not found
 @bot.event
 async def on_error(event, *args, **kwargs):
-    print("[!] Error Caused by:  ", event)
-    print(args, kwargs)
+    print("hi")
     webhook = DiscordWebhook(url=discord_key.api_key)
     embed = DiscordEmbed(title='Error report', description = event, color=242424)
     webhook.add_embed(embed)
-
     response = webhook.execute()
-
+    
 
 bot.run(BOT_TOKEN)

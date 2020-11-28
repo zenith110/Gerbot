@@ -4,3 +4,5 @@ requests
 python-dotenv
 finnhub-python
 discord_webhook
+pytz
+disputils
