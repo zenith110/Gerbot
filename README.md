@@ -105,7 +105,7 @@ class FirstPlugin(commands.Cog):
         self._last_member = None
 
     @commands.command(aliases = ['example', 'test', 'sample'])
-    async def first_plugin(self, context, arg = None):
+    async def first_plugin(self, context):
         if(arg == "ping"):
             await context.send("pong")
         
