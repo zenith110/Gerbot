@@ -1,5 +1,10 @@
-# Gerbot
-
+# Table of Contents
+1. [Goal](#goal)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Contributing](#contributing)
+5. [Creating a sample plugin](#creating-a-sample-plugin)
+## Goal
 Gerbot is a python-based Discord bot written for the University of Central Florida's IT Discord. It's main functionality is to make our lives easier. It's private classroom functionality allows for the creation and management of private text channels modeled after technology classes that are accessible only by individuals with the corresponding class role. It has has some other quality of life features which are currently in development. The bot is primarily written in Python using discord.py
 
 
