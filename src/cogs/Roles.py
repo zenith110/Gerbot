@@ -56,7 +56,7 @@ class Roles(commands.Cog):
                 await ctx.send(f"{member.mention} That role was not found.")
 
 
-    @commands.command()
+    @commands.command(aliases=['roles'])
     async def printRoles(self, ctx):
         """
         Command variant of the showRoles helper function; to diagnose showRoles bug on main server.

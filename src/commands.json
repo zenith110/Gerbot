@@ -64,6 +64,19 @@
 				"xkcd",
 				"randxkcd"
 			]
+		},
+		{
+			"command-prefix": "!role",
+			"name": "role",
+			"description": "Assigns yourself a specific class role, and creates if it's the first time.",
+			"example": "!role cis3362_guha",
+			"sub-commands": [
+				""
+			],
+			"names": [
+				"r",
+				"role"
+			]
 		}
 	]
 }
