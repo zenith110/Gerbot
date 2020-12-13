@@ -29,7 +29,11 @@ class Stocks(commands.Cog):
             stonk = stocks.basic_stock_return(argument)
             try:
                 stonk_message = discord.Embed(title=stonk.name + " stonk report", description="Data information about " + stonk.name + " stock")
-                stonk_message.add_field(name="Stock data", value="Current price: $" + str(stonk.current_price) + "\nOpen price of the day: $" + str(stonk.open_price) + "\nLow price of the day: $" + str(stonk.low_price) + "\nHigh price of the day: $" + str(stonk.high_price), inline=True)       
+                stonk_message.add_field(name="Stock data", value="Current price: $" + str(stonk.current_price) + "\nOpen price of the day: $" + str(stonk.open_price) + "\nLow price of the day: $" + str(stonk.low_price) + "\nHigh price of the day: $" + str(stonk.high_price) + "\nStock percentage: " + str(stonk.percentage) + "%", inline=True)
+                if(stonk.percentage < 0.0000):
+                    stonk_message.set_thumbnail(url = "https://claytrader.com/wp-content/uploads/2014/12/IMG_26122014_144211.png")
+                elif(stonk.percentage > 0.000):
+                    stonk_message.set_thumbnail(url = "https://www.netclipart.com/pp/m/59-594517_arrow-going-up-png-stock-market-graph-up.png")  
                 await context.send(embed=stonk_message)
             except:
                 await context.send("It seems the stock you have tried to use is not a proper stock, please try again")
