@@ -1,5 +1,17 @@
 {
 	"commands": [{
+		"command-prefix": "!role",
+		"name": "role",
+		"description": "To see a list of roles, use !role. Adds and removes a role! Entering a role you already have will remove it. Entering a class that doesn't exist will create it, add you, and allow others to join via the role list.",
+		"example": "!role, !role <role-name>",
+		"sub-commands": [
+			""
+		],
+		"names": [
+			"r", 
+			"role"
+		]
+	},{
 			"command-prefix": "!calendar",
 			"name": "calendar",
 			"description": "Get the entire term calendar delivered to you by Gerbot!",
@@ -63,19 +75,6 @@
 			"names": [
 				"xkcd",
 				"randxkcd"
-			]
-		},
-		{
-			"command-prefix": "!role",
-			"name": "role",
-			"description": "Assigns yourself a specific class role, and creates if it's the first time.",
-			"example": "!role cis3362_guha",
-			"sub-commands": [
-				""
-			],
-			"names": [
-				"r",
-				"role"
 			]
 		}
 	]
