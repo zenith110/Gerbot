@@ -92,7 +92,7 @@ class Administration(commands.Cog):
             try:
 
                 # The category where the classes will go under 
-                category = discord.utils.get(ctx.guild.categories, name="Classes 2")        
+                category = discord.utils.get(ctx.guild.categories, name="Classes 1")        
 
                 channel = await ctx.guild.create_text_channel(lowername, overwrites=custom_settings, category=category)
                 # Creates role with the same name as the channel
