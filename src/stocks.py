@@ -1,7 +1,9 @@
 import finnhub
 from api_keys.stock import api_key
 import math
-class Stock():
+
+
+class Stock:
     def __init__(self):
         self.name = None
         self.current_price = 0
@@ -10,6 +12,7 @@ class Stock():
         self.low_price = 0
         self.open_price = 0
         self.image = None
+
 
 def truncate(number, decimals=0):
     """
@@ -24,10 +27,12 @@ def truncate(number, decimals=0):
 
     factor = 10.0 ** decimals
     return math.trunc(number * factor) / factor
+
+
 def basic_stock_return(name_of_company):
     stonk = Stock()
     client = finnhub.Client(api_key=api_key)
-    quote_data  = client.quote(name_of_company)
+    quote_data = client.quote(name_of_company)
     company_profile = client.company_profile(symbol=name_of_company)
     stonk.name = company_profile["name"]
     stonk.current_price = quote_data["c"]
@@ -36,5 +41,7 @@ def basic_stock_return(name_of_company):
     stonk.low_price = quote_data["l"]
     stonk.image = company_profile["logo"]
     stonk.high_price = quote_data["h"]
-    stonk.percentage = truncate((100 * (stonk.current_price - stonk.open_price) / stonk.open_price), 2)
+    stonk.percentage = truncate(
+        (100 * (stonk.current_price - stonk.open_price) / stonk.open_price), 2
+    )
     return stonk

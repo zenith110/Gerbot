@@ -1,20 +1,27 @@
 import json
 import requests
 import random
+
 """
 fetches name
 @arg - argument passed by user
 returns - image
 """
+
+
 def returnDog(arg):
-    url = "https://dog.ceo/api/breed/" + arg + "/images/random" 
+    url = "https://dog.ceo/api/breed/" + arg + "/images/random"
     response = requests.get(url).json()
     image = response["message"]
     return image
+
+
 """
 fetches all breeds
 returns - name
 """
+
+
 def return_all():
     url = "https://dog.ceo/api/breeds/list/all"
     response = requests.get(url).json()
@@ -23,7 +30,8 @@ def return_all():
         names.append(i)
     final_names = ", ".join(names)
     return final_names
-    
+
+
 def return_random_dog():
     url = "https://dog.ceo/api/breeds/list/all"
     response = requests.get(url).json()

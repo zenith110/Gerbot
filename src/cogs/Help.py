@@ -7,6 +7,8 @@ import json
 import os
 import help
 from disputils import BotEmbedPaginator
+
+
 class Help(commands.Cog):
     """
     Creates the instance of admin including its fields
@@ -14,10 +16,11 @@ class Help(commands.Cog):
     @last_member - last member to use this
     return - nothing
     """
+
     def __init__(self, bot):
         self.bot = bot
         self._last_member = None
-        
+
     """  
     Fetches a city's weather forecast from the input      
     @self - self obj
@@ -25,8 +28,8 @@ class Help(commands.Cog):
     @*args - arguments following the command
     return - nothing
     """
-  
-    @commands.command(aliases = ['help', 'commands'])
+
+    @commands.command(aliases=["help", "commands"])
     async def helpSystem(self, context, *args):
         """
         Open the commands json file that has all of our commands
@@ -41,15 +44,30 @@ class Help(commands.Cog):
         Use the start and end position of the commands you want to add to each page
         """
         embeds = [
-        discord.Embed(title="Page 1", description=help.page_data(commands_link, 0, 4), color=0x115599).set_thumbnail(url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"),
-        discord.Embed(title="Page 2", description=help.page_data(commands_link, 4, 5), color=0x5599ff).set_thumbnail(url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"),
-    ]
+            discord.Embed(
+                title="Page 1",
+                description=help.page_data(commands_link, 0, 4),
+                color=0x115599,
+            ).set_thumbnail(
+                url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
+            ),
+            discord.Embed(
+                title="Page 2",
+                description=help.page_data(commands_link, 4, 5),
+                color=0x5599FF,
+            ).set_thumbnail(
+                url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
+            ),
+        ]
 
         paginator = BotEmbedPaginator(context, embeds)
         await paginator.run()
+
+
 """
 setup for the command
 """
+
+
 def setup(bot):
     bot.add_cog(Help(bot))
-    

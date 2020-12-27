@@ -2,7 +2,9 @@
 Fetches the latest pub sub deal 
 """
 import requests
-class randomsub():
+
+
+class randomsub:
     def __init__(self):
         self.innards = None
         self.sub_name = ""
@@ -11,6 +13,7 @@ class randomsub():
         self.price = ""
         self.image = ""
         self.status_code = ""
+
 
 def get_all_subs():
     try:
@@ -23,6 +26,7 @@ def get_all_subs():
         return subs
     except:
         return "API is down..."
+
 
 def get_pub_sub(sub_name):
     sub_name = sub_name.replace(" ", "-")
@@ -41,11 +45,13 @@ def get_pub_sub(sub_name):
         sub = randomsub()
         sub.status_code = "404"
         return sub
+
+
 def empty_sub_input():
     sub = randomsub()
     url = "https://pubsub-api.dev/subs/?name="
     response = requests.get(url).json()
-    
+
     sub.sub_name = response[0]["sub_name"]
     sub.last_sale = response[0]["last_sale"]
     sub.status = response[0]["status"]
