@@ -17,13 +17,16 @@ class Roles(commands.Cog):
 
     @commands.command(aliases=["r"])
     async def role(self, ctx, *, role: discord.Role = None):
+
         """
         Allows for Discord users to add, modify, remove, or inquire about roles on the server.
         """
 
         member = ctx.message.author
-
-        print(role)
+        command_prefix = "!role"
+        command_name = "role"
+        alias = "r"
+        example = "!role <role-name>"
         # if the message author already has the role
         if role in member.roles:
             await member.remove_roles(role)

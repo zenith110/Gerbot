@@ -11,6 +11,7 @@ import traceback
 import datetime
 import pytz
 from system_utils.container_logger import container_logger
+from system_utils.command_builder import command_builder
 
 # import hidden variables
 dotenv_path = join(dirname(__file__), ".env")
@@ -26,11 +27,7 @@ bot.remove_command("help")
 print("[!] Awakening Gerb's, standby...")
 print("=" * 40)
 try:
-    # import cogs
-    for filename in os.listdir("./cogs"):
-        if filename.endswith(".py"):
-            bot.load_extension(f"cogs.{filename[:-3]}")
-            print("[<3] Loaded ", filename)
+    command_builder(bot)
 except:
     container_logger()
 

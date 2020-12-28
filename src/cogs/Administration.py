@@ -85,6 +85,10 @@ class Administration(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_roles=True)
     async def spawnClass(self, ctx, *arg):
+        command_prefix = "!spawn"
+        command_name = "spawn class"
+        alias = "spawn"
+        example = "!spawn cop3502-gerber"
         # Make channel private
         custom_settings = {
             ctx.guild.default_role: discord.PermissionOverwrite(read_messages=False),

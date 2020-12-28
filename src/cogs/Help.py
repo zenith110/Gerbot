@@ -46,18 +46,18 @@ class Help(commands.Cog):
         embeds = [
             discord.Embed(
                 title="Page 1",
-                description=help.page_data(commands_link, 0, 4),
+                description=help.page_data(commands_link, 0, 3),
                 color=0x115599,
             ).set_thumbnail(
                 url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
             ),
-            discord.Embed(
-                title="Page 2",
-                description=help.page_data(commands_link, 4, 5),
-                color=0x5599FF,
-            ).set_thumbnail(
-                url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
-            ),
+            # discord.Embed(
+            #     title="Page 2",
+            #     description=help.page_data(commands_link, 4, 5),
+            #     color=0x5599FF,
+            # ).set_thumbnail(
+            #     url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
+            # ),
         ]
 
         paginator = BotEmbedPaginator(context, embeds)
