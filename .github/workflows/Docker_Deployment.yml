@@ -28,7 +28,9 @@ jobs:
           mkdir api_keys
           cd api_keys
           cat_api_key='"${{ secrets.CAT_KEY }}"'
+          stock_api='"${{ secrets.FINNHUB }}"'
           echo "api_key = $cat_api_key" > cat.py
+          echo "api_key = $stock_api" > stock.py
           cd ../
           bot_token='"${{ secrets.BOT_TOKEN }}"'
           echo "BOT_TOKEN = $bot_token" > .env

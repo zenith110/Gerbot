@@ -4,6 +4,7 @@ import pytz
 import re
 from discord.ext import commands
 
+
 class AntiCheat(commands.Cog):
     """
     Creates the instance of admin including its fields
@@ -11,10 +12,11 @@ class AntiCheat(commands.Cog):
     @last_member - last member to use this
     return - nothing
     """
+
     def __init__(self, bot):
         self.bot = bot
         self._last_member = None
-        
+
     """  
     Scans every message for links to possible cheating websites. If a user 
     is found cheating they are reported to the report channel      
@@ -22,12 +24,16 @@ class AntiCheat(commands.Cog):
     @message - the message being scanned by the function
     return - nothing
     """
+
     @commands.Cog.listener()
     async def on_message(self, message):
-        """  
+        """
         Blacklist of known cheating websites
         """
-        blacklist = ['https://www.chegg.com/homework-help/questions-and-answers/','https://www.coursehero.com/']
+        blacklist = [
+            "https://www.chegg.com/homework-help/questions-and-answers/",
+            "https://www.coursehero.com/",
+        ]
 
         """  
         Setup the channel where the reports will be sent to
@@ -38,7 +44,7 @@ class AntiCheat(commands.Cog):
         """  
         Setup the timezone information
         """
-        est = pytz.timezone('US/Eastern')
+        est = pytz.timezone("US/Eastern")
 
         """  
         Check if the message matches the items from the blacklist
@@ -54,15 +60,26 @@ class AntiCheat(commands.Cog):
         """
         if cheating == 1:
             print(message.content)
-            embed = discord.Embed(title = 'User Report', timestamp = datetime.datetime.now(tz=est))
-            embed.add_field(name = message.author, value = 'User has sent <' + message.content + '> in channel <' + str(message.channel) + '>', inline = True)
-            await reportChannel.send(embed = embed)
+            embed = discord.Embed(
+                title="User Report", timestamp=datetime.datetime.now(tz=est)
+            )
+            embed.add_field(
+                name=message.author,
+                value="User has sent <"
+                + message.content
+                + "> in channel <"
+                + str(message.channel)
+                + ">",
+                inline=True,
+            )
+            await reportChannel.send(embed=embed)
             await message.channel.purge(limit=1)
-            
+
 
 """
 setup for the command
 """
+
+
 def setup(bot):
     bot.add_cog(AntiCheat(bot))
-

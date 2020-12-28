@@ -5,17 +5,22 @@ from discord.ext import commands
 import weather
 import json
 import os
-class Weather(commands.Cog):
+import help
+from disputils import BotEmbedPaginator
+
+
+class Help(commands.Cog):
     """
     Creates the instance of admin including its fields
     @bot - the bot itself
     @last_member - last member to use this
     return - nothing
     """
+
     def __init__(self, bot):
         self.bot = bot
         self._last_member = None
-        
+
     """  
     Fetches a city's weather forecast from the input      
     @self - self obj
@@ -23,7 +28,8 @@ class Weather(commands.Cog):
     @*args - arguments following the command
     return - nothing
     """
-    @commands.command(aliases = ['help', 'commands'])
+
+    @commands.command(aliases=["help", "commands"])
     async def helpSystem(self, context, *args):
         """
         Open the commands json file that has all of our commands
@@ -34,25 +40,34 @@ class Weather(commands.Cog):
         Assign the json instance to a variable
         """
         commands_link = commands["commands"]
+        """
+        Use the start and end position of the commands you want to add to each page
+        """
+        embeds = [
+            discord.Embed(
+                title="Page 1",
+                description=help.page_data(commands_link, 0, 3),
+                color=0x115599,
+            ).set_thumbnail(
+                url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
+            ),
+            # discord.Embed(
+            #     title="Page 2",
+            #     description=help.page_data(commands_link, 4, 5),
+            #     color=0x5599FF,
+            # ).set_thumbnail(
+            #     url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
+            # ),
+        ]
 
-        help_message = discord.Embed(title="Gerbot Commands", description="Commands available to Gerbot!")
-        data = []
-        
-        for i in range(len(commands_link)):
-            names = ", ".join(commands_link[i]["names"])
-            sub_arguments = ", ".join(commands_link[i]["sub-commands"])
-            
-            data.append("**" + commands_link[i]["name"] + "** - " + commands_link[i]["example"] + "\n" + commands_link[i]["description"] + "\n" + "Aliases: [" + names + "]" + "\nSub Arguments: [" + sub_arguments + "]\n")
+        paginator = BotEmbedPaginator(context, embeds)
+        await paginator.run()
 
-        value_string = "\n".join(data)
 
-        help_message.add_field(name="Commands", value=value_string, inline=True)
-
-        help_message.set_thumbnail(url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif")
-        
-        await context.send(embed=help_message)
 """
 setup for the command
 """
+
+
 def setup(bot):
-    bot.add_cog(Weather(bot))
+    bot.add_cog(Help(bot))

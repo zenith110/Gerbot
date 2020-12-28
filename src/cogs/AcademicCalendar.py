@@ -1,10 +1,13 @@
 import academicCalendar
 import discord
 from discord.ext import commands
+from disputils import BotEmbedPaginator
 
 """
 Academic Calendar command.
 """
+
+
 class Calendar(commands.Cog):
     """
     sets up the basic components of the class
@@ -12,8 +15,9 @@ class Calendar(commands.Cog):
     @last_member - the last member who used this command
     return - nothing
     """
+
     def __init__(self, bot):
-        self.bot = bot 
+        self.bot = bot
         self._last_member = None
 
     """
@@ -22,39 +26,51 @@ class Calendar(commands.Cog):
     @context = how we'll send messages
     return - nothing
     """
-    @commands.command(aliases = ['calendar', 'academicCalendar', 'ucfCalendar'])
+
+    @commands.command(aliases=["calendar", "academicCalendar", "ucfCalendar"])
     async def getCalendar(self, context):
         """
         Create calendar object with strings containing the information to the
         calendar.
         """
         calendar = academicCalendar.makeCalendar()
+        embeds = [
+            discord.Embed(
+                title="UCF Fall 2020 Academic Calendar",
+                description=calendar.strings[0],
+                inline=True,
+                color=0x115599,
+            ).set_thumbnail(
+                url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
+            ),
+            discord.Embed(
+                title="UCF Fall 2020 Academic Calendar",
+                description=calendar.strings[1],
+                inline=True,
+                color=0x5599FF,
+            ).set_thumbnail(
+                url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
+            ),
+            discord.Embed(
+                title="UCF Fall 2020 Academic Calendar",
+                description=calendar.strings[2],
+                inline=True,
+                color=0x5599FF,
+            ).set_thumbnail(
+                url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
+            ),
+            discord.Embed(
+                title="UCF Fall 2020 Academic Calendar",
+                description=calendar.strings[3],
+                inline=True,
+                color=0x5599FF,
+            ).set_thumbnail(
+                url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
+            ),
+        ]
+        paginator = BotEmbedPaginator(context, embeds)
+        await paginator.run()
 
-        """
-        Create discord embeds
-        """
-        embed1 = discord.Embed(title = 'UCF Fall 2020 Academic Calendar')
-        embed2 = discord.Embed(title = 'UCF Fall 2020 Academic Calendar')
-        embed3 = discord.Embed(title = 'UCF Fall 2020 Academic Calendar')
-        embed4 = discord.Embed(title = 'UCF Fall 2020 Academic Calendar')
-
-        """
-        Add the information to the discord embeds
-        """
-        embed1.add_field(name = '1/4', value = calendar.strings[0], inline = True)
-        embed2.add_field(name = '2/4',value = calendar.strings[1], inline = True)
-        embed3.add_field(name = '3/4',value = calendar.strings[2], inline = True)
-        embed4.add_field(name = '4/4',value = calendar.strings[3], inline = True)
-
-        """
-        Send the discord embeds
-        """
-        await context.author.send(embed=embed1)
-        await context.author.send(embed=embed2)
-        await context.author.send(embed=embed3)
-        await context.author.send(embed=embed4)
 
 def setup(bot):
     bot.add_cog(Calendar(bot))
-
-    

@@ -1,43 +1,22 @@
 {
-	"commands": [{
-			"command-prefix": "!calander",
-			"name": "calander",
-			"description": "Get the entire term calander delivered to you by Gerbot!",
-			"example": "!calander",
-			"sub-commands": [
-				""
-			],
-			"names": [
-				"calendar", 
-				"academicCalendar", 
-				"ucfCalendar"
-			]
-		},
-		{
-			"command-prefix": "!weather",
-			"name": "weather",
-			"description": "Displays the weather from a specific city!",
-			"example": "!weather <city>",
-			"sub-commands": [
-				""
-			],
-			"names": [
-				"weather"
-			]
-		},
-		{
-			"command-prefix": "!pubsub",
-			"name": "pubsub",
-			"description": "Get information on the delicious subs!",
-			"example": "!pubsub <sub-argument>",
-			"sub-commands": [
-				"help"
-			],
-			"names": [
-				"pubsub",
-				"pubSub",
-				"getPubSub"
-			]
-		}
-	]
+  "commands": [
+    {
+      "command-prefix": "!spawn",
+      "name": "spawn class",
+      "alias": "spawn",
+      "example": "!spawn cop3502-gerber"
+    },
+    {
+      "command-prefix": "!class-review",
+      "name": "professor review",
+      "alias": "class-review",
+      "example": "!class-review matthew-gerber cop3502, unfinished"
+    },
+    {
+      "command-prefix": "!role",
+      "name": "role",
+      "alias": "r",
+      "example": "!role <role-name>"
+    }
+  ]
 }

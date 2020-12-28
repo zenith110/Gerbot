@@ -3,6 +3,7 @@ import discord
 import pytz
 from discord.ext import commands
 
+
 class Report(commands.Cog):
     """
     Creates the instance of admin including its fields
@@ -10,45 +11,53 @@ class Report(commands.Cog):
     @last_member - last member to use this
     return - nothing
     """
+
     def __init__(self, bot):
         self.bot = bot
         self._last_member = None
-        
+
     """  
     Sends a report to the      
     @self - self obj
     @message - the message being scanned by the function
     return - nothing
     """
-    @commands.command(aliases = ['Report'])
+
+    @commands.command(aliases=["Report"])
     async def report(self, context, *args):
-        """  
+        """
         Setup the channel where the reports will be sent to
-        """5
+        """
         reportChannel = self.bot.get_channel(751495912299430020)
 
         """  
         Setup the report message
         """
-        msg = ' '.join(args)
+        msg = " ".join(args)
 
         """  
         Setup the timezone information
         """
-        est = pytz.timezone('US/Eastern')
+        est = pytz.timezone("US/Eastern")
 
         """  
         Checks if the report is being sent via DM, if so send to report channel
         """
-        if "Direct Message with" in str(context.channel) and context.author != self.bot.user:
-            embed = discord.Embed(title = 'Report', timestamp = datetime.datetime.now(tz=est))
-            embed.add_field(name = 'Anonymous Report', value = msg, inline = True)
-            await reportChannel.send(embed = embed)
-            
+        if (
+            "Direct Message with" in str(context.channel)
+            and context.author != self.bot.user
+        ):
+            embed = discord.Embed(
+                title="Report", timestamp=datetime.datetime.now(tz=est)
+            )
+            embed.add_field(name="Anonymous Report", value=msg, inline=True)
+            await reportChannel.send(embed=embed)
+
 
 """
 setup for the command
 """
+
+
 def setup(bot):
     bot.add_cog(Report(bot))
-
