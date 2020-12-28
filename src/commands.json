@@ -17,6 +17,78 @@
       "name": "role",
       "alias": "r",
       "example": "!role <role-name>"
+    },
+    {
+      "command-prefix": "!calendar",
+      "name": "ucf academic calendar",
+      "alias": "calendar",
+      "example": "!calendar"
+    },
+    {
+      "command-prefix": "!cat",
+      "name": "get cat",
+      "alias": "cat",
+      "example": "!cat (for a random cat), !cat <cat-breed>"
+    },
+    {
+      "command-prefix": "!cats",
+      "name": "all cats",
+      "alias": "cats",
+      "example": "!cats"
+    },
+    {
+      "command-prefix": "!dog",
+      "name": "get dog",
+      "alias": "doggo",
+      "example": "!dog (for a random dog), !dog <dog-breed>"
+    },
+    {
+      "command-prefix": "!dogs",
+      "name": "all dogs",
+      "alias": "doggos",
+      "example": "!dogs"
+    },
+    {
+      "command-prefix": "!joke",
+      "name": "get joke",
+      "alias": "joke",
+      "example": "!joke (for a random joke), !joke <topic>"
+    },
+    {
+      "command-prefix": "!certs",
+      "name": "cert roadmap",
+      "alias": "certs",
+      "example": "!certs"
+    },
+    {
+      "command-prefix": "!stock",
+      "name": "get stock",
+      "alias": "stonk",
+      "example": "!stock <stock-name>"
+    },
+    {
+      "command-prefix": "!weather",
+      "name": "weather",
+      "alias": "weather",
+      "example": "!weather <city-name>"
+    },
+    {
+      "command-prefix": "!xkcd",
+      "name": "get comic",
+      "alias": "getComic",
+      "example": "!xkcd (for today's comic), !xkcd <comic-number>"
+    },
+    {
+      "command-prefix": "!randxkcd",
+      "name": "get random comic",
+      "alias": "!getRandomComic",
+      "example": "!randxkcd"
+    },
+    {
+      "command-prefix": "!report",
+      "name": "report",
+      "alias": "report",
+      "example": "!report <anonymous report message>"
     }
   ]
 }
