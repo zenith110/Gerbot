@@ -27,6 +27,10 @@ class Xkcd(commands.Cog):
 
     @commands.command(pass_context=True, aliases=["xkcd"])
     async def getComic(self, context, comic_num=None):
+        command_prefix = "!xkcd"
+        command_name = "get comic"
+        alias = "getComic"
+        example = "!xkcd (for today's comic), !xkcd <comic-number>"
         """
         If argument is empty, get today's comic
         """
@@ -55,6 +59,10 @@ class Xkcd(commands.Cog):
 
     @commands.command(pass_context=True, aliases=["randxkcd"])
     async def getRandomComic(self, context):
+        command_prefix = "!randxkcd"
+        command_name = "get random comic"
+        alias = "getRandomComic"
+        example = "!randxkcd"
         """
         Gets a random xkcd comic
         """

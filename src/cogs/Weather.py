@@ -26,6 +26,10 @@ class Weather(commands.Cog):
 
     @commands.command(aliases=["weather"])
     async def getWeather(self, context, *args):
+        command_prefix = "!weather"
+        command_name = "weather"
+        alias = "weather"
+        example = "!weather <city-name>"
         """
         If no argument is given give the forecast for Orlando, Florida
         """

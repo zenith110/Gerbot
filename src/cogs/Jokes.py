@@ -18,6 +18,10 @@ class Jokes(commands.Cog):
 
     @commands.command(pass_context=True, aliases=["joke", "dadJoke", "dadjoke"])
     async def getJoke(self, context, *args):
+        command_prefix = "!joke"
+        command_name = "get joke"
+        alias = "joke"
+        example = "!joke (for a random joke), !joke <topic>"
         if not args:
             url = "https://icanhazdadjoke.com/"
             r = requests.get(url, headers={"Accept": "application/json"})
