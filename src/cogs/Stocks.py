@@ -24,6 +24,10 @@ class Stocks(commands.Cog):
 
     @commands.command(aliases=["stock", "stonk"])
     async def getStock(self, context, argument=None):
+        command_prefix = "!stock"
+        command_name = "get stock"
+        alias = "stonk"
+        example = "!stock <stock-name>"
         """
         Returns the name of the stock, and some information about it
         """

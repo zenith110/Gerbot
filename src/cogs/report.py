@@ -25,6 +25,10 @@ class Report(commands.Cog):
 
     @commands.command(aliases=["Report"])
     async def report(self, context, *args):
+        command_prefix = "!report"
+        command_name = "report"
+        alias = "report"
+        example = "!report <anonymous report message>"
         """
         Setup the channel where the reports will be sent to
         """

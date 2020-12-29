@@ -1,28 +1,16 @@
 {
   "commands": [
     {
-      "command-prefix": "!spawn",
-      "name": "spawn class",
-      "alias": "spawn",
-      "example": "!spawn cop3502-gerber"
-    },
-    {
-      "command-prefix": "!class-review",
-      "name": "professor review",
-      "alias": "class-review",
-      "example": "!class-review matthew-gerber cop3502, unfinished"
-    },
-    {
-      "command-prefix": "!role",
-      "name": "role",
-      "alias": "r",
-      "example": "!role <role-name>"
-    },
-    {
       "command-prefix": "!calendar",
       "name": "ucf academic calendar",
       "alias": "calendar",
       "example": "!calendar"
+    },
+    {
+      "command-prefix": "!spawn",
+      "name": "spawn class",
+      "alias": "spawn",
+      "example": "!spawn cop3502-gerber"
     },
     {
       "command-prefix": "!cat",
@@ -55,10 +43,22 @@
       "example": "!joke (for a random joke), !joke <topic>"
     },
     {
+      "command-prefix": "!class-review",
+      "name": "professor review",
+      "alias": "class-review",
+      "example": "!class-review matthew-gerber cop3502, unfinished"
+    },
+    {
       "command-prefix": "!certs",
       "name": "cert roadmap",
       "alias": "certs",
       "example": "!certs"
+    },
+    {
+      "command-prefix": "!role",
+      "name": "role",
+      "alias": "r",
+      "example": "!role <role-name>"
     },
     {
       "command-prefix": "!stock",
@@ -81,7 +81,7 @@
     {
       "command-prefix": "!randxkcd",
       "name": "get random comic",
-      "alias": "!getRandomComic",
+      "alias": "getRandomComic",
       "example": "!randxkcd"
     },
     {

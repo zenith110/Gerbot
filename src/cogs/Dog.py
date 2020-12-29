@@ -27,6 +27,10 @@ class Dog(commands.Cog):
 
     @commands.command(aliases=["getDoggo", "dog", "doggo", "puppy", "getPuppy"])
     async def getDog(self, context, arg=None):
+        command_prefix = "!dog"
+        command_name = "get dog"
+        alias = "doggo"
+        example = "!dog (for a random dog), !dog <dog-breed>"
         """
         Fetches a dog breed using the provided input
         """
@@ -77,6 +81,10 @@ class Dog(commands.Cog):
 
     @commands.command(aliases=["doggos", "dogs", "puppies", "allDoggos", "allPuppies"])
     async def allDogs(self, context):
+        command_prefix = "!dogs"
+        command_name = "all dogs"
+        alias = "doggos"
+        example = "!dogs"
         """
         Gives a list of all the dog breeds available to be picked.
         """

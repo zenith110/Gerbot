@@ -29,6 +29,10 @@ class Calendar(commands.Cog):
 
     @commands.command(aliases=["calendar", "academicCalendar", "ucfCalendar"])
     async def getCalendar(self, context):
+        command_prefix = "!calendar"
+        command_name = "ucf academic calendar"
+        alias = "calendar"
+        example = "!calendar"
         """
         Create calendar object with strings containing the information to the
         calendar.

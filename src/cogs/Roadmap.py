@@ -23,6 +23,10 @@ class Roadmap(commands.Cog):
 
     @commands.command(aliases=["certifications", "certs"])
     async def certRoadmap(self, context, argument=None):
+        command_prefix = "!certs"
+        command_name = "cert roadmap"
+        alias = "certs"
+        example = "!certs"
         """
         Returns the CompTIA cert roadmap
         """
