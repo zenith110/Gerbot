@@ -5,11 +5,11 @@ from os.path import join, dirname
 import os
 import discord
 from discord.ext import commands
-from discord_webhook import DiscordWebhook, DiscordEmbed
-import discord_key
+# from discord_webhook import DiscordWebhook, DiscordEmbed
+# import discord_key
 import traceback
 import datetime
-import pytz
+# import pytz
 from system_utils.container_logger import container_logger
 from system_utils.command_builder import command_builder
 
@@ -44,7 +44,7 @@ async def on_ready():
     print("-" * 40)
 
     # change the discord status because why not
-    await bot.change_presence(activity=discord.Game(name="in development"))
+    await bot.change_presence(activity=discord.Game(name="v1.0"))
 
 
 # error handling whenever the command is not found
