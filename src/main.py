@@ -5,18 +5,18 @@ from os.path import join, dirname
 import os
 import discord
 from discord.ext import commands
-# from discord_webhook import DiscordWebhook, DiscordEmbed
-# import discord_key
 import traceback
 import datetime
-# import pytz
-from system_utils.container_logger import container_logger
 from system_utils.command_builder import command_builder
+from system_utils.debugger_switch import debugger_switch
+from system_utils.debugger_option import debugger_option
 
 # import hidden variables
 dotenv_path = join(dirname(__file__), ".env")
 load_dotenv(dotenv_path)
 
+# Boolean that determines weather to use the console debugger or webhook similar to the container
+prod_mode = False
 # store values in global variables
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
@@ -26,10 +26,14 @@ bot.remove_command("help")
 # terminal stuff
 print("[!] Awakening Gerb's, standby...")
 print("=" * 40)
+
+# Switches all the prod_mode in all the cogs to the master prod_mode boolean here
+debugger_switch(prod_mode)
+
 try:
     command_builder(bot)
 except:
-    container_logger()
+    debugger_option(prod_mode)
 
 # terminal functions
 @bot.event

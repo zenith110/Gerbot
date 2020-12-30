@@ -25,18 +25,22 @@ class Ucf_Events(commands.Cog):
                 description="Current events happening at UCF on "
                 + full.strftime("%m/%d/%Y"),
             )
-            for i in range(0, len(ucf_day_event.name)):
-                event_message.add_field(
-                    name=str(ucf_day_event.date[i]),
-                    value="["
-                    + str(ucf_day_event.name[i])
-                    + "]"
-                    + "("
-                    + str(ucf_day_event.link[i])
-                    + ")",
-                    inline=True,
-                )
-            await context.send(embed=event_message)
+            try:
+                for i in range(0, len(ucf_day_event.name)):
+                    event_message.add_field(
+                        name=str(ucf_day_event.date[i]),
+                        value="["
+                        + str(ucf_day_event.name[i])
+                        + "]"
+                        + "("
+                        + str(ucf_day_event.link[i])
+                        + ")",
+                        inline=True,
+                    )
+                await context.send(embed=event_message)
+            except:
+                await context.send("No events are currently happening today, please refer to https://events.ucf.edu/event/ for the list")
+            
         elif argument == "weekly":
             ucf_day_event = ucf_events.scrape_weekly()
             event_message = discord.Embed(
@@ -44,20 +48,23 @@ class Ucf_Events(commands.Cog):
                 description="Current events happening at UCF on the week of "
                 + full.strftime("%m/%d/%Y"),
             )
-            for i in range(0, len(ucf_day_event.name)):
-                event_message.add_field(
-                    name=str(ucf_day_event.date[i]),
-                    value="["
-                    + str(ucf_day_event.name[i])
-                    + "]"
-                    + "("
-                    + str(ucf_day_event.link[i])
-                    + ")"
-                    + " - "
-                    + str(ucf_day_event.start_time[i]),
-                    inline=True,
-                )
-            await context.send(embed=event_message)
+            try:
+                for i in range(0, len(ucf_day_event.name)):
+                    event_message.add_field(
+                        name=str(ucf_day_event.date[i]),
+                        value="["
+                        + str(ucf_day_event.name[i])
+                        + "]"
+                        + "("
+                        + str(ucf_day_event.link[i])
+                        + ")"
+                        + " - "
+                        + str(ucf_day_event.start_time[i]),
+                        inline=True,
+                    )
+                await context.send(embed=event_message)
+            except: 
+                await context.send("No events are currently this week, please refer to https://events.ucf.edu/event/ for the list")
 
 
 def setup(bot):

@@ -49,6 +49,12 @@
       "example": "!class-review matthew-gerber cop3502, unfinished"
     },
     {
+      "command-prefix": "!report",
+      "name": "report",
+      "alias": "report",
+      "example": "!report <anonymous report message>"
+    },
+    {
       "command-prefix": "!certs",
       "name": "cert roadmap",
       "alias": "certs",
@@ -83,12 +89,6 @@
       "name": "get random comic",
       "alias": "getRandomComic",
       "example": "!randxkcd"
-    },
-    {
-      "command-prefix": "!report",
-      "name": "report",
-      "alias": "report",
-      "example": "!report <anonymous report message>"
     }
   ]
 }

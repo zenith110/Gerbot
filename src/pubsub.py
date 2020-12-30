@@ -16,23 +16,27 @@ class randomsub:
 
 
 def get_all_subs():
+    sub = randomsub()
     try:
         url = "https://pubsub-api.dev/allsubs/"
         response = requests.get(url).json()
         sub_names = []
         for i in range(len(response)):
             sub_names.append(response[i]["name"])
-        subs = ", ".join(sub_names)
-        return subs
+        sub.sub_name = ", ".join(sub_names)
+        sub.status_code = "200" 
+        return sub
     except:
-        return "API is down..."
+        sub.status_code = "404"
+        return sub
 
 
 def get_pub_sub(sub_name):
     sub_name = sub_name.replace(" ", "-")
     url = "https://pubsub-api.dev/subs/?name=" + sub_name
+    response = requests.get(url)
     try:
-        response = requests.get(url).json()
+        response = response.json()
         sub = randomsub()
         sub.sub_name = response[0]["sub_name"]
         sub.last_sale = response[0]["last_sale"]
@@ -43,18 +47,27 @@ def get_pub_sub(sub_name):
         return sub
     except:
         sub = randomsub()
-        sub.status_code = "404"
-        return sub
+        if(response.status_code == 503):
+            sub.status_code = "503"
+            return sub
+        elif(response.status_code == "404"):
+            sub.status_code = "404"
+            return sub
 
 
 def empty_sub_input():
     sub = randomsub()
     url = "https://pubsub-api.dev/subs/?name="
-    response = requests.get(url).json()
-
-    sub.sub_name = response[0]["sub_name"]
-    sub.last_sale = response[0]["last_sale"]
-    sub.status = response[0]["status"]
-    sub.price = response[0]["price"]
-    sub.image = response[0]["image"]
-    return sub
+    response = requests.get(url)
+    try:
+        response = response.json()
+        sub.sub_name = response[0]["sub_name"]
+        sub.last_sale = response[0]["last_sale"]
+        sub.status = response[0]["status"]
+        sub.price = response[0]["price"]
+        sub.image = response[0]["image"]
+        sub.status_code = "200"
+        return sub
+    except:
+        sub.status_code = "503"
+        return sub
