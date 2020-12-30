@@ -71,14 +71,5 @@ class CustomStudyRoom(commands.Cog):
         
         return
 
-    # async def deleteChannel(self, context):
-        # Delete the channel if everyone leaves
-
-    @commands.command(aliases=['detail'])
-    async def roomDetail(self, context, class_code = None):
-        chan = discord.utils.get(context.guild.voice_channels, name=class_code)
-        print(chan)
-        print(context.author.name)
-
 def setup(bot):
     bot.add_cog(CustomStudyRoom(bot))
