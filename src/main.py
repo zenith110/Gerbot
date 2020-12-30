@@ -16,7 +16,8 @@ dotenv_path = join(dirname(__file__), ".env")
 load_dotenv(dotenv_path)
 
 # Boolean that determines weather to use the console debugger or webhook similar to the container
-prod_mode = False
+prod_mode = True
+
 # store values in global variables
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
