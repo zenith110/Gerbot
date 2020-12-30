@@ -49,10 +49,6 @@ class CustomStudyRoom(commands.Cog):
             await context.send(embed=embed)
         else:
             try:
-                # custom_settings = {
-                #     context.guild.default_role: discord.PermissionOverwrite(connect=False),
-                #     context.guild.me: discord.PermissionOverwrite(connect=True),
-                # }
                 valid_roles = []
 
                 for role in context.guild.roles:
