@@ -6,3 +6,4 @@ finnhub-python
 discord_webhook
 pytz
 disputils
+pathlib2
