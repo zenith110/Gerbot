@@ -24,7 +24,7 @@ def get_all_subs():
         for i in range(len(response)):
             sub_names.append(response[i]["name"])
         sub.sub_name = ", ".join(sub_names)
-        sub.status_code = "200" 
+        sub.status_code = "200"
         return sub
     except:
         sub.status_code = "404"
@@ -47,10 +47,10 @@ def get_pub_sub(sub_name):
         return sub
     except:
         sub = randomsub()
-        if(response.status_code == 503):
+        if response.status_code == 503:
             sub.status_code = "503"
             return sub
-        elif(response.status_code == "404"):
+        elif response.status_code == "404":
             sub.status_code = "404"
             return sub
 

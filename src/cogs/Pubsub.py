@@ -24,24 +24,24 @@ class Pubsub(commands.Cog):
         """
         if sub_argument != None:
             if sub_argument == "help":
-                    subs = pubsub.get_all_subs()
-                    if(subs.status_code == "200"):
-                        await context.send(
-                            f"{context.author.mention}, here is our list of subs! \n" + subs
-                        )
-                    elif(subs.status_code == "404"):
-                        print("API is down...")
-                        await context.send(
-                            context.author.mention
-                            + ", unfortunately the api is down. Try again some other time!\n"
-                        )
+                subs = pubsub.get_all_subs()
+                if subs.status_code == "200":
+                    await context.send(
+                        f"{context.author.mention}, here is our list of subs! \n" + subs
+                    )
+                elif subs.status_code == "404":
+                    print("API is down...")
+                    await context.send(
+                        context.author.mention
+                        + ", unfortunately the api is down. Try again some other time!\n"
+                    )
             else:
                 sub = pubsub.get_pub_sub(sub_argument)
-                if(sub.status_code == "503"):
-                     await context.send(
+                if sub.status_code == "503":
+                    await context.send(
                         "The site is currently down, please try again later!"
                     )
-                elif(sub.status_code == "404"):
+                elif sub.status_code == "404":
                     await context.send(
                         "Sub is not available on the site, please try again later!"
                     )
@@ -76,13 +76,14 @@ class Pubsub(commands.Cog):
                         )
                         pubsub_message.set_image(url=sub.image)
                         await context.send(embed=pubsub_message)
-                
 
         else:
             sub = pubsub.empty_sub_input()
-            if(sub.status_code == "503"):
-                await context.send("pubsub-api.dev is currently down, please check later!")
-            elif(sub.status_code == "200"):
+            if sub.status_code == "503":
+                await context.send(
+                    "pubsub-api.dev is currently down, please check later!"
+                )
+            elif sub.status_code == "200":
                 sub_argument = sub.sub_argument
                 last_sale = sub.last_sale
                 status = sub.status

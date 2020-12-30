@@ -6,6 +6,7 @@ from discord.ext import commands
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import discord_key
 
+
 def container_logger():
     webhook = DiscordWebhook(url=discord_key.api_key)
     now = datetime.datetime.now(pytz.timezone("America/New_York"))
@@ -47,5 +48,3 @@ def container_logger():
         )
         webhook.add_embed(embed)
         response = webhook.execute()
-
-        

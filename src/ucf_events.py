@@ -161,6 +161,3 @@ def scrape_weekly():
         )
         ucf_event.start_time.append(data)
     return ucf_event
-
-
-

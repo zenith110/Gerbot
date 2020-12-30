@@ -39,8 +39,10 @@ class Ucf_Events(commands.Cog):
                     )
                 await context.send(embed=event_message)
             except:
-                await context.send("No events are currently happening today, please refer to https://events.ucf.edu/event/ for the list")
-            
+                await context.send(
+                    "No events are currently happening today, please refer to https://events.ucf.edu/event/ for the list"
+                )
+
         elif argument == "weekly":
             ucf_day_event = ucf_events.scrape_weekly()
             event_message = discord.Embed(
@@ -63,8 +65,10 @@ class Ucf_Events(commands.Cog):
                         inline=True,
                     )
                 await context.send(embed=event_message)
-            except: 
-                await context.send("No events are currently this week, please refer to https://events.ucf.edu/event/ for the list")
+            except:
+                await context.send(
+                    "No events are currently this week, please refer to https://events.ucf.edu/event/ for the list"
+                )
 
 
 def setup(bot):

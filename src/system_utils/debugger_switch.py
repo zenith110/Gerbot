@@ -1,10 +1,12 @@
-
 import os
 from pathlib2 import Path
 import re
+
 """
 Utalizes the current state to determine if local or prod debugging is necessary
 """
+
+
 def debugger_switch(prod_mode):
     file_data = []
     for filename in os.listdir("./cogs"):
@@ -14,10 +16,10 @@ def debugger_switch(prod_mode):
             text = path.read_text()
             true_check = re.findall("prod_mode = True", text)
             false_check = re.findall("prod_mode = False", text)
-            if(true_check):
+            if true_check:
                 text = text.replace("prod_mode = True", "prod_mode = " + str(prod_mode))
-            elif(false_check):
-                text = text.replace("prod_mode = False", "prod_mode = " + str(prod_mode))
+            elif false_check:
+                text = text.replace(
+                    "prod_mode = False", "prod_mode = " + str(prod_mode)
+                )
             path.write_text(text)
-    
-    
