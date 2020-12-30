@@ -32,7 +32,7 @@ print("=" * 40)
 debugger_switch(prod_mode)
 
 try:
-    command_builder(bot)
+    command_builder(bot, prod_mode)
 except:
     debugger_option(prod_mode)
 

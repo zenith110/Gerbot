@@ -46,10 +46,9 @@ def default_loader(file_data, bot):
             print("[<3] Loaded ", filename)
     return file_data
 
-def command_builder(bot):
+def command_builder(bot, prod_mode):
     file_data = []
     api_cogs = ["Stocks.py", "Cat.py"]
-    prod_mode = False
     if(prod_mode == False):
         file_data = local_loader(api_cogs, file_data, bot)
     else:
