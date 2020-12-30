@@ -1,5 +1,6 @@
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
+from datetime import datetime
 import re
 
 class CustomStudyRoom(commands.Cog):
@@ -12,7 +13,12 @@ class CustomStudyRoom(commands.Cog):
     def __init__(self, bot):
         self.bot = bot 
         self._last_member = None
+        # self.deleteUnusedChannels.start()
 
+    # def cog_unload(self):
+        # self.deleteUnusedChannels.cancel()
+
+    
     """
     Where the command is executed
     @self = self argument needed for the function
@@ -21,7 +27,20 @@ class CustomStudyRoom(commands.Cog):
     return - nothing
     """
 
+
+    # @tasks.loop(seconds=15.0)
+    # async def deleteUnusedChannels(self, context):
+    #     print("deleting unused channes")
+    #     category = discord.utils.get(context.guild.categories, name="Study Rooms")
+
+    #     for c in category.channels:
+    #         elapsed = c.created_at - datetime.now()
+
+    #         if len(c.members) < 1 and elapsed / 60 > 15:
+    #             await c.delete()
+
     @commands.command(aliases=['createstudyroom', 'studyroom', 'sr'])
+    @commands.has_permissions(manage_roles=True)
     async def createStudyRoom(self, context, class_code = None):
         # Create a new voice channel for class
         if discord.utils.get(context.guild.voice_channels, name=class_code):
@@ -65,11 +84,21 @@ class CustomStudyRoom(commands.Cog):
 
                 await context.guild.create_voice_channel(class_code, category=category)
                 await context.send(f"Created study room for {class_code}")
-                chan = discord.utils.get(context.guild.voice_channels, name=class_code)
             except:
                 await context.send(f"Failed")
         
         return
+
+    # @commands.command(aliases=["test"])
+    # async def detail(self, context):
+    #     category = discord.utils.get(context.guild.categories, name="Study Rooms")
+
+    #     for c in category.channels:
+    #         print(f"{c.name} created at {c.created_at} has {len(c.members)} users connected")
+            
+    #         elapsed = c.created_at - datetime.now()
+    #         elapsed_min = elapsed.total_seconds() / 60
+    #         print(elapsed_min)
 
 def setup(bot):
     bot.add_cog(CustomStudyRoom(bot))
