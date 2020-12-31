@@ -51,6 +51,19 @@
 				"xkcd",
 				"randxkcd"
 			]
+		},
+		{
+			"command-prefix": "!sr",
+			"name": "Study Room",
+			"description": "Create a study room",
+			"example": "!sr <class-role-name>",
+			"sub-commands": [
+				""
+			],
+			"names": [
+				"studyroom",
+				"createstudyroom"
+			]
 		}
 	]
 }
