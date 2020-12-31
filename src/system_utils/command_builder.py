@@ -53,6 +53,7 @@ def default_loader(file_data, bot):
 def command_builder(bot, prod_mode):
     file_data = []
     api_cogs = ["Stocks.py", "Cat.py"]
+    broken_cogs = ["Stocks.py"]
     if prod_mode == False:
         file_data = local_loader(api_cogs, file_data, bot)
     else:
