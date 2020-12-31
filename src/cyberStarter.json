@@ -1,0 +1,37 @@
+{
+    "sections": [
+        {
+            "title": "What is Cybersecurity?",
+            "description": "Definition",
+            "fields": [],
+            "links": []
+        },
+        {
+            "title": "Common Tools",
+            "description": "These are some of the tools used in the world of cybersecurity.",
+            "fields": [
+                {
+                    "name": "Common Jobs",
+                    "value": "- Penetration Tester\n- Secure Software Engineer\n- Systems/Network Administrator\n- Chief Information Security Officer"
+                }
+            ],
+            "links": []
+        },
+        {
+            "title": "Learning Tools",
+            "description": "Here are some websites and tools you can use to learn the basics of cyber security",
+            "fields": [
+                {
+                    "name": "OverTheWire Bandit",
+                    "value": "This \"wargame\" is designed to help you learn the Linux command line. It starts from basics like reading files and navigating directories and leads to more advanced topics such as using SSL. https://overthewire.org/wargames/bandit/"
+                },
+                {
+                    "name": "HackTheBox",
+                    "value": "This site hosts machines designed for you to hack into. The main goal is for users to learn about penetration testing techniques in a legal way",
+                    "image": "https://media.glassdoor.com/sqll/3278909/hack-the-box-squarelogo-1593684696335.png"
+                }
+            ],
+            "links": []
+        }
+    ]
+}
