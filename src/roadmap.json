@@ -1,0 +1,290 @@
+{
+    "certs": [
+        {
+            "name": "IT Fundamentals (ITF+)",
+            "creator": "CompTIA",
+            "level": "Beginner",
+            "cost": "$123",
+            "validity": "Forever",
+            "website": "https://www.comptia.org/certifications/it-fundamentals",
+            "plans": [
+                "is",
+                "net",
+                "hsi",
+                "ims",
+                "mobile",
+                "training",
+                "swe"
+            ]
+        },
+        {
+            "name": "Cloud Essentials",
+            "creator": "CompTIA",
+            "level": "Beginner",
+            "cost": "$123",
+            "validity": "Forever",
+            "website": "https://www.comptia.org/certifications/cloud-essentials",
+            "plans": [
+                "net"
+            ]
+        },
+        {
+            "name": "A+",
+            "creator": "CompTIA",
+            "level": "Beginner",
+            "cost": "$226",
+            "validity": "3 years",
+            "website": "https://www.comptia.org/certifications/a",
+            "plans": [
+                "is",
+                "net",
+                "hsi",
+                "ims",
+                "mobile",
+                "training",
+                "swe"
+            ]
+        },
+        {
+            "name": "Network+",
+            "creator": "CompTIA",
+            "level": "Intermediate",
+            "cost": "$329",
+            "validity": "3 years",
+            "website": "https://www.comptia.org/certifications/network",
+            "plans": [
+                "net"
+            ]
+        },
+        {
+            "name": "Security+",
+            "creator": "CompTIA",
+            "level": "Intermediate",
+            "cost": "$349",
+            "validity": "3 years",
+            "website": "https://www.comptia.org/certifications/ecurity",
+            "plans": [
+                "is"
+            ]
+        },
+        {
+            "name": "Linux+",
+            "creator": "CompTIA",
+            "level": "Intermediate",
+            "cost": "$329",
+            "validity": "3 years",
+            "website": "https://www.comptia.org/certifications/linux",
+            "plans": [
+                "net"
+            ]
+        },
+        {
+            "name": "Cloud+",
+            "creator": "CompTIA",
+            "level": "Intermediate",
+            "cost": "$329",
+            "validity": "3 years",
+            "website": "https://www.comptia.org/certifications/cloud",
+            "plans": [
+                "net"
+            ]
+        },
+        {
+            "name": "CCNA",
+            "creator": "Cisco",
+            "level": "Intermediate",
+            "cost": "$330 - $600",
+            "validity": "3 years",
+            "website": "https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html",
+            "plans": [
+                "net"
+            ]
+        },
+        {
+            "name": "CCNP Specialty (Data Center, Voice, Wireless)",
+            "creator": "Cisco",
+            "level": "Advanced",
+            "cost": "$900 - $1200",
+            "validity": "3 years",
+            "plans": [
+                "net"
+            ]
+        },
+        {
+            "name": "CCIE Specialty (Routing and Switching, SP Operations)",
+            "creator": "Cisco",
+            "level": "Expert",
+            "cost": "$2050",
+            "validity": "2 years",
+            "plans": [
+                "net"
+            ]
+        },
+        {
+            "name": "MTA: Networking Fundamentals",
+            "creator": "Microsoft",
+            "level": "Beginner",
+            "cost": "$127",
+            "validity": "5 years",
+            "website": "https://docs.microsoft.com/en-us/learn/certifications/mta-networking-fundamentals",
+            "plans": [
+                "net"
+            ]
+        },
+        {
+            "name": "MTA: Security Fundamentals",
+            "creator": "Microsoft",
+            "level": "Beginner",
+            "cost": "$127",
+            "validity": "5 years",
+            "website": "https://docs.microsoft.com/en-us/learn/certifications/mta-security-fundamentals",
+            "plans": [
+                "is"
+            ]
+        },
+        {
+            "name": "MSCA",
+            "creator": "Microsoft",
+            "level": "Intermediate",
+            "cost": "$330 - $495",
+            "validity": "Forever",
+            "plans": [
+                "net"
+            ]
+        },
+        {
+            "name": "MCSE (Requires MCSA)",
+            "creator": "Microsoft",
+            "level": "Advanced",
+            "cost": "$135 ($465 with MSCA Prereq)",
+            "validity": "Forever",
+            "plans": [
+                "net"
+            ]
+        },
+        {
+            "name": "LPIC-1",
+            "creator": "Linux Professional Institute",
+            "level": "Intermediate",
+            "cost": "$200",
+            "validity": "?",
+            "plans": [
+                "net"
+            ]
+        },
+        {
+            "name": "LPIC-2",
+            "creator": "Linux Professional Institute",
+            "level": "Advanced",
+            "cost": "$200",
+            "validity": "",
+            "plans": [
+                "net"
+            ]
+        },
+        {
+            "name": "RHCSA",
+            "creator": "Red Hat",
+            "level": "Intermediate",
+            "cost": "?",
+            "validity": "?",
+            "plans": [
+                "net"
+            ]
+        },
+        {
+            "name": "Certified Ethical Hacker (CEH)",
+            "creator": "EC-Council",
+            "level": "Advanced",
+            "cost": "$1199",
+            "validity": "3 years",
+            "plans": [
+                "is"
+            ]
+        },
+        {
+            "name": "AWS Cloud Practitioner",
+            "creator": "Amazon",
+            "level": "Beginner",
+            "cost": "$100",
+            "validity": "?",
+            "website": "https://aws.amazon.com/certification/certified-cloud-practitioner/",
+            "plans": []
+        },
+        {
+            "name": "AWS Solutions Architect - Associate",
+            "creator": "Amazon",
+            "level": "Intermediate",
+            "cost": "$150",
+            "validity": "",
+            "website": "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+            "plans": [
+                
+            ]
+        },
+        {
+            "name": "AWS SysOps Administrator - Associate",
+            "creator": "Amazon",
+            "level": "Intermediate",
+            "cost": "$150",
+            "validity": "",
+            "website": "https://aws.amazon.com/certification/certified-sysops-admin-associate/",
+            "plans": [
+                
+            ]
+        },
+        {
+            "name": "AWS Developer - Associate",
+            "creator": "Amazon",
+            "level": "Intermediate",
+            "cost": "$150",
+            "validity": "",
+            "website": "https://aws.amazon.com/certification/certified-developer-associate/",
+            "plans": [
+                
+            ]
+        },
+        {
+            "name": "AWS Solutions Architect - Professional",
+            "creator": "Amazon",
+            "level": "Advanced",
+            "cost": "$300",
+            "validity": "",
+            "website": "https://aws.amazon.com/certification/certified-solutions-architect-professional/",
+            "plans": [
+                
+            ]
+        },
+        {
+            "name": "AWS DevOps Engineer - Professional",
+            "creator": "Amazon",
+            "level": "Advanced",
+            "cost": "$300",
+            "validity": "",
+            "website": "https://aws.amazon.com/certification/certified-devops-engineer-professional/",
+            "plans": [
+                
+            ]
+        }
+    ],
+    "maps": [
+        {
+            "name": "Information Security",
+            "shortname": "is",
+            "annualSalary": "?",
+            "builtBy": "CompTIA"
+        },
+        {
+            "name": "Network and Cloud Technologies",
+            "shortname": "net",
+            "annualSalary": "$61,294 - $85,035",
+            "builtBy": "CompTIA"
+        },
+        {
+            "name": "Software Development",
+            "shortname": "swe",
+            "annualSalary": "$80,323 - $107,037",
+            "builtBy": "CompTIA"
+        }
+    ]
+}
