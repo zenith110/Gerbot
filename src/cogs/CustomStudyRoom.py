@@ -68,21 +68,37 @@ class CustomStudyRoom(commands.Cog):
             await context.send(embed=embed)
         else:
             try:
+                perm_settings = {
+                    context.guild.default_role: discord.PermissionOverwrite(view_channel=False),
+                    context.guild.me: discord.PermissionOverwrite(view_channel=True)
+                }
+
                 valid_roles = []
+                valid = False
+                class_role = None
 
                 for role in context.guild.roles:
                     r = role.name.split("-")
                     x = re.match("([a-z][a-z][a-z]\d\d\d\d)", r[0])
                     if x != None:
-                        valid_roles.append(role.name)
+                        valid_roles.append(role)
 
-                if not class_code in valid_roles:
+                for r in valid_roles:
+                    name = r.name
+
+                    if class_code == name:
+                        valid = True
+                        class_role = r
+                        break
+
+                if not valid:
                     await context.send(f"{class_code} is not a valid class")
                     return
 
                 category = discord.utils.get(context.guild.categories, name="Study Rooms")
 
-                await context.guild.create_voice_channel(class_code, category=category)
+                channel = await context.guild.create_voice_channel(class_code, overwrites=perm_settings, category=category)
+                await channel.set_permissions(class_role, view_channel=True)
                 await context.send(f"Created study room for {class_code}")
             except:
                 await context.send(f"Failed")
