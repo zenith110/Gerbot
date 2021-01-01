@@ -25,6 +25,12 @@
       "example": "!cats"
     },
     {
+      "command-prefix": "!sr",
+      "name": "Custom Study Room",
+      "alias": "createstudyroom, studyroom, sr",
+      "example": "!sr"
+    },
+    {
       "command-prefix": "!dog",
       "name": "get dog",
       "alias": "doggo",

@@ -25,6 +25,11 @@ class CustomStudyRoom(commands.Cog):
     @commands.command(aliases=['createstudyroom', 'studyroom', 'sr'])
     @commands.has_permissions(manage_roles=True)
     async def createStudyRoom(self, context, class_code = None):
+        command_prefix = "!sr"
+        command_name = "Custom Study Room"
+        alias = "createstudyroom, studyroom, sr"
+        example = "!sr"
+
         # Create a new voice channel for class
         if discord.utils.get(context.guild.voice_channels, name=class_code):
             await context.send(f"Study room for {class_code} already exists")
@@ -34,21 +39,56 @@ class CustomStudyRoom(commands.Cog):
             roles = context.author.roles
             classes = []
 
-            for role in roles:
-                r = role.name.split("-")
-                x = re.match("([a-z][a-z][a-z]\d\d\d\d)", r[0])
-                if x != None:
-                    classes.append(role.name)
-
-            class_string = ""
-
-            for c in classes:
-                class_string = class_string + f"{c}\n"
+            category = discord.utils.get(context.guild.categories, name="Study Rooms")
+            perm_settings = {
+                    context.guild.default_role: discord.PermissionOverwrite(view_channel=False),
+                    context.guild.me: discord.PermissionOverwrite(view_channel=True)
+                }
             
-            embed = discord.Embed(title="Classes", description="To create a study room, use !studyroom <role>")
-            embed.add_field(name="You have the following classes:", value=class_string)
+            current_channel = str(context.message.channel)
+            # Create a new voice channel for class
+            if discord.utils.get(context.guild.voice_channels, name=current_channel):
+                await context.send(f"Study room for {current_channel} already exists")
+                return
+            else:
+                
+                valid_roles = []
+                valid = False
+                class_role = None
 
-            await context.send(embed=embed)
+                for role in context.guild.roles:
+                    r = role.name.split("-")
+                    x = re.match("([a-z][a-z][a-z]\d\d\d\d)", r[0])
+                    if x != None:
+                        valid_roles.append(role)
+
+                for r in valid_roles:
+                    name = r.name
+
+                    if current_channel == name:
+                        valid = True
+                        class_role = r
+                        break
+
+                
+
+                for role in roles:
+                    r = role.name.split("-")
+                    x = re.match("([a-z][a-z][a-z]\d\d\d\d)", r[0])
+                    if x != None:
+                        classes.append(role.name)
+
+                class_string = ""
+
+                for c in classes:
+                    class_string = class_string + f"{c}\n"
+
+                channel = await context.guild.create_voice_channel(current_channel, overwrites=perm_settings, category=category)
+                await channel.set_permissions(class_role, view_channel=True)
+                embed = discord.Embed(title="Classes", description="You've been added to " + current_channel + " study room, to make a study room for a role you are a part of use: !sr <classcode>")
+                embed.add_field(name="You have the following classes:", value=class_string)
+
+                await context.send(embed=embed)
         else:
             try:
                 perm_settings = {
