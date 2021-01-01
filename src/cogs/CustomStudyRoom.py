@@ -51,7 +51,6 @@ class CustomStudyRoom(commands.Cog):
                 await context.send(f"Study room for {current_channel} already exists")
                 return
             else:
-                
                 valid_roles = []
                 valid = False
                 class_role = None
@@ -59,6 +58,7 @@ class CustomStudyRoom(commands.Cog):
                 for role in context.guild.roles:
                     r = role.name.split("-")
                     x = re.match("([a-z][a-z][a-z]\d\d\d\d)", r[0])
+
                     if x != None:
                         valid_roles.append(role)
 
@@ -69,8 +69,6 @@ class CustomStudyRoom(commands.Cog):
                         valid = True
                         class_role = r
                         break
-
-                
 
                 for role in roles:
                     r = role.name.split("-")
@@ -83,6 +81,9 @@ class CustomStudyRoom(commands.Cog):
                 for c in classes:
                     class_string = class_string + f"{c}\n"
 
+                if not valid:
+                    await context.send(f"{current_channel} is not a valid class")
+                    return
                 channel = await context.guild.create_voice_channel(current_channel, overwrites=perm_settings, category=category)
                 await channel.set_permissions(class_role, view_channel=True)
                 embed = discord.Embed(title="Classes", description="You've been added to " + current_channel + " study room, to make a study room for a role you are a part of use: !sr <classcode>")
