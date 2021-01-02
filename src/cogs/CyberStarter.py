@@ -2,6 +2,7 @@ import cyberStarter
 import discord
 from discord.ext import commands
 
+
 class CyberStarter(commands.Cog):
     """
     sets up the basic components of the class
@@ -9,8 +10,9 @@ class CyberStarter(commands.Cog):
     @last_member - the last member who used this command
     return - nothing
     """
+
     def __init__(self, bot):
-        self.bot = bot 
+        self.bot = bot
         self._last_member = None
 
     """
@@ -20,7 +22,9 @@ class CyberStarter(commands.Cog):
     return - nothing
     """
 
-    @commands.command(aliases=['cyber', 'cyberstart', 'cybersecstart', 'cyberhelp', 'cybersechelp'])
+    @commands.command(
+        aliases=["cyber", "cyberstart", "cybersecstart", "cyberhelp", "cybersechelp"]
+    )
     async def sendLinks(self, context):
         embeds = []
         j = cyberStarter.getFile()
@@ -31,11 +35,12 @@ class CyberStarter(commands.Cog):
                 embed.add_field(name=f["name"], value=f["value"], inline=False)
                 if not (f.get("image") is None):
                     embed.set_image(url=f["image"])
-            
+
             embeds.append(embed)
 
         for embed in embeds:
             await context.send(embed=embed)
-        
+
+
 def setup(bot):
     bot.add_cog(CyberStarter(bot))

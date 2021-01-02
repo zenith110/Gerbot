@@ -3,13 +3,13 @@
 from dotenv import load_dotenv
 from os.path import join, dirname
 import os
+from discord import utils
 import discord
-from discord.ext import commands
-import traceback
-import datetime
+from discord.ext import commands, tasks
 from system_utils.command_builder import command_builder
 from system_utils.debugger_switch import debugger_switch
 from system_utils.debugger_option import debugger_option
+from tasks.channel_purger import ChannelPurger
 
 # import hidden variables
 dotenv_path = join(dirname(__file__), ".env")
@@ -42,12 +42,23 @@ async def on_connect():
     print("[*] Client sucessfully connected to Discord")
 
 
+"""
+Task that purges channels that are inactive/no messages for longer than 30 days
+Runs 24 hours and posts results to a channel
+"""
+
+
+@tasks.loop(hours=24)
+async def channel_purger_run():
+    channel_purge = await ChannelPurger(bot)
+
+
 # upon successfully connecting to our server
 @bot.event
 async def on_ready():
     print("\n[*] Established bot onto server")
     print("-" * 40)
-
+    channel_purger_run.start()
     # change the discord status because why not
     await bot.change_presence(activity=discord.Game(name="v1.0"))
 

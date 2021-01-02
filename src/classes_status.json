@@ -1,0 +1,31 @@
+{
+    "inactive_message": {
+        "inactive_messages": [
+            {
+                "days_left_till_deletion": "30 days left",
+                "last_message_sent": "0 days ago",
+                "name": "enc3000-gerb"
+            },
+            {
+                "days_left_till_deletion": "30 days left",
+                "last_message_sent": "0 days ago",
+                "name": "cis3100-mcalpin"
+            }
+        ]
+    },
+    "inactive_message_deleted": [],
+    "inactive_no_deleted": {
+        "inactive_no_messages_deleted": []
+    },
+    "inactive_no_message": [
+        {
+            "inactive_no_messages": [
+                {
+                    "days_left_till_deletion": "30 days left",
+                    "last_message_sent": "0 days ago",
+                    "name": "enc4444-gg"
+                }
+            ]
+        }
+    ]
+}
