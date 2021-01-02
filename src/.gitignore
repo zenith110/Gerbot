@@ -16,3 +16,5 @@ parking.py
 cogs/Parking.py
 
 gerbot.code-workspace/
+
+tasks/__pycache__/

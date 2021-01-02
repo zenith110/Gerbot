@@ -18,11 +18,18 @@ def convert_date(date):
 """
 Checks the classes channels and determines if the channel is inactive/unused past a period of time and deletes
 """
-
-
 async def ChannelPurger(bot):
+    """
+    Gets the current server so we can look at the channels
+    """
     guild = bot.guilds[0]
+    """
+    Will send the file to a specific channel on the server
+    """
     channel_updates = bot.get_channel(795013556693237800)
+    """
+    Holds the various data that will create the json, and allows us to delete roles and classes
+    """
     class_list = []
     class_data = []
     classes_inactive_messages_deleted = []
@@ -38,6 +45,9 @@ async def ChannelPurger(bot):
     classes_inactive_no_days_remaining = []
     classes_inactive_no_deleted = []
     classes_inactive_no_deleted_days = []
+    """
+    Sets our time zone to Eastern
+    """
     est = pytz.timezone("US/Eastern")
 
     """
@@ -51,25 +61,38 @@ async def ChannelPurger(bot):
         else:
             continue
     """
-    
+    Loops through the class list and grabs the channels, and looks at time stamp to determine what to do with it
     """
-
     for channel_names in range(0, len(class_list)):
+        """
+        If there are no channels left, escape
+        """
         try:
             channel = discord.utils.get(
                 guild.text_channels, name=class_list[channel_names]
             )
+            """
+            If there is content/messages, let's look into it
+            """
             try:
+                """
+                Grabs the time stamp and our current date, and does magic to get home many days left till then
+                """
                 messages = await channel.history(limit=100).flatten()
                 time_stamp = messages[0].created_at
 
                 time_stamp = time_stamp.replace(tzinfo=timezone.utc).astimezone(tz=None)
                 now = datetime.now()
+                
                 now = pytz.utc.localize(now)
                 time_stamp = convert_date(time_stamp)
                 now = convert_date(now)
+
                 days_passed = abs(now - time_stamp)
                 days = days_passed.days
+                """
+                Deletes if over 30 days
+                """
                 if days > 30:
                     try:
                         existing_channel = utils.get(
@@ -80,14 +103,23 @@ async def ChannelPurger(bot):
                         await existing_channel.delete()
                         classes_inactive_deleted.append(class_list[channel_names])
                         classes_inactive_messages_deleted_days.append(days)
+                    """
+                    An error might occur, escape
+                    """
                     except:
                         break
+                """
+                If under 30 days, grab the data for json storage
+                """
                 else:
                     days_remaining = abs(30 - days)
                     classes_inactive_messages.append(class_list[channel_names])
                     classes_inactive_messages_days_remaining.append(days_remaining)
                     classes_inactive_messages_days.append(days)
                     continue
+            """
+            If no messages could be found, check the channel's age
+            """
             except:
                 date_of_creation = class_data[channel_names].created_at
                 date_of_creation = date_of_creation.replace(
@@ -120,6 +152,9 @@ async def ChannelPurger(bot):
                     continue
         except:
             break
+    """
+    Assemble the json
+    """
     data = {}
     inactive_message_json = []
     inactive_message_json_deleted = []
@@ -178,11 +213,13 @@ async def ChannelPurger(bot):
         inactive_no_deleted.append(inactive_json_deleted)
 
     data["inactive_message"] = inactive_json_data
-
     data["inactive_message_deleted"] = inactive_message_json_deleted
     data["inactive_no_message"] = inactive_no_message_json
     data["inactive_no_deleted"] = inactive_no_deleted
 
+    """
+    Write the json file and send it to the channel
+    """
     with open("classes_status.json", "w") as outfile:
         json.dump(data, outfile, indent=4, sort_keys=True)
-    await channel_updates.send(file=discord.File("class_status/classes_status.json"))
+    await channel_updates.send(file=discord.File("classes_status.json"))
