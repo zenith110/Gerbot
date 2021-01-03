@@ -21,33 +21,33 @@ def MakeCalendar():
     """
     Create calendar object.
     """
-    calendar = academicCalendar()
+    calendar = AcademicCalendar()
 
     url = "https://calendar.ucf.edu/2020/fall"
     res = requests.get(url)
     res.raise_for_status()
 
-    calendarSoup = bs4.BeautifulSoup(res.content, "html.parser")
+    calendar_soup = bs4.BeautifulSoup(res.content, "html.parser")
 
     """
     Select all of the events for the events. 
     """
-    events = calendarSoup.select(".vevent")
+    events = calendar_soup.select(".vevent")
 
     """
     Select all of the summaries for the events. 
     """
-    summaries = calendarSoup.select(".summary")
+    summaries = calendar_soup.select(".summary")
 
     """
     Select all of the dates to the events. 
     """
-    dates = calendarSoup.select(".dtstart")
+    dates = calendar_soup.select(".dtstart")
 
     """
     Select all of the end dates to events that have one.
     """
-    endDates = calendarSoup.select(".dtend")
+    end_dates = calendar_soup.select(".dtend")
 
     """
     Index used to keep track on which string in the calendar object we are on.
@@ -57,7 +57,7 @@ def MakeCalendar():
     """
     Index used to keep track of end dates for events with a date range.
     """
-    endDateIndex = 0
+    end_date_index = 0
 
     """
     Store the event summaries and dates in the strings in the calendar object.
@@ -65,16 +65,16 @@ def MakeCalendar():
     for i in range(len(events)):
         summary = summaries[i].getText()
         date = dates[i].getText()
-        endDate = ""
+        end_date = ""
 
         """
         If the event has a date range be sure to include the end date.
         """
         if "dtend" in str(events[i]):
-            endDate = "  -  " + endDates[endDateIndex].getText()
-            endDateIndex = endDateIndex + 1
+            end_date = "  -  " + end_dates[end_date_index].getText()
+            end_date_index = end_date_index + 1
 
-        date = date + endDate
+        date = date + end_date
 
         """
         If the event summary we are looking at equals this we need to add 

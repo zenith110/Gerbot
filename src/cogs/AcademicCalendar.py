@@ -38,7 +38,7 @@ class Calendar(commands.Cog):
         Create calendar object with strings containing the information to the
         calendar.
         """
-        calendar = academicCalendar.makeCalendar()
+        calendar = academiccalendar.MakeCalendar()
         embeds = [
             discord.Embed(
                 title="UCF Fall 2020 Academic Calendar",
