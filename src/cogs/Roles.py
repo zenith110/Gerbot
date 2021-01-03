@@ -16,7 +16,12 @@ class Roles(commands.Cog):
         self._last_member = None
 
     @commands.command(aliases=["r"])
-    async def role(self, context: discord.ext.commands.context.Context, *, role: discord.Role = None):
+    async def role(
+        self,
+        context: discord.ext.commands.context.Context,
+        *,
+        role: discord.Role = None,
+    ):
 
         """
         Allows for Discord users to add, modify, remove, or inquire about roles on the server.
@@ -38,10 +43,14 @@ class Roles(commands.Cog):
 
         else:
             await member.add_roles(role)
-            await context.send(f"{member.mention}, you have been given the {role} role.")
+            await context.send(
+                f"{member.mention}, you have been given the {role} role."
+            )
 
     @role.error
-    async def role_error(self, context: discord.ext.commands.context.Context, error: commands.BadArgument):
+    async def role_error(
+        self, context: discord.ext.commands.context.Context, error: commands.BadArgument
+    ):
         # if the !role argument wasn't valid
         if isinstance(error, commands.BadArgument):
             # strip the error for only the role name portion
@@ -74,7 +83,9 @@ class Roles(commands.Cog):
         ]
 
         # Creates a list of roles from the server that aren't in the acl.
-        server_roles = [role.name for role in context.guild.roles if role.name not in acl]
+        server_roles = [
+            role.name for role in context.guild.roles if role.name not in acl
+        ]
 
         # Uses regex and siphons out class roles from the server_roles list.
         class_roles = [o for o in server_roles if re.search("\d\d\d\d", o)]

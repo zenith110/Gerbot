@@ -2,6 +2,7 @@ import os
 import json
 import discord
 from discord.ext import commands
+
 """
 @word - Word use to search
 @words - list of words that will be searched through

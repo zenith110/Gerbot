@@ -26,7 +26,9 @@ class CustomStudyRoom(commands.Cog):
 
     @commands.command(aliases=["createstudyroom", "studyroom", "sr"])
     @commands.has_permissions(manage_roles=True)
-    async def CreateStudyRoom(self, context: discord.ext.commands.context.Context, class_code: str = None):
+    async def CreateStudyRoom(
+        self, context: discord.ext.commands.context.Context, class_code: str = None
+    ):
         command_prefix = "!sr"
         command_name = "Custom Study Room"
         alias = "createstudyroom, studyroom, sr"

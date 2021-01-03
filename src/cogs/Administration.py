@@ -57,18 +57,26 @@ class Administration(commands.Cog):
         else:
             try:
                 role_name = arg.lower()
-                role_object = discord.utils.get(context.message.guild.roles, name=role_name)
+                role_object = discord.utils.get(
+                    context.message.guild.roles, name=role_name
+                )
                 await role_object.delete()
-                await context.channel.send(f"[<3] Successfully deleted {role_name} role.")
+                await context.channel.send(
+                    f"[<3] Successfully deleted {role_name} role."
+                )
             except:
                 await context.channel.send("[!] Please check your role name")
 
     @commands.command()
-    async def CreateRole(self, context: discord.ext.commands.context.Context, *args: list):
+    async def CreateRole(
+        self, context: discord.ext.commands.context.Context, *args: list
+    ):
         for role in args:
             lower_name = role.lower()
             if discord.utils.get(context.guild.text_channels, name=lower_name):
-                await context.channel.send(f"Channel {lower_name} already exists, aborting")
+                await context.channel.send(
+                    f"Channel {lower_name} already exists, aborting"
+                )
                 return
             else:
                 role = await context.guild.create_role(name=lower_name)
@@ -84,14 +92,18 @@ class Administration(commands.Cog):
 
     @commands.command(aliases=["sc", "spawn"])
     @commands.has_permissions(manage_roles=True)
-    async def SpawnClass(self, context: discord.ext.commands.context.Context, *arg: str):
+    async def SpawnClass(
+        self, context: discord.ext.commands.context.Context, *arg: str
+    ):
         command_prefix = "!spawn"
         command_name = "spawn class"
         alias = "spawn"
         example = "!spawn cop3502-gerber"
         # Make channel private
         custom_settings = {
-            context.guild.default_role: discord.PermissionOverwrite(read_messages=False),
+            context.guild.default_role: discord.PermissionOverwrite(
+                read_messages=False
+            ),
             context.guild.me: discord.PermissionOverwrite(read_messages=True),
         }
 
@@ -99,7 +111,9 @@ class Administration(commands.Cog):
             lower_name = name.lower()
             # Checks if class already exists
             if discord.utils.get(context.guild.text_channels, name=lower_name):
-                await context.channel.send(f"Channel {lower_name} already exists, aborting")
+                await context.channel.send(
+                    f"Channel {lower_name} already exists, aborting"
+                )
                 return
             try:
 
@@ -132,7 +146,9 @@ class Administration(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_channels=True)
-    async def DeleteAll(self, context: discord.ext.commands.context.Context, name: str = None):
+    async def DeleteAll(
+        self, context: discord.ext.commands.context.Context, name: str = None
+    ):
         try:
             await context.invoke(self.bot.get_command("deleteRole"), arg=name)
             await context.invoke(self.bot.get_command("deleteChan"))

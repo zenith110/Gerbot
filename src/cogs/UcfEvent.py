@@ -10,7 +10,9 @@ class UcfEvents(commands.Cog):
         self._last_member = None
 
     @commands.command(aliases=["event", "ucfEvent", "getEvent"])
-    async def GetUcfEvent(self, context: discord.ext.commands.context.Context, argument: str = None):
+    async def GetUcfEvent(
+        self, context: discord.ext.commands.context.Context, argument: str = None
+    ):
         """
         Allows us to get events happening at UCF. Uses day and weekly.
         """

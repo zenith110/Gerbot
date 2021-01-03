@@ -26,7 +26,9 @@ class Dog(commands.Cog):
     """
 
     @commands.command(aliases=["GetDoggo", "dog", "doggo", "puppy", "GetPuppy"])
-    async def GetDog(self, context: discord.ext.commands.context.Context, arg: str = None):
+    async def GetDog(
+        self, context: discord.ext.commands.context.Context, arg: str = None
+    ):
         command_prefix = "!dog"
         command_name = "get dog"
         alias = "doggo"

@@ -1,5 +1,7 @@
-# imports what we need for the bot
-# use pip install -r requirement.txt to install everything
+""" 
+imports what we need for the bot
+use pip install -r requirement.txt to install everything
+"""
 from dotenv import load_dotenv
 from os.path import join, dirname
 import os

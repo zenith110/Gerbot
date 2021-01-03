@@ -26,7 +26,9 @@ class Cat(commands.Cog):
     """
 
     @commands.command(pass_context=True, aliases=["cat", "kitten", "getKitten"])
-    async def GetCat(self, context: discord.ext.commands.context.Context, arg: str = None):
+    async def GetCat(
+        self, context: discord.ext.commands.context.Context, arg: str = None
+    ):
         command_prefix = "!cat"
         command_name = "get cat"
         alias = "cat"

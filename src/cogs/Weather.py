@@ -25,7 +25,9 @@ class Weather(commands.Cog):
     """
 
     @commands.command(aliases=["weather"])
-    async def GetWeather(self, context: discord.ext.commands.context.Context, *args: list):
+    async def GetWeather(
+        self, context: discord.ext.commands.context.Context, *args: list
+    ):
         command_prefix = "!weather"
         command_name = "weather"
         alias = "weather"

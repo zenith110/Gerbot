@@ -18,7 +18,9 @@ class Pubsub(commands.Cog):
         self._last_member = None
 
     @commands.command(aliases=["pubsub", "pubSub", "getPubSub"])
-    async def GetPubsub(self, context: discord.ext.commands.context.Context, *, sub_argument: str = None):
+    async def GetPubsub(
+        self, context: discord.ext.commands.context.Context, *, sub_argument: str = None
+    ):
         """
         Fetches a delicious pubsub
         """

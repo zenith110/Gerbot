@@ -29,7 +29,12 @@ class ProfessorScraper(commands.Cog):
     """
 
     @commands.command(pass_context=True, aliases=["class-review", "cr"])
-    async def GetProfessorRating(self, context: discord.ext.commands.context.Context, prof_name: str, class_code: str):
+    async def GetProfessorRating(
+        self,
+        context: discord.ext.commands.context.Context,
+        prof_name: str,
+        class_code: str,
+    ):
         command_prefix = "!class-review"
         command_name = "professor review"
         alias = "class-review"

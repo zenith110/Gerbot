@@ -26,7 +26,9 @@ class Xkcd(commands.Cog):
     """
 
     @commands.command(pass_context=True, aliases=["xkcd"])
-    async def GetComic(self, context: discord.ext.commands.context.Context, comic_num: str = None):
+    async def GetComic(
+        self, context: discord.ext.commands.context.Context, comic_num: str = None
+    ):
         command_prefix = "!xkcd"
         command_name = "get comic"
         alias = "xkcd"
