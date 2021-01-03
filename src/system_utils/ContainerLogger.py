@@ -7,7 +7,7 @@ from discord_webhook import DiscordWebhook, DiscordEmbed
 import discord_key
 
 
-def container_logger():
+def ContainerLogger():
     webhook = DiscordWebhook(url=discord_key.api_key)
     now = datetime.datetime.now(pytz.timezone("America/New_York"))
     if now.hour > 12:

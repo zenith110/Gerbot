@@ -2,13 +2,13 @@ import requests
 from pprint import pprint
 
 """
-class weather, initialized with a list of 3 empty fields.
+class Weather, initialized with a list of 3 empty fields.
 The name of the city, city's temperature, and the weather
 description.
 """
 
 
-class weather:
+class Weather:
     def __init__(self):
         self.name = ""
         self.temperature = ""
@@ -20,11 +20,11 @@ Used to create and return a weather forecast
 """
 
 
-def getForecast(arg):
+def GetForecast(arg):
     """
     Create a weather object.
     """
-    forecast = weather()
+    forecast = Weather()
 
     """
     Access weather api

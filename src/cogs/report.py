@@ -23,8 +23,8 @@ class Report(commands.Cog):
     return - nothing
     """
 
-    @commands.command(aliases=["Report"])
-    async def report(self, context, *args):
+    @commands.command(aliases=["report"])
+    async def Report(self, context, *args):
         command_prefix = "!report"
         command_name = "report"
         alias = "report"
@@ -32,7 +32,7 @@ class Report(commands.Cog):
         """
         Setup the channel where the reports will be sent to
         """
-        reportChannel = self.bot.get_channel(751495912299430020)
+        report_channel = self.bot.get_channel(751495912299430020)
 
         """  
         Setup the report message
@@ -55,7 +55,7 @@ class Report(commands.Cog):
                 title="Report", timestamp=datetime.datetime.now(tz=est)
             )
             embed.add_field(name="Anonymous Report", value=msg, inline=True)
-            await reportChannel.send(embed=embed)
+            await report_channel.send(embed=embed)
 
 
 """

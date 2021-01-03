@@ -26,7 +26,7 @@ class Cat(commands.Cog):
     """
 
     @commands.command(pass_context=True, aliases=["cat", "kitten", "getKitten"])
-    async def getCat(self, context, arg=None):
+    async def GetCat(self, context, arg=None):
         command_prefix = "!cat"
         command_name = "get cat"
         alias = "cat"
@@ -68,10 +68,10 @@ class Cat(commands.Cog):
                 )
 
     @commands.command(aliases=["cats", "kittens", "allKittens"])
-    async def allCats(self, context):
+    async def AllCats(self, context):
         command_prefix = "!cats"
         command_name = "all cats"
-        alias = "cats"
+        alias = "cats", "kittens", "allKittens"
         example = "!cats"
         """
         Fetches all the cat breeds available

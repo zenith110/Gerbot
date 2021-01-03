@@ -31,7 +31,7 @@ class Administration(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_channels=True)
-    async def deleteChan(self, ctx):
+    async def DeleteChan(self, ctx):
         try:
             await ctx.channel.delete()
         except:
@@ -47,7 +47,7 @@ class Administration(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_channels=True)
-    async def deleteRole(self, ctx, arg):
+    async def DeleteRole(self, ctx, arg):
         # by default, delete the role with the same name as where the command is being ran (be careful)
         if arg is None:
             name = ctx.channel.name
@@ -64,14 +64,14 @@ class Administration(commands.Cog):
                 await ctx.channel.send("[!] Please check your role name")
 
     @commands.command()
-    async def createRole(self, ctx, *args):
+    async def CreateRole(self, ctx, *args):
         for role in args:
-            lowername = role.lower()
-            if discord.utils.get(ctx.guild.text_channels, name=lowername):
-                await ctx.channel.send(f"Channel {lowername} already exists, aborting")
+            lower_name = role.lower()
+            if discord.utils.get(ctx.guild.text_channels, name=lower_name):
+                await ctx.channel.send(f"Channel {lower_name} already exists, aborting")
                 return
             else:
-                role = await ctx.guild.create_role(name=lowername)
+                role = await ctx.guild.create_role(name=lower_name)
         await ctx.channel.send(f"Done creating the roles uwu.")
 
     """
@@ -82,9 +82,9 @@ class Administration(commands.Cog):
     return - nothing
     """
 
-    @commands.command()
+    @commands.command(aliases=["sc", "spawn"])
     @commands.has_permissions(manage_roles=True)
-    async def spawnClass(self, ctx, *arg):
+    async def SpawnClass(self, ctx, *arg):
         command_prefix = "!spawn"
         command_name = "spawn class"
         alias = "spawn"
@@ -96,10 +96,10 @@ class Administration(commands.Cog):
         }
 
         for name in arg:
-            lowername = name.lower()
+            lower_name = name.lower()
             # Checks if class already exists
-            if discord.utils.get(ctx.guild.text_channels, name=lowername):
-                await ctx.channel.send(f"Channel {lowername} already exists, aborting")
+            if discord.utils.get(ctx.guild.text_channels, name=lower_name):
+                await ctx.channel.send(f"Channel {lower_name} already exists, aborting")
                 return
             try:
 
@@ -107,16 +107,16 @@ class Administration(commands.Cog):
                 category = discord.utils.get(ctx.guild.categories, name="Classes 1")
 
                 channel = await ctx.guild.create_text_channel(
-                    lowername, overwrites=custom_settings, category=category
+                    lower_name, overwrites=custom_settings, category=category
                 )
                 # Creates role with the same name as the channel
-                role = await ctx.guild.create_role(name=lowername)
+                role = await ctx.guild.create_role(name=lower_name)
 
                 await channel.set_permissions(
                     role, send_messages=True, read_messages=True
                 )
                 await ctx.channel.send(
-                    f"Created: {lowername} channel and {lowername} role"
+                    f"Created: {lower_name} channel and {lower_name} role"
                 )
             except:
                 await ctx.channel.send("[<3] Please check your syntax")
@@ -132,7 +132,7 @@ class Administration(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_channels=True)
-    async def deleteAll(self, ctx, name=None):
+    async def DeleteAll(self, ctx, name=None):
         try:
             await ctx.invoke(self.bot.get_command("deleteRole"), arg=name)
             await ctx.invoke(self.bot.get_command("deleteChan"))

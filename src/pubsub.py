@@ -4,7 +4,7 @@ Fetches the latest pub sub deal
 import requests
 
 
-class randomsub:
+class RandomSub:
     def __init__(self):
         self.innards = None
         self.sub_name = ""
@@ -15,8 +15,8 @@ class randomsub:
         self.status_code = ""
 
 
-def get_all_subs():
-    sub = randomsub()
+def GetAllSubs():
+    sub = RandomSub()
     try:
         url = "https://pubsub-api.dev/allsubs/"
         response = requests.get(url).json()
@@ -31,13 +31,13 @@ def get_all_subs():
         return sub
 
 
-def get_pub_sub(sub_name):
+def GetPubSub(sub_name):
     sub_name = sub_name.replace(" ", "-")
     url = "https://pubsub-api.dev/subs/?name=" + sub_name
     response = requests.get(url)
     try:
         response = response.json()
-        sub = randomsub()
+        sub = RandomSub()
         sub.sub_name = response[0]["sub_name"]
         sub.last_sale = response[0]["last_sale"]
         sub.status = response[0]["status"]
@@ -46,7 +46,7 @@ def get_pub_sub(sub_name):
         sub.status_code = "OK"
         return sub
     except:
-        sub = randomsub()
+        sub = RandomSub()
         if response.status_code == 503:
             sub.status_code = "503"
             return sub
@@ -55,8 +55,8 @@ def get_pub_sub(sub_name):
             return sub
 
 
-def empty_sub_input():
-    sub = randomsub()
+def EmptySubInput():
+    sub = RandomSub()
     url = "https://pubsub-api.dev/subs/?name="
     response = requests.get(url)
     try:

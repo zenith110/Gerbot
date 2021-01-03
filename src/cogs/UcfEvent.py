@@ -4,13 +4,13 @@ from datetime import datetime
 import ucf_events
 
 
-class Ucf_Events(commands.Cog):
+class UcfEvents(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self._last_member = None
 
     @commands.command(aliases=["event", "ucfEvent", "getEvent"])
-    async def getUcfEvent(self, context, argument):
+    async def GetUcfEvent(self, context, argument=None):
         """
         Allows us to get events happening at UCF. Uses day and weekly.
         """
@@ -18,8 +18,10 @@ class Ucf_Events(commands.Cog):
         year = datetime.now().year
         day = datetime.now().day
         full = datetime(year, month, day)
+        if argument == None:
+            await context.send("Please pass in day, or weekly for the calander")
         if argument == "day":
-            ucf_day_event = ucf_events.scrape_day()
+            ucf_day_event = ucf_events.ScrapeDay()
             event_message = discord.Embed(
                 title="UCF events",
                 description="Current events happening at UCF on "
@@ -44,7 +46,7 @@ class Ucf_Events(commands.Cog):
                 )
 
         elif argument == "weekly":
-            ucf_day_event = ucf_events.scrape_weekly()
+            ucf_day_event = ucf_events.ScrapeWeekly()
             event_message = discord.Embed(
                 title="UCF events",
                 description="Current events happening at UCF on the week of "
@@ -72,4 +74,4 @@ class Ucf_Events(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(Ucf_Events(bot))
+    bot.add_cog(UcfEvents(bot))

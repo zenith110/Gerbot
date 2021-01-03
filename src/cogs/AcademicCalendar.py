@@ -1,4 +1,4 @@
-import academicCalendar
+import academiccalendar
 import discord
 from discord.ext import commands
 from disputils import BotEmbedPaginator
@@ -28,7 +28,7 @@ class Calendar(commands.Cog):
     """
 
     @commands.command(aliases=["calendar", "academicCalendar", "ucfCalendar"])
-    async def getCalendar(self, context):
+    async def GetCalendar(self, context):
         prod_mode = False
         command_prefix = "!calendar"
         command_name = "ucf academic calendar"

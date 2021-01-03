@@ -5,7 +5,6 @@ from discord.ext import commands
 import weather
 import json
 import os
-import help
 from disputils import BotEmbedPaginator
 
 
@@ -30,7 +29,7 @@ class Help(commands.Cog):
     """
 
     @commands.command(aliases=["help", "commands"])
-    async def helpSystem(self, context, *args):
+    async def HelpSystem(self, context, *args):
         """
         Open the commands json file that has all of our commands
         """

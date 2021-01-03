@@ -17,7 +17,7 @@ class Jokes(commands.Cog):
         self._last_member = None
 
     @commands.command(pass_context=True, aliases=["joke", "dadJoke", "dadjoke"])
-    async def getJoke(self, context, *args):
+    async def GetJoke(self, context, *args):
         command_prefix = "!joke"
         command_name = "get joke"
         alias = "joke"
@@ -26,28 +26,30 @@ class Jokes(commands.Cog):
             url = "https://icanhazdadjoke.com/"
             r = requests.get(url, headers={"Accept": "application/json"})
             data = r.json()
-            jokeEmbed = discord.Embed(
+            joke_embed = discord.Embed(
                 title=str(context.author) + "'s joke", description=data["joke"]
             )
-            await context.send(embed=jokeEmbed)
+            await context.send(embed=joke_embed)
 
         else:
-            searchTerm = " ".join(args)
+            search_term = " ".join(args)
             url = "https://icanhazdadjoke.com/search"
             r = requests.get(
-                url, headers={"Accept": "application/json"}, params={"term": searchTerm}
+                url,
+                headers={"Accept": "application/json"},
+                params={"term": search_term},
             )
             data = r.json()
-            totalJokes = data["total_jokes"]
-            if totalJokes >= 1:
-                randNum = random.randint(0, totalJokes - 1)
-                jokeEmbed = discord.Embed(
+            total_kokes = data["total_jokes"]
+            if total_jokes >= 1:
+                rand_num = random.randint(0, total_jokes - 1)
+                joke_embed = discord.Embed(
                     title=str(context.author) + "'s joke",
-                    description=data["results"][randNum]["joke"],
+                    description=data["results"][rand_num]["joke"],
                 )
-                await context.send(embed=jokeEmbed)
+                await context.send(embed=joke_embed)
             else:
-                await context.send(f"Sorry, I couldn't find jokes on {searchTerm}.")
+                await context.send(f"Sorry, I couldn't find jokes on {search_term}.")
 
 
 """

@@ -22,7 +22,7 @@ class Roadmap(commands.Cog):
     """
 
     @commands.command(aliases=["certifications", "certs"])
-    async def certRoadmap(self, context, argument=None):
+    async def CertRoadmap(self, context, argument=None):
         command_prefix = "!certs"
         command_name = "cert roadmap"
         alias = "certs"
@@ -30,14 +30,14 @@ class Roadmap(commands.Cog):
         """
         Returns the CompTIA cert roadmap
         """
-        roadmapEmbed = discord.Embed(
+        roadmap_embed = discord.Embed(
             title="CompTIA's IT Certification Roadmap",
             description="https://imgur.com/a/hctdZ07",
         )
-        roadmapEmbed.set_image(
+        roadmap_embed.set_image(
             url="https://cdn.discordapp.com/attachments/750841497733169333/769254094371553350/it-certification-roadmap1024_1.jpg"
         )
-        await context.send(embed=roadmapEmbed)
+        await context.send(embed=roadmap_embed)
 
 
 def setup(bot):

@@ -9,7 +9,7 @@ returns - image
 """
 
 
-def returnDog(arg):
+def ReturnDog(arg):
     url = "https://dog.ceo/api/breed/" + arg + "/images/random"
     response = requests.get(url).json()
     image = response["message"]
@@ -22,7 +22,7 @@ returns - name
 """
 
 
-def return_all():
+def ReturnAll():
     url = "https://dog.ceo/api/breeds/list/all"
     response = requests.get(url).json()
     names = []
@@ -32,7 +32,7 @@ def return_all():
     return final_names
 
 
-def return_random_dog():
+def ReturnRandomDog():
     url = "https://dog.ceo/api/breeds/list/all"
     response = requests.get(url).json()
     names = []
@@ -44,5 +44,4 @@ def return_random_dog():
     name_url = "https://dog.ceo/api/breed/" + final_names + "/images/random"
     response = requests.get(name_url).json()
     final_result.append(response["message"])
-    print(final_result)
     return final_result

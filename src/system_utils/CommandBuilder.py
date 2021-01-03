@@ -8,7 +8,7 @@ returns modified words list with the given words
 """
 
 
-def create_word_data(word: str, words: list):
+def CreateWordData(word: str, words: list):
     words = [match for match in words if word in match]
     words = [w.replace(word, "") for w in words]
     words = [w.replace('""', "") for w in words]
@@ -23,7 +23,7 @@ Creates a command for the help command
 """
 
 
-def local_loader(api_cogs, file_data, bot):
+def LocalLoader(api_cogs, file_data, bot):
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
             file_directory = os.path.join("./cogs", filename)
@@ -38,7 +38,7 @@ def local_loader(api_cogs, file_data, bot):
     return file_data
 
 
-def default_loader(file_data, bot):
+def DefaultLoader(file_data, bot):
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
             file_directory = os.path.join("./cogs", filename)
@@ -50,19 +50,19 @@ def default_loader(file_data, bot):
     return file_data
 
 
-def command_builder(bot, prod_mode):
+def CommandBuilder(bot, prod_mode):
     file_data = []
     api_cogs = ["Stocks.py", "Cat.py"]
     broken_cogs = ["Stocks.py"]
     if prod_mode == False:
-        file_data = local_loader(api_cogs, file_data, bot)
+        file_data = LocalLoader(api_cogs, file_data, bot)
     else:
-        file_data = default_loader(file_data, bot)
+        file_data = DefaultLoader(file_data, bot)
 
-    name = create_word_data("command_name = ", file_data)
-    alias = create_word_data("alias = ", file_data)
-    example = create_word_data("example = ", file_data)
-    command_prefix = create_word_data("command_prefix = ", file_data)
+    name = CreateWordData("command_name = ", file_data)
+    alias = CreateWordData("alias = ", file_data)
+    example = CreateWordData("example = ", file_data)
+    command_prefix = CreateWordData("command_prefix = ", file_data)
     data = {}
     data["commands"] = []
     for i in range(len(name)):

@@ -26,16 +26,16 @@ class Xkcd(commands.Cog):
     """
 
     @commands.command(pass_context=True, aliases=["xkcd"])
-    async def getComic(self, context, comic_num=None):
+    async def GetComic(self, context, comic_num=None):
         command_prefix = "!xkcd"
         command_name = "get comic"
-        alias = "getComic"
+        alias = "xkcd"
         example = "!xkcd (for today's comic), !xkcd <comic-number>"
         """
         If argument is empty, get today's comic
         """
         if comic_num is None:
-            comic = xkcd.getTodayComic()
+            comic = xkcd.GetTodayComic()
             comic_title = comic["title"]
             comic_text = comic["alt"]
             comic_picture = comic["img"]
@@ -45,7 +45,7 @@ class Xkcd(commands.Cog):
             comic_message.set_image(url=comic_picture)
             await context.send(embed=comic_message)
         else:
-            comic = xkcd.getComic(comic_num)
+            comic = xkcd.GetComic(comic_num)
             comic_title = comic["title"]
             comic_text = comic["alt"]
             comic_picture = comic["img"]
@@ -61,12 +61,12 @@ class Xkcd(commands.Cog):
     async def getRandomComic(self, context):
         command_prefix = "!randxkcd"
         command_name = "get random comic"
-        alias = "getRandomComic"
+        alias = "randxkcd"
         example = "!randxkcd"
         """
         Gets a random xkcd comic
         """
-        comic = xkcd.getRandomComic()
+        comic = xkcd.GetRandomComic()
         comic_title = comic["title"]
         comic_text = comic["alt"]
         comic_picture = comic["img"]

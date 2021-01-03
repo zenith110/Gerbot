@@ -25,7 +25,7 @@ class Weather(commands.Cog):
     """
 
     @commands.command(aliases=["weather"])
-    async def getWeather(self, context, *args):
+    async def GetWeather(self, context, *args):
         command_prefix = "!weather"
         command_name = "weather"
         alias = "weather"
@@ -34,7 +34,7 @@ class Weather(commands.Cog):
         If no argument is given give the forecast for Orlando, Florida
         """
         if not args:
-            ucfForecast = weather.getForecast("orlando")
+            ucf_forecast = weather.GetForecast("orlando")
 
             """
             Setup discord embed to send 
@@ -42,12 +42,12 @@ class Weather(commands.Cog):
             embed = discord.Embed(title="Weather Forecast")
 
             embed.add_field(
-                name=ucfForecast.name,
+                name=ucf_forecast.name,
                 value="Temperature: "
-                + ucfForecast.temperature
+                + ucf_forecast.temperature
                 + "\n"
                 + "Description: "
-                + ucfForecast.description,
+                + ucf_forecast.description,
                 inline=True,
             )
 
@@ -60,7 +60,7 @@ class Weather(commands.Cog):
                 """
                 string = " ".join(args)
 
-                ucfForecast = weather.getForecast(string)
+                ucf_forecast = weather.GetForecast(string)
 
                 """
                 Setup discord embed to send 
@@ -68,12 +68,12 @@ class Weather(commands.Cog):
                 embed = discord.Embed(title="Weather Forecast")
 
                 embed.add_field(
-                    name=ucfForecast.name,
+                    name=ucf_forecast.name,
                     value="Temperature: "
-                    + ucfForecast.temperature
+                    + ucf_forecast.temperature
                     + "\n"
                     + "Description: "
-                    + ucfForecast.description,
+                    + ucf_forecast.description,
                     inline=True,
                 )
 
@@ -83,7 +83,7 @@ class Weather(commands.Cog):
                 If the command is typed incorrectly display this message
                 """
                 await context.send(
-                    'Forecast not found. Please try again using "!getWeather <cityname>"'
+                    'Forecast not found. Please try again using "!weather <cityname>"'
                 )
 
 

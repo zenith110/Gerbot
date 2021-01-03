@@ -7,7 +7,7 @@ returns - json data for xkcd comic
 """
 
 
-def getComic(comic_num):
+def GetComic(comic_num):
     url = f"https://xkcd.com/{comic_num}/info.0.json"
     res = requests.get(url)
     j = res.json()
@@ -15,7 +15,7 @@ def getComic(comic_num):
     return j
 
 
-def getRandomComic():
+def GetRandomComic():
     url = f"https://xkcd.com/info.0.json"
     res = requests.get(url)
     j = res.json()
@@ -30,7 +30,7 @@ def getRandomComic():
     return j
 
 
-def getTodayComic():
+def GetTodayComic():
     url = f"https://xkcd.com/info.0.json"
     res = requests.get(url)
     j = res.json()

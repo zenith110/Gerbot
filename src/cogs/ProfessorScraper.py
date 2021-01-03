@@ -4,9 +4,10 @@ from discord.ext import commands
 import json
 import os.path
 from os import path
+import re
 
 
-class Professor_Scraper(commands.Cog):
+class ProfessorScraper(commands.Cog):
     """
     Creates the instance of admin including its fields
     @bot - the bot itself
@@ -28,11 +29,12 @@ class Professor_Scraper(commands.Cog):
     """
 
     @commands.command(pass_context=True, aliases=["class-review", "cr"])
-    async def get_professor_rating(self, context, prof_name, class_code):
+    async def GetProfessorRating(self, context, prof_name, class_code):
         command_prefix = "!class-review"
         command_name = "professor review"
         alias = "class-review"
         example = "!class-review matthew-gerber cop3502"
+        help_files = []
         prof_name = prof_name.replace("-", " ")
         if (
             path.isfile(
@@ -40,9 +42,29 @@ class Professor_Scraper(commands.Cog):
             )
             == False
         ):
-            profs = ", ".join(os.listdir("professor_classes_data"))
 
-            print(profs)
+            for subdir, dirs, files in os.walk("professor_classes_data"):
+                for file in files:
+                    help_files.append(os.path.join(subdir, file))
+            string_to_replace = "\\"
+            help_files = [w.replace(string_to_replace, " ") for w in help_files]
+            help_files = [w.replace("professor_classes_data", "") for w in help_files]
+            help_files = [w.replace(".json", "") for w in help_files]
+            help_files = [w.replace(" ", "-") for w in help_files]
+            help_files = [s[1:] for s in help_files]
+            help_files = "\n".join(help_files)
+            class_message = discord.Embed(
+                title="Classes that have reviews",
+                description="Reviews",
+            )
+            class_message.add_field(
+                name="Classes available",
+                value=help_files,
+            )
+            class_message.set_thumbnail(
+                url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
+            ),
+            await context.send(embed=class_message)
         else:
             base_dir = "professor_classes_data/" + prof_name + "/"
 
@@ -84,4 +106,4 @@ class Professor_Scraper(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(Professor_Scraper(bot))
+    bot.add_cog(ProfessorScraper(bot))

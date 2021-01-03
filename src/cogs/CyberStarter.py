@@ -1,4 +1,4 @@
-import cyberStarter
+import cyberstarter
 import discord
 from discord.ext import commands
 
@@ -25,9 +25,13 @@ class CyberStarter(commands.Cog):
     @commands.command(
         aliases=["cyber", "cyberstart", "cybersecstart", "cyberhelp", "cybersechelp"]
     )
-    async def sendLinks(self, context):
+    async def SendLinks(self, context):
+        command_prefix = "!cyber"
+        command_name = "Cyberstarter"
+        alias = "cyber", "cyberstart", "cybersecstart", "cyberhelp", "cybersechelp"
+        example = "!cyber"
         embeds = []
-        j = cyberStarter.getFile()
+        j = cyberstarter.getFile()
 
         for s in j["sections"]:
             embed = discord.Embed(title=s["title"], description=s["description"])

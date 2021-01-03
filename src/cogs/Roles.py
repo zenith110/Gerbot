@@ -34,7 +34,7 @@ class Roles(commands.Cog):
 
         # if !role returns no arguments
         elif role is None:
-            await ctx.invoke(self.bot.get_command("printRoles"))
+            await ctx.invoke(self.bot.get_command("PrintRoles"))
 
         else:
             await member.add_roles(role)
@@ -61,7 +61,7 @@ class Roles(commands.Cog):
                 await ctx.send(f"{member.mention} That role was not found.")
 
     @commands.command(aliases=["roles"])
-    async def printRoles(self, ctx):
+    async def PrintRoles(self, ctx):
         """
         Command variant of the showRoles helper function; to diagnose showRoles bug on main server.
         """

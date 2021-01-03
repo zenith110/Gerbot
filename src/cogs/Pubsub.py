@@ -18,13 +18,13 @@ class Pubsub(commands.Cog):
         self._last_member = None
 
     @commands.command(aliases=["pubsub", "pubSub", "getPubSub"])
-    async def getPubsub(self, context, *, sub_argument=None):
+    async def GetPubsub(self, context, *, sub_argument=None):
         """
         Fetches a delicious pubsub
         """
         if sub_argument != None:
             if sub_argument == "help":
-                subs = pubsub.get_all_subs()
+                subs = pubsub.GetAllSubs()
                 if subs.status_code == "200":
                     await context.send(
                         f"{context.author.mention}, here is our list of subs! \n" + subs
@@ -36,7 +36,7 @@ class Pubsub(commands.Cog):
                         + ", unfortunately the api is down. Try again some other time!\n"
                     )
             else:
-                sub = pubsub.get_pub_sub(sub_argument)
+                sub = pubsub.GetPubSub(sub_argument)
                 if sub.status_code == "503":
                     await context.send(
                         "The site is currently down, please try again later!"
@@ -78,7 +78,7 @@ class Pubsub(commands.Cog):
                         await context.send(embed=pubsub_message)
 
         else:
-            sub = pubsub.empty_sub_input()
+            sub = pubsub.EmptySubInput()
             if sub.status_code == "503":
                 await context.send(
                     "pubsub-api.dev is currently down, please check later!"

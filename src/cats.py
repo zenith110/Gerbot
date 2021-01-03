@@ -9,7 +9,7 @@ returns - string of image
 """
 
 
-def returnCat(arg):
+def ReturnCat(arg):
     url = "https://api.thecatapi.com/v1/images/search?breed_ids=" + arg
     response = requests.get(url, headers={"x-api-key": api_key}).json()
     for i in response:
@@ -18,11 +18,11 @@ def returnCat(arg):
 
 
 """
-returns all cat breeds
+Returns all cat breeds
 """
 
 
-def returnAll():
+def ReturnAll():
     url = "https://api.thecatapi.com/v1/breeds"
     response = requests.get(url, headers={"x-api-key": api_key}).json()
     names = []
@@ -32,7 +32,7 @@ def returnAll():
     return final_names
 
 
-def randomCat():
+def RandomCat():
     url = "https://api.thecatapi.com/v1/breeds"
     response = requests.get(url, headers={"x-api-key": api_key}).json()
     names = []

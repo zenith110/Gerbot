@@ -38,7 +38,7 @@ class AntiCheat(commands.Cog):
         """  
         Setup the channel where the reports will be sent to
         """
-        reportChannel = self.bot.get_channel(751495912299430020)
+        report_channel = self.bot.get_channel(751495912299430020)
         cheating = 0
 
         """  
@@ -72,7 +72,7 @@ class AntiCheat(commands.Cog):
                 + ">",
                 inline=True,
             )
-            await reportChannel.send(embed=embed)
+            await report_channel.send(embed=embed)
             await message.channel.purge(limit=1)
 
 

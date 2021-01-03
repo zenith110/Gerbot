@@ -21,7 +21,7 @@
     {
       "command-prefix": "!cats",
       "name": "all cats",
-      "alias": "cats",
+      "alias": "cats, kittens, allKittens",
       "example": "!cats"
     },
     {
@@ -29,6 +29,12 @@
       "name": "Custom Study Room",
       "alias": "createstudyroom, studyroom, sr",
       "example": "!sr"
+    },
+    {
+      "command-prefix": "!cyber",
+      "name": "Cyberstarter",
+      "alias": "cyber, cyberstart, cybersecstart, cyberhelp, cybersechelp",
+      "example": "!cyber"
     },
     {
       "command-prefix": "!dog",
@@ -81,13 +87,13 @@
     {
       "command-prefix": "!xkcd",
       "name": "get comic",
-      "alias": "getComic",
+      "alias": "xkcd",
       "example": "!xkcd (for today's comic), !xkcd <comic-number>"
     },
     {
       "command-prefix": "!randxkcd",
       "name": "get random comic",
-      "alias": "getRandomComic",
+      "alias": "randxkcd",
       "example": "!randxkcd"
     }
   ]

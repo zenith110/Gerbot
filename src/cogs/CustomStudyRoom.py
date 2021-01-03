@@ -26,7 +26,7 @@ class CustomStudyRoom(commands.Cog):
 
     @commands.command(aliases=["createstudyroom", "studyroom", "sr"])
     @commands.has_permissions(manage_roles=True)
-    async def createStudyRoom(self, context, class_code=None):
+    async def CreateStudyRoom(self, context, class_code=None):
         command_prefix = "!sr"
         command_name = "Custom Study Room"
         alias = "createstudyroom, studyroom, sr"

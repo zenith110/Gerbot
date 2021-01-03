@@ -2,12 +2,12 @@ import bs4
 import requests
 
 """
-class academicCalendar, initialized with a list of 4 empty strings.
+class AcademicCalendar, initialized with a list of 4 empty strings.
 These strings will hold the contents of the academic calendar.
 """
 
 
-class academicCalendar:
+class AcademicCalendar:
     def __init__(self):
         self.strings = ["", "", "", ""]
 
@@ -17,7 +17,7 @@ Used to scrape the UCF academic calendar.
 """
 
 
-def makeCalendar():
+def MakeCalendar():
     """
     Create calendar object.
     """

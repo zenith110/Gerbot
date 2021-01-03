@@ -6,7 +6,7 @@ class event, used to organize data for the events taking place at ucf
 """
 
 
-class events:
+class Events:
     def __init__(self):
         self.day = []
         self.start_time = []
@@ -21,9 +21,9 @@ Used to scrape the day catagory
 """
 
 
-def scrape_day():
+def ScrapeDay():
     url = "https://events.ucf.edu/"
-    ucf_event = events()
+    ucf_event = Events()
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
     try:
@@ -97,7 +97,7 @@ scrapes the data for that week and puts it into lists
 def scrape_weekly():
     url = "https://events.ucf.edu/this-week/"
     event_link = "https://events.ucf.edu/"
-    ucf_event = events()
+    ucf_event = Events()
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
     """

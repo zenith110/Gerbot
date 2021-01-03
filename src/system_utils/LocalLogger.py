@@ -7,7 +7,7 @@ Prints the call stack to the console
 """
 
 
-def local_logger():
+def LocalLogger():
     now = datetime.datetime.now(pytz.timezone("America/New_York"))
     if now.hour > 12:
         hour = now.hour - 12

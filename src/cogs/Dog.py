@@ -25,8 +25,8 @@ class Dog(commands.Cog):
     return - nothing
     """
 
-    @commands.command(aliases=["getDoggo", "dog", "doggo", "puppy", "getPuppy"])
-    async def getDog(self, context, arg=None):
+    @commands.command(aliases=["GetDoggo", "dog", "doggo", "puppy", "GetPuppy"])
+    async def GetDog(self, context, arg=None):
         command_prefix = "!dog"
         command_name = "get dog"
         alias = "doggo"
@@ -35,7 +35,7 @@ class Dog(commands.Cog):
         Fetches a dog breed using the provided input
         """
         if arg is None:
-            dog_obj = dogs.return_random_dog()
+            dog_obj = dogs.ReturnRandomDog()
             dog_name = dog_obj[0].lower()
             print(dog_name)
             dog_picture = dog_obj[1]
@@ -43,13 +43,13 @@ class Dog(commands.Cog):
             await context.send(
                 f"{context.author.mention}, here is your {dog_name} that you asked for!"
             )
-            cat_message = discord.Embed(
+            dog_message = discord.Embed(
                 title=dog_name[0].upper() + dog_name[1:],
                 description="Beep beep, I am a " + dog_name,
             )
-            cat_message.add_field(name="Image url", value=dog_picture)
-            cat_message.set_image(url=dog_picture)
-            await context.send(embed=cat_message)
+            dog_message.add_field(name="Image url", value=dog_picture)
+            dog_message.set_image(url=dog_picture)
+            await context.send(embed=dog_message)
         else:
             try:
 
