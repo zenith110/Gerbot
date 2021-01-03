@@ -9,7 +9,7 @@ def DebuggerOption(prod_mode):
     if prod_mode == True:
         from system_utils.ContainerLogger import ContainerLogger
 
-        container_logger()
+        ContainerLogger()
     else:
         from system_utils.LocalLogger import LocalLogger
 
