@@ -5,7 +5,7 @@ Gets the cyberstarter json file and returns the dumped data
 """
 
 
-def getFile():
+def GetFile():
     with open("./cyberstarter.json") as f:
         data = json.load(f)
 
