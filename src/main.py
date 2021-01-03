@@ -58,7 +58,9 @@ async def channel_purger_run():
 async def on_ready():
     print("\n[*] Established bot onto server")
     print("-" * 40)
-    channel_purger_run.start()
+    if prod_mode == True:
+        channel_purger_run.start()
+
     # change the discord status because why not
     await bot.change_presence(activity=discord.Game(name="v1.0"))
 

@@ -29,7 +29,7 @@ class Calendar(commands.Cog):
 
     @commands.command(aliases=["calendar", "academicCalendar", "ucfCalendar"])
     async def getCalendar(self, context):
-        prod_mode = True
+        prod_mode = False
         command_prefix = "!calendar"
         command_name = "ucf academic calendar"
         alias = "calendar"

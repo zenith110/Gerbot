@@ -52,7 +52,7 @@
       "command-prefix": "!class-review",
       "name": "professor review",
       "alias": "class-review",
-      "example": "!class-review matthew-gerber cop3502, unfinished"
+      "example": "!class-review matthew-gerber cop3502"
     },
     {
       "command-prefix": "!report",

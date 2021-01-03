@@ -1,0 +1,55 @@
+{
+	"cop3502": {
+		"class_data": [{
+				"class_code": "cop3502",
+				"quality": 5.0,
+				"comment": "I cannot recommend Szumlanski enough. His lectures are clear and cover every nuance of a concept. His tests also cover those nuances, so prepare to study often. He does a lot to help your grade, so don't feel too stressed. I believe that you'll leave this class better prepared for the foundation exam than with any other professor.",
+				"difficulty": 3.0,
+				"would_take_again": "Yes",
+				"textbook": "No",
+                "date": "12/17/2020",
+                "class_name": "Computer Science I"
+			},
+			{
+				"class_code": "cop3502",
+				"quality": 1.0,
+				"comment": "If he did not have a cult like following of CS enthusiasts his rating wouldn't be so high, about 1/3 of the class fails. People that have to work even part time do not have time to work on a project for 30 hours. He knows this and gets off on being exclusively hard to pass. Take someone else if you don't code for fun. This is not a learning class.",
+				"difficulty": 5.0,
+				"would_take_again": "No",
+				"textbook": "No",
+                "date": "12/13/2020",
+                "class_name": "Computer Science I"
+            },
+            {
+				"class_code": "cop3502",
+				"quality": 5.0,
+				"comment": "Szum has fast-paced, engaging lectures. His class is tough, but it's for your benefit. If you put in the effort, you will leave the class feeling like a pro at the subject. He wants his students to succeed and he provides you with multiple resources to do that. He has a great sense of humor too and tries his best to make lectures enjoyable.",
+				"difficulty": 4.0,
+				"would_take_again": "Yes",
+				"textbook": "No",
+                "date": "5/15/2020",
+                "class_name": "Computer Science I"
+            },
+            {
+				"class_code": "cop3502",
+				"quality": 5.0,
+				"comment": "If you want an easy A then he is not for you. If you want to really learn CS from an extremely smart and dedicated professor and youre willing to work hard for it, then this is your guy. He is big on giving you a quality education. I've never worked so hard for a C and felt so accomplished about it. You will remember this prof. for life.",
+				"difficulty": 5.0,
+				"would_take_again": "Yes",
+				"textbook": "No",
+                "date": "4/28/2020",
+                "class_name": "Computer Science I"
+            },
+            {
+				"class_code": "cop3502",
+				"quality": 5.0,
+				"comment": "Best computer science professor at UCF. If you're a CS major, even if it isn't for CS1, try to get at least one class with him, because he will inspire you tremendously. His lectures are well thought out and planned. The class is difficult, but as long as you pay attention, go to office hours, and start early on the assignments, you should do well.",
+				"difficulty": 4.0,
+				"would_take_again": "Yes",
+				"textbook": "No",
+                "date": "4/21/2020",
+                "class_name": "Computer Science I"
+			}
+		]
+	}
+}

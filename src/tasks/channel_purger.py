@@ -18,6 +18,8 @@ def convert_date(date):
 """
 Checks the classes channels and determines if the channel is inactive/unused past a period of time and deletes
 """
+
+
 async def ChannelPurger(bot):
     """
     Gets the current server so we can look at the channels
@@ -83,7 +85,7 @@ async def ChannelPurger(bot):
 
                 time_stamp = time_stamp.replace(tzinfo=timezone.utc).astimezone(tz=None)
                 now = datetime.now()
-                
+
                 now = pytz.utc.localize(now)
                 time_stamp = convert_date(time_stamp)
                 now = convert_date(now)
@@ -103,23 +105,17 @@ async def ChannelPurger(bot):
                         await existing_channel.delete()
                         classes_inactive_deleted.append(class_list[channel_names])
                         classes_inactive_messages_deleted_days.append(days)
-                    """
-                    An error might occur, escape
-                    """
+
                     except:
                         break
-                """
-                If under 30 days, grab the data for json storage
-                """
+
                 else:
                     days_remaining = abs(30 - days)
                     classes_inactive_messages.append(class_list[channel_names])
                     classes_inactive_messages_days_remaining.append(days_remaining)
                     classes_inactive_messages_days.append(days)
                     continue
-            """
-            If no messages could be found, check the channel's age
-            """
+
             except:
                 date_of_creation = class_data[channel_names].created_at
                 date_of_creation = date_of_creation.replace(
