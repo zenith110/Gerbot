@@ -16,13 +16,13 @@ class Roles(commands.Cog):
         self._last_member = None
 
     @commands.command(aliases=["r"])
-    async def role(self, ctx, *, role: discord.Role = None):
+    async def role(self, context: discord.ext.commands.context.Context, *, role: discord.Role = None):
 
         """
         Allows for Discord users to add, modify, remove, or inquire about roles on the server.
         """
 
-        member = ctx.message.author
+        member = context.message.author
         command_prefix = "!role"
         command_name = "role"
         alias = "r"
@@ -30,38 +30,38 @@ class Roles(commands.Cog):
         # if the message author already has the role
         if role in member.roles:
             await member.remove_roles(role)
-            await ctx.send(f"{member.mention}, took away that role.")
+            await context.send(f"{member.mention}, took away that role.")
 
         # if !role returns no arguments
         elif role is None:
-            await ctx.invoke(self.bot.get_command("PrintRoles"))
+            await context.invoke(self.bot.get_command("PrintRoles"))
 
         else:
             await member.add_roles(role)
-            await ctx.send(f"{member.mention}, you have been given the {role} role.")
+            await context.send(f"{member.mention}, you have been given the {role} role.")
 
     @role.error
-    async def role_error(self, ctx, error):
+    async def role_error(self, context: discord.ext.commands.context.Context, error: commands.BadArgument):
         # if the !role argument wasn't valid
         if isinstance(error, commands.BadArgument):
             # strip the error for only the role name portion
-            body = ctx.message.content.replace("!role ", "")
-            member = ctx.message.author
+            body = context.message.content.replace("!role ", "")
+            member = context.message.author
 
             # valid classes must be detected in this format to be valid, and thus be created
             if re.search(r"\w+\d{4}c?-+\w", body):
                 # create the class
-                role = await admin.Administration.spawnClass(self, ctx, body)
+                role = await admin.Administration.spawnClass(self, context, body)
                 await member.add_roles(role)
-                await ctx.send(
+                await context.send(
                     f"{member.mention}, you're the first one in {body}. You have been given this role. Feel free to spread the word on your Webcourse's Discussions for this class."
                 )
 
             else:
-                await ctx.send(f"{member.mention} That role was not found.")
+                await context.send(f"{member.mention} That role was not found.")
 
     @commands.command(aliases=["roles"])
-    async def PrintRoles(self, ctx):
+    async def PrintRoles(self, context: discord.ext.commands.context.Context):
         """
         Command variant of the showRoles helper function; to diagnose showRoles bug on main server.
         """
@@ -74,7 +74,7 @@ class Roles(commands.Cog):
         ]
 
         # Creates a list of roles from the server that aren't in the acl.
-        server_roles = [role.name for role in ctx.guild.roles if role.name not in acl]
+        server_roles = [role.name for role in context.guild.roles if role.name not in acl]
 
         # Uses regex and siphons out class roles from the server_roles list.
         class_roles = [o for o in server_roles if re.search("\d\d\d\d", o)]
@@ -114,7 +114,7 @@ class Roles(commands.Cog):
         ]
 
         # create the menu embed object
-        paginator = BotEmbedPaginator(ctx, embeds)
+        paginator = BotEmbedPaginator(context, embeds)
         await paginator.run()
 
 

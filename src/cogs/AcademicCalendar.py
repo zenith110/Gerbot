@@ -28,8 +28,7 @@ class Calendar(commands.Cog):
     """
 
     @commands.command(aliases=["calendar", "academicCalendar", "ucfCalendar"])
-    async def GetCalendar(self, context):
-        prod_mode = False
+    async def GetCalendar(self, context: discord.ext.commands.context.Context):
         command_prefix = "!calendar"
         command_name = "ucf academic calendar"
         alias = "calendar"

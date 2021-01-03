@@ -9,7 +9,7 @@ returns - image
 """
 
 
-def ReturnDog(arg):
+def ReturnDog(arg: str):
     url = "https://dog.ceo/api/breed/" + arg + "/images/random"
     response = requests.get(url).json()
     image = response["message"]

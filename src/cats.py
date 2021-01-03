@@ -9,7 +9,7 @@ returns - string of image
 """
 
 
-def ReturnCat(arg):
+def ReturnCat(arg: str):
     url = "https://api.thecatapi.com/v1/images/search?breed_ids=" + arg
     response = requests.get(url, headers={"x-api-key": api_key}).json()
     for i in response:

@@ -26,7 +26,7 @@ class Xkcd(commands.Cog):
     """
 
     @commands.command(pass_context=True, aliases=["xkcd"])
-    async def GetComic(self, context, comic_num=None):
+    async def GetComic(self, context: discord.ext.commands.context.Context, comic_num: str = None):
         command_prefix = "!xkcd"
         command_name = "get comic"
         alias = "xkcd"
@@ -58,7 +58,7 @@ class Xkcd(commands.Cog):
             await context.send(embed=comic_message)
 
     @commands.command(pass_context=True, aliases=["randxkcd"])
-    async def getRandomComic(self, context):
+    async def getRandomComic(self, context: discord.ext.commands.context.Context):
         command_prefix = "!randxkcd"
         command_name = "get random comic"
         alias = "randxkcd"

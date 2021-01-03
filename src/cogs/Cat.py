@@ -26,7 +26,7 @@ class Cat(commands.Cog):
     """
 
     @commands.command(pass_context=True, aliases=["cat", "kitten", "getKitten"])
-    async def GetCat(self, context, arg=None):
+    async def GetCat(self, context: discord.ext.commands.context.Context, arg: str = None):
         command_prefix = "!cat"
         command_name = "get cat"
         alias = "cat"
@@ -68,7 +68,7 @@ class Cat(commands.Cog):
                 )
 
     @commands.command(aliases=["cats", "kittens", "allKittens"])
-    async def AllCats(self, context):
+    async def AllCats(self, context: discord.ext.commands.context.Context):
         command_prefix = "!cats"
         command_name = "all cats"
         alias = "cats", "kittens", "allKittens"
@@ -85,7 +85,7 @@ class Cat(commands.Cog):
 
 
 """
-setup for the command
+Setup for the command
 """
 
 

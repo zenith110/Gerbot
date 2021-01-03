@@ -30,7 +30,7 @@ class Help(commands.Cog):
     """
 
     @commands.command(aliases=["help", "commands"])
-    async def HelpSystem(self, context, *args):
+    async def HelpSystem(self, context: discord.ext.commands.context.Context):
         """
         Open the commands json file that has all of our commands
         """

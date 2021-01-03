@@ -22,7 +22,7 @@ class Roadmap(commands.Cog):
     """
 
     @commands.command(aliases=["certifications", "certs"])
-    async def CertRoadmap(self, context, argument=None):
+    async def CertRoadmap(self, context: discord.ext.commands.context.Context, argument: str = None):
         command_prefix = "!certs"
         command_name = "cert roadmap"
         alias = "certs"

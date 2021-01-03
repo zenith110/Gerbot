@@ -31,7 +31,7 @@ def GetAllSubs():
         return sub
 
 
-def GetPubSub(sub_name):
+def GetPubSub(sub_name: str):
     sub_name = sub_name.replace(" ", "-")
     url = "https://pubsub-api.dev/subs/?name=" + sub_name
     response = requests.get(url)

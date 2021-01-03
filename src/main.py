@@ -32,6 +32,7 @@ creates bot instance as well as a command prefix
 """
 bot = commands.Bot("!")
 bot.remove_command("help")
+
 """
 terminal stuff
 """

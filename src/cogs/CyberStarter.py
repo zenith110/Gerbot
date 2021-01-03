@@ -25,7 +25,7 @@ class CyberStarter(commands.Cog):
     @commands.command(
         aliases=["cyber", "cyberstart", "cybersecstart", "cyberhelp", "cybersechelp"]
     )
-    async def SendLinks(self, context):
+    async def SendLinks(self, context: discord.ext.commands.context.Context):
         command_prefix = "!cyber"
         command_name = "Cyberstarter"
         alias = "cyber", "cyberstart", "cybersecstart", "cyberhelp", "cybersechelp"

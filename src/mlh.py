@@ -29,7 +29,7 @@ class mlh_events:
             print(location)
 
 
-def combine_data(mlh):
+def combine_data(mlh: mlh_events):
     for i in range(0, 18):
         mlh.full_events.append(
             "["
@@ -45,7 +45,7 @@ def combine_data(mlh):
         )
 
 
-def parse_state(soup, mlh, states):
+def parse_state(soup, mlh: mlh_events, states: list):
     for state in soup.findAll("span", itemprop="state"):
         data = (
             "".join(str(i) for i in state)
@@ -56,7 +56,7 @@ def parse_state(soup, mlh, states):
     mlh.states.append(states[0:18])
 
 
-def parse_city(soup, mlh, cities):
+def parse_city(soup: BeautifulSoup, mlh: mlh_events, cities: list):
     for city in soup.findAll("span", itemprop="city"):
         data = (
             "".join(str(i) for i in city)
@@ -68,7 +68,7 @@ def parse_city(soup, mlh, cities):
     mlh.cities.append(cities[0:18])
 
 
-def parse_dates(soup, mlh, dates):
+def parse_dates(soup: BeautifulSoup, mlh: mlh_events, dates: list):
     for date in soup.findAll("p"):
         data = (
             "".join(str(i) for i in date)
@@ -83,13 +83,13 @@ def parse_dates(soup, mlh, dates):
     mlh.dates.append(dates[1:19])
 
 
-def parse_link(soup, mlh, links):
+def parse_link(soup: BeautifulSoup, mlh: mlh_events, links: list):
     for link in soup.findAll("a"):
         links.append(link.get("href"))
     mlh.links.append(links[23:41])
 
 
-def parse_name(soup, events_names, mlh):
+def parse_name(soup: BeautifulSoup, mlh: mlh_events, events_names: list):
     for event_name in soup.findAll("h3"):
         # Replace all the stuff we don't need
         data = (
@@ -105,7 +105,7 @@ def parse_name(soup, events_names, mlh):
     mlh.names.append(events_names[1:19])
 
 
-def get_relevent_date(url):
+def get_relevent_date(url: str):
     month = datetime.now().month
     year = datetime.now().year
     day = datetime.now().day
@@ -116,7 +116,7 @@ def get_relevent_date(url):
     return mlh
 
 
-def create_mlh(url):
+def create_mlh(url: str):
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
     mlh = mlh_events()

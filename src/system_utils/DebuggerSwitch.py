@@ -7,7 +7,7 @@ Utalizes the current state to determine if local or prod debugging is necessary
 """
 
 
-def DebuggerSwitch(prod_mode):
+def DebuggerSwitch(prod_mode: bool):
     file_data = []
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):

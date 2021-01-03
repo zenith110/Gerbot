@@ -1,6 +1,7 @@
 import os
 import json
-
+import discord
+from discord.ext import commands
 """
 @word - Word use to search
 @words - list of words that will be searched through
@@ -23,7 +24,7 @@ Creates a command for the help command
 """
 
 
-def LocalLoader(api_cogs, file_data, bot):
+def LocalLoader(api_cogs: list, file_data: list, bot):
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
             file_directory = os.path.join("./cogs", filename)
@@ -38,7 +39,7 @@ def LocalLoader(api_cogs, file_data, bot):
     return file_data
 
 
-def DefaultLoader(file_data, bot):
+def DefaultLoader(file_data: list, bot: discord.ext.commands.bot.Bot):
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
             file_directory = os.path.join("./cogs", filename)
@@ -50,10 +51,9 @@ def DefaultLoader(file_data, bot):
     return file_data
 
 
-def CommandBuilder(bot, prod_mode):
+def CommandBuilder(bot: discord.ext.commands.bot.Bot, prod_mode: bool):
     file_data = []
     api_cogs = ["Stocks.py", "Cat.py"]
-    broken_cogs = ["Stocks.py"]
     if prod_mode == False:
         file_data = LocalLoader(api_cogs, file_data, bot)
     else:

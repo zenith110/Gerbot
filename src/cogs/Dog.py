@@ -26,7 +26,7 @@ class Dog(commands.Cog):
     """
 
     @commands.command(aliases=["GetDoggo", "dog", "doggo", "puppy", "GetPuppy"])
-    async def GetDog(self, context, arg=None):
+    async def GetDog(self, context: discord.ext.commands.context.Context, arg: str = None):
         command_prefix = "!dog"
         command_name = "get dog"
         alias = "doggo"
@@ -80,7 +80,7 @@ class Dog(commands.Cog):
     """
 
     @commands.command(aliases=["doggos", "dogs", "puppies", "allDoggos", "allPuppies"])
-    async def allDogs(self, context):
+    async def allDogs(self, context: discord.ext.commands.context.Context):
         command_prefix = "!dogs"
         command_name = "all dogs"
         alias = "doggos"
@@ -88,7 +88,7 @@ class Dog(commands.Cog):
         """
         Gives a list of all the dog breeds available to be picked.
         """
-        dog_obj = dogs.return_all()
+        dog_obj = dogs.ReturnAll()
         dog_message = discord.Embed(
             title="Dog breeds",
             description="Beep beep, here's all the dog breeds that we have!",

@@ -28,7 +28,7 @@ class MLH(commands.Cog):
     """
 
     @commands.command(aliases=["mlh"])
-    async def getMlh(self, context):
+    async def GetMlh(self, context: discord.ext.commands.context.Context):
         """
         Fetches the current the current MLH events till October 2020
         """

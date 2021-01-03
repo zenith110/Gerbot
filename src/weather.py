@@ -20,7 +20,7 @@ Used to create and return a weather forecast
 """
 
 
-def GetForecast(arg):
+def GetForecast(arg: str):
     """
     Create a weather object.
     """
