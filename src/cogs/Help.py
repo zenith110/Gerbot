@@ -6,6 +6,7 @@ import weather
 import json
 import os
 from disputils import BotEmbedPaginator
+import help
 
 
 class Help(commands.Cog):
@@ -45,14 +46,14 @@ class Help(commands.Cog):
         embeds = [
             discord.Embed(
                 title="Page 1",
-                description=help.page_data(commands_link, 0, 7),
+                description=help.PageData(commands_link, 0, 7),
                 color=0x115599,
             ).set_thumbnail(
                 url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
             ),
             discord.Embed(
                 title="Page 2",
-                description=help.page_data(commands_link, 8, 15),
+                description=help.PageData(commands_link, 8, 15),
                 color=0x5599FF,
             ).set_thumbnail(
                 url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
