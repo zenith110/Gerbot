@@ -35,7 +35,7 @@ class Cat(commands.Cog):
         Fetches a cat breed using provided input
         """
         if arg is None:
-            cat_obj = cats.randomCat()
+            cat_obj = cats.RandomCat()
             cat_name = cat_obj[0].lower()
             cat_picture = cat_obj[1]
             await context.send(
@@ -50,7 +50,7 @@ class Cat(commands.Cog):
             await context.send(embed=cat_message)
         else:
             try:
-                cat_picture = cats.returnCat(arg.lower())
+                cat_picture = cats.ReturnCat(arg.lower())
                 cat_name = arg.lower()
                 await context.send(
                     f"{context.author.mention}, here is your {cat_name} that you asked for!"
@@ -76,7 +76,7 @@ class Cat(commands.Cog):
         """
         Fetches all the cat breeds available
         """
-        cat_name = cats.returnAll()
+        cat_name = cats.ReturnAll()
         cat_message = discord.Embed(
             title="Cat breeds", description="Beep beep, here are all the cat's ids"
         )
