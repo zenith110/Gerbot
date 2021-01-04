@@ -129,7 +129,7 @@ async def ChannelPurger(bot):
                 days = days_passed.days
                 if days > 30:
                     try:
-                        existing_channel = utils.get(
+                        existing_channel = discord.utils.get(
                             guild.channels, name=class_list[channel_names]
                         )
                         role = discord.utils.get(guild.roles, name=class_list[channel_names])
