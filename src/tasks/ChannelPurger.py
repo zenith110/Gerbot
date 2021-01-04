@@ -20,7 +20,7 @@ Checks the classes channels and determines if the channel is inactive/unused pas
 """
 
 
-async def ChannelPurger(bot):
+async def ChannelPurger(bot: discord.ext.commands.bot.Bot):
     """
     Gets the current server so we can look at the channels
     """
