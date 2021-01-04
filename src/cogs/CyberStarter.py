@@ -31,7 +31,7 @@ class CyberStarter(commands.Cog):
         alias = "cyber", "cyberstart", "cybersecstart", "cyberhelp", "cybersechelp"
         example = "!cyber"
         embeds = []
-        j = cyberstarter.getFile()
+        j = cyberstarter.GetFile()
 
         for s in j["sections"]:
             embed = discord.Embed(title=s["title"], description=s["description"])
