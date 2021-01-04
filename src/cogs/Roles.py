@@ -60,7 +60,7 @@ class Roles(commands.Cog):
             # valid classes must be detected in this format to be valid, and thus be created
             if re.search(r"\w+\d{4}c?-+\w", body):
                 # create the class
-                role = await admin.Administration.spawnClass(self, context, body)
+                role = await admin.Administration.SpawnClass(self, context, body)
                 await member.add_roles(role)
                 await context.send(
                     f"{member.mention}, you're the first one in {body}. You have been given this role. Feel free to spread the word on your Webcourse's Discussions for this class."
