@@ -2,13 +2,13 @@
     "inactive_message": {
         "inactive_messages": [
             {
-                "days_left_till_deletion": "29 days left",
-                "last_message_sent": "1 days ago",
+                "days_left_till_deletion": "28 days left",
+                "last_message_sent": "2 days ago",
                 "name": "enc3000-gerb"
             },
             {
-                "days_left_till_deletion": "29 days left",
-                "last_message_sent": "1 days ago",
+                "days_left_till_deletion": "28 days left",
+                "last_message_sent": "2 days ago",
                 "name": "cis3100-mcalpin"
             }
         ]
@@ -21,8 +21,8 @@
         {
             "inactive_no_messages": [
                 {
-                    "days_left_till_deletion": "29 days left",
-                    "last_message_sent": "1 days ago",
+                    "days_left_till_deletion": "28 days left",
+                    "last_message_sent": "2 days ago",
                     "name": "enc4444-gg"
                 }
             ]

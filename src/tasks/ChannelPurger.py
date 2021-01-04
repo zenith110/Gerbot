@@ -3,7 +3,7 @@ import pytz
 from datetime import datetime, timezone
 import discord
 import json
-
+import discord.utils
 """
 Converts datetime objects to string and to datetime objects to determine date length
 """
@@ -97,10 +97,10 @@ async def ChannelPurger(bot):
                 """
                 if days > 30:
                     try:
-                        existing_channel = utils.get(
+                        existing_channel = discord.utils.get(
                             guild.channels, name=class_list[channel_names]
                         )
-                        role = utils.get(guild.roles, name=class_list[channel_names])
+                        role = discord.utils.get(guild.roles, name=class_list[channel_names])
                         await role.delete()
                         await existing_channel.delete()
                         classes_inactive_deleted.append(class_list[channel_names])
@@ -132,8 +132,7 @@ async def ChannelPurger(bot):
                         existing_channel = utils.get(
                             guild.channels, name=class_list[channel_names]
                         )
-                        role = utils.get(guild.roles, name=class_list[channel_names])
-                        deleted_channel_list.append(class_list[channel_names])
+                        role = discord.utils.get(guild.roles, name=class_list[channel_names])
                         await role.delete()
                         await existing_channel.delete()
                         classes_inactive_no_deleted.append(class_list[channel_names])

@@ -40,7 +40,7 @@ class Jokes(commands.Cog):
                 params={"term": search_term},
             )
             data = r.json()
-            total_kokes = data["total_jokes"]
+            total_jokes = data["total_jokes"]
             if total_jokes >= 1:
                 rand_num = random.randint(0, total_jokes - 1)
                 joke_embed = discord.Embed(
