@@ -64,9 +64,9 @@ class Parking(commands.Cog):
                     + "/"
                     + str(max_spots[i])
                     + " | "
-                    + str(abs(max_spots[i] - spots_left[i]))
-                    + " Spots available ~ "
                     + str(math.floor(abs(100 - (spots_left[i] / max_spots[i] * 100))))
+                    + " Spots available ~ "
+                    + str(abs(max_spots[i] - spots_left[i]))
                     + "%"
                     + " Empty"
                 ),
