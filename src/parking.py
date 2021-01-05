@@ -81,10 +81,10 @@ Prints a hardcoded table to STDOUT containing all the parking garages and their 
 
 def GarageStats():
 
-    soup = getGarageSite()
-    maxSpots = getMaxSpots(soup)
-    spotsLeft = getSpotsLeft(soup)
-    names = getGarageNames(soup)
+    soup = GetGarageSite()
+    max_spots = getMaxSpots(soup)
+    spots_left = GetSpotsLeft(soup)
+    names = GetGarageNames(soup)
     for i in range(len(names)):
         print(
             f"{names[i]}    : {spotsLeft[i]} / {maxSpots[i]} | {maxSpots[i] - spotsLeft[i]} Spots Taken ~ {100 - (spotsLeft[i]/maxSpots[i] * 100): .0f}% Full"
