@@ -69,7 +69,7 @@ Returns a dictionary with the garage name, min spots, and max spots
 
 def CreateDictionary(soup: BeautifulSoup):
 
-    x = dict(zip(getGarageNames(soup), zip(getSpotsLeft(soup), getMaxSpots(soup))))
+    x = dict(zip(GetGarageNames(soup), zip(GetSpotsLeft(soup), GetMaxSpots(soup))))
     x.update(DateTime=datetime.now())
     return x
 
@@ -82,10 +82,10 @@ Prints a hardcoded table to STDOUT containing all the parking garages and their 
 def GarageStats():
 
     soup = GetGarageSite()
-    max_spots = getMaxSpots(soup)
+    max_spots = GetMaxSpots(soup)
     spots_left = GetSpotsLeft(soup)
     names = GetGarageNames(soup)
     for i in range(len(names)):
         print(
-            f"{names[i]}    : {spotsLeft[i]} / {maxSpots[i]} | {maxSpots[i] - spotsLeft[i]} Spots Taken ~ {100 - (spotsLeft[i]/maxSpots[i] * 100): .0f}% Full"
+            f"{names[i]}    : {spots_left[i]} / {max_spots[i]} | {max_spots[i] - spots_left[i]} Spots Taken ~ {100 - (spots_left[i]/max_spots[i] * 100): .0f}% Full"
         )
