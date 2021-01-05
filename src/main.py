@@ -22,7 +22,7 @@ load_dotenv(dotenv_path)
 """
 Boolean that determines weather to use the console debugger or webhook similar to the container
 """
-prod_mode = True
+prod_mode = False
 
 """
 store values in global variables

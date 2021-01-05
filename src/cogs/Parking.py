@@ -60,21 +60,18 @@ class Parking(commands.Cog):
             garage.add_field(
                 name=names[i],
                 value=(
-                    str(spots_left[i])
+                    str((abs(max_spots[i] - spots_left[i])))
                     + "/"
                     + str(max_spots[i])
                     + " | "
-                    + str(math.floor(abs(100 - (spots_left[i] / max_spots[i] * 100))))
+                    + str(spots_left[i]))
                     + " Spots available ~ "
-                    + str(abs(max_spots[i] - spots_left[i]))
+                    + str(math.floor(abs(100 - (spots_left[i] / max_spots[i] * 100))))
                     + "%"
                     + " Empty"
                 ),
-            )
 
-        """
-        Sends out the message to the user who pinged the command
-        """
+       
         await context.author.dm_channel.send(embed=garage)
 
 
