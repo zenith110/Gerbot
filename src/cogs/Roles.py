@@ -59,6 +59,100 @@ class Roles(commands.Cog):
 
             # valid classes must be detected in this format to be valid, and thus be created
             if re.search(r"\w+\d{4}c?-+\w", body):
+                # list containing current roster of IT/CS faculty
+                professor_list = set(
+                    [
+                        "ahmed",
+                        "angell",
+                        "aria",
+                        "azevedo",
+                        "bagci",
+                        "baker",
+                        "bassiouni",
+                        "boloni",
+                        "boustique",
+                        "carbone",
+                        "chatterjee",
+                        "cruz-neira",
+                        "dechev",
+                        "demara",
+                        "deo",
+                        "dutton",
+                        "enyioha",
+                        "ewetz",
+                        "fallah",
+                        "foroosh",
+                        "fu",
+                        "garibay",
+                        "gazzillo",
+                        "gerber",
+                        "gonzalez",
+                        "guha",
+                        "guo",
+                        "heinrich",
+                        "hensel",
+                        "hollander",
+                        "hu",
+                        "hua",
+                        "hughes",
+                        "jahani",
+                        "kider",
+                        "koning",
+                        "lang",
+                        "laviola",
+                        "lazar",
+                        "leavens",
+                        "leinecker",
+                        "li",
+                        "liu",
+                        "llewellyn",
+                        "lobo",
+                        "mahalanobis",
+                        "mangold",
+                        "marinescu",
+                        "mcalpin",
+                        "mcmahan",
+                        "meade",
+                        "mell",
+                        "mohaisen",
+                        "montagne",
+                        "nassiff",
+                        "nedorost",
+                        "orooji",
+                        "pattanaik",
+                        "pirkelbauer",
+                        "singhspan",
+                        "reiners",
+                        "shah",
+                        "solihin",
+                        "stanley",
+                        "sukthankar",
+                        "szumlanski",
+                        "thankachan",
+                        "tidwell",
+                        "vu",
+                        "wang",
+                        "welch",
+                        "weyuker",
+                        "whiting",
+                        "wisniewski",
+                        "wocjan",
+                        "wu",
+                        "yao",
+                        "yooseph",
+                        "zhang",
+                        "zhou",
+                        "zou",
+                    ]
+                )
+
+                # if the professor's name isn't valid or spelled correctly, throw an error.
+                if not (body.split("-")[1] in professor_list):
+                    await context.channel.send(
+                        f"{body} is not a valid professor name. Please double check your spelling <3."
+                    )
+                    return
+
                 # create the class
                 role = await admin.Administration.SpawnClass(self, context, body)
                 await member.add_roles(role)
