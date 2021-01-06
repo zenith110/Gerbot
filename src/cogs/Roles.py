@@ -51,7 +51,9 @@ class Roles(commands.Cog):
     async def role_error(
         self, context: discord.ext.commands.context.Context, error: commands.BadArgument
     ):
-        # if the !role argument wasn't valid
+        """
+        if the !role argument wasn't valid
+        """
         if isinstance(error, commands.BadArgument):
             # strip the error for only the role name portion
             body = context.message.content.replace("!role ", "")
@@ -146,14 +148,18 @@ class Roles(commands.Cog):
                     ]
                 )
 
-                # if the professor's name isn't valid or spelled correctly, throw an error.
+                """
+                If the professor's name isn't valid or spelled correctly, throw an error.
+                """
                 if not (body.split("-")[1] in professor_list):
                     await context.channel.send(
                         f"{body} is not a valid professor name. Please double check your spelling <3."
                     )
                     return
 
-                # create the class
+                """
+                Create the class
+                """
                 role = await admin.Administration.SpawnClass(self, context, body)
                 await member.add_roles(role)
                 await context.send(
@@ -176,20 +182,30 @@ class Roles(commands.Cog):
             "Sith-Gopher",
         ]
 
-        # Creates a list of roles from the server that aren't in the acl.
+        """
+        Creates a list of roles from the server that aren't in the acl.
+        """
         server_roles = [
             role.name for role in context.guild.roles if role.name not in acl
         ]
 
-        # Uses regex and siphons out class roles from the server_roles list.
+        """
+        Uses regex and siphons out class roles from the server_roles list.
+        """
         class_roles = [o for o in server_roles if re.search("\d\d\d\d", o)]
-        # Roles which are used for the server's squads.
+        """
+        Roles which are used for the server's squads.
+        """
         squad_roles = [o for o in server_roles if re.search("squad", o)]
 
-        # Roles which are for certificaitons must have the checkmark to be able to be displayed correctly.
+        """
+        Roles which are for certificaitons must have the checkmark to be able to be displayed correctly.
+        """
         cert_roles = [o for o in server_roles if re.search("🗸", o)]
 
-        # Any roles not in the other lists will go here.
+        """
+        Any roles not in the other lists will go here.
+        """
         misc_roles = [
             o
             for o in server_roles
@@ -199,7 +215,9 @@ class Roles(commands.Cog):
             and o not in cert_roles
         ]
 
-        # splitting the class list into two separate lists for two embed entries
+        """
+        Splitting the class list into two separate lists for two embed entries
+        """
         list1 = class_roles[::2]
         list2 = class_roles[1::2]
 
@@ -218,11 +236,17 @@ class Roles(commands.Cog):
             ),
         ]
 
-        # create the menu embed object
+        """
+        Create the menu embed object
+        """
         paginator = BotEmbedPaginator(context, embeds)
         await paginator.run()
 
 
-# Setup function
+"""
+Setup function
+"""
+
+
 def setup(bot):
     bot.add_cog(Roles(bot))

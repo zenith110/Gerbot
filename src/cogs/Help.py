@@ -53,27 +53,29 @@ class Help(commands.Cog):
         end = 7
 
         for i in range(total_number_of_pages):
-            embeds.append(discord.Embed(
-                title="Page " + str(page_number + 1),
-                description=help.PageData(commands_link, beginning, end),
-                color=0x115599,
-            ).set_thumbnail(
-                url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
-            ))
-            
+            embeds.append(
+                discord.Embed(
+                    title="Page " + str(page_number + 1),
+                    description=help.PageData(commands_link, beginning, end),
+                    color=0x115599,
+                ).set_thumbnail(
+                    url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
+                )
+            )
+
             beginning += 8
-            end += (end - 1)
+            end += end - 1
 
             """
             If we're at an odd number for an additional page, grab the last item and gets its position, and modify the beginning to still keep it even
             Avoid going out of bound!
             """
-            if(end < len(commands_link)):
+            if end < len(commands_link):
                 end = len(commands_link) - 1
                 beginning = beginning - 8
 
             page_number += 1
-        
+
         paginator = BotEmbedPaginator(context, embeds)
         await paginator.run()
 

@@ -64,14 +64,14 @@ class Parking(commands.Cog):
                     + "/"
                     + str(max_spots[i])
                     + " | "
-                    + str(spots_left[i]))
-                    + " Spots available ~ "
-                    + str(math.floor(abs(100 - (spots_left[i] / max_spots[i] * 100))))
-                    + "%"
-                    + " Empty"
-                ),
+                    + str(spots_left[i])
+                )
+                + " Spots available ~ "
+                + str(math.floor(abs(100 - (spots_left[i] / max_spots[i] * 100))))
+                + "%"
+                + " Empty",
+            ),
 
-       
         await context.author.dm_channel.send(embed=garage)
 
 
