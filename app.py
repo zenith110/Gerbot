@@ -6,8 +6,8 @@ from discord_webhook import DiscordWebhook, DiscordEmbed
 import discord_key
 import docker
 import dockerhub_login
-import datetime
-import pytz
+from datetime import datetime
+from pytz import timezone
 
 app = Flask(__name__, static_url_path="/static")
 
@@ -21,7 +21,7 @@ def update_data():
     client.login(username=dockerhub_login.username, password=dockerhub_login.password)
 
     going_down = DiscordWebhook(
-        url=discord_key.api_key, content="Gerbot going down for a bit"
+        url=discord_key.api_key, content="```Gerbot going down for a bit```"
     )
     going_down_response = going_down.execute()
 
@@ -29,68 +29,21 @@ def update_data():
     If there's a docker instance, pull the latest image from the repo
     """
     try:
+        pull = DiscordWebhook(
+                url=discord_key.api_key,
+                content="```Pulling a fresh image from dockerhub!```")
+        pull_response = pull.execute()
         client.images.pull(dockerhub_login.repo)
     # Removes the last instance and pulls the new one
     except:
+        delete_pull = DiscordWebhook(
+                url=discord_key.api_key,
+                content="```Now deleting and pulling the latest image!```")
+        delete_pull_response = delete_pull_response.execute()        
         client.images.remove(dockerhub_login.repo + ":latest")
         client.images.pull(dockerhub_login.repo)
 
-    # Attempts to deploys a docker container
-    try:
-        docker_container = client.containers.run(
-            dockerhub_login.repo + ":latest", name="ger"
-        )
-    # If a docker container exist with the name, remove it and make a new instance
-    except:
-        ger = client.containers.get("ger")
-        updating = DiscordWebhook(
-            url=discord_key.api_key, content="Updating Gerbot container!"
-        )
-        updating_response = updating.execute()
-        ger.stop()
-        client.containers.prune()
-        subprocess.Popen(["sudo", "killall", "./main.py"])
-        now = datetime.datetime.now(pytz.timezone("America/New_York"))
-        if now.hour > 12:
-            hour = now.hour - 12
-            up = DiscordWebhook(
-                url=discord_key.api_key,
-                content="Gerbot is up again! Done at:\n"
-                + str(now.month)
-                + "/"
-                + str(now.day)
-                + "/"
-                + str(now.year)
-                + " - "
-                + str(hour)
-                + ":"
-                + str(now.minute)
-                + " PM",
-            )
-            up_response = up.execute()
-            docker_container = client.containers.run(
-                dockerhub_login.repo + ":latest", name="ger"
-            )
-        elif now.hour < 12:
-            hour = now.hour - 12
-            up = DiscordWebhook(
-                url=discord_key.api_key,
-                content="Gerbot is up again! Done at:\n"
-                + str(now.month)
-                + "/"
-                + str(now.day)
-                + "/"
-                + str(now.year)
-                + " - "
-                + str(hour)
-                + ":"
-                + str(now.minute)
-                + " AM",
-            )
-            up_response = up.execute()
-            docker_container = client.containers.run(
-                dockerhub_login.repo + ":latest", name="ger"
-            )
+    docker_stuff(client)
 
     return "Now running Gerbot!"
 
@@ -103,8 +56,34 @@ def docker_stuff(client):
         return docker_container
     except:
         ger = client.containers.get("ger")
+        stopping = DiscordWebhook(
+                url=discord_key.api_key,
+                content="```Now stopping gerbot and removing the current container!```")
+        stopping_response = stopping.execute()         
         ger.stop()
-        ger.remove("ger")
+        ger.remove()
+
+        tz = timezone("EST")
+        now = datetime.now(tz)
+
+        up = DiscordWebhook(
+                url=discord_key.api_key,
+                content="```Gerbot is up again! Done at:\n"
+                + str(now.month)
+                + "/"
+                + str(now.day)
+                + "/"
+                + str(now.year)
+                + " - "
+                + str(now.hour)
+                + ":"
+                + str(now.minute) + "```"
+            )
+        up_response = up.execute()
+        docker_container = client.containers.run(
+                dockerhub_login.repo + ":latest", name="ger"
+            )
+        
 
 
 @app.route("/run/", methods=["POST", "GET"])
