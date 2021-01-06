@@ -39,7 +39,7 @@ def update_data():
         delete_pull = DiscordWebhook(
                 url=discord_key.api_key,
                 content="```Now deleting and pulling the latest image!```")
-        delete_pull_response = delete_pull_response.execute()        
+        delete_pull_response = delete_pull.execute()        
         client.images.remove(dockerhub_login.repo + ":latest")
         client.images.pull(dockerhub_login.repo)
 
