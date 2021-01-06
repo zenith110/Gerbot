@@ -12,7 +12,7 @@ import pytz
 app = Flask(__name__, static_url_path="/static")
 
 
-@app.route("/update/", methods=["POST", "GET"])
+@app.route("/gerbot/update/", methods=["POST", "GET"])
 def update_data():
     """
     Does some configuring for dockerhub

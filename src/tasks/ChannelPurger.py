@@ -48,10 +48,7 @@ async def ChannelPurger(bot: discord.ext.commands.bot.Bot):
     classes_inactive_no_days_remaining = []
     classes_inactive_no_deleted = []
     classes_inactive_no_deleted_days = []
-    """
-    Sets our time zone to Eastern
-    """
-    est = pytz.timezone("US/Eastern")
+
 
     """
     Loops through all the channels using the regex for roles

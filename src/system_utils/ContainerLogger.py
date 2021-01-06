@@ -2,7 +2,6 @@ import traceback
 import datetime
 import pytz
 import discord
-from discord.ext import commands
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import discord_key
 
