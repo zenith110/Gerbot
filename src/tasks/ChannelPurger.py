@@ -222,6 +222,6 @@ async def ChannelPurger(bot: discord.ext.commands.bot.Bot):
     """
     now = datetime.now()
     now = pytz.utc.localize(now)
-    with open("classes_status_" + now + ".json", "w") as outfile:
+    with open("classes_status_" + str(now) + ".json", "w") as outfile:
         json.dump(data, outfile, indent=4, sort_keys=True)
-    await channel_updates.send(file=discord.File("classes_status_" + now + .json"))
+    await channel_updates.send(file=discord.File("classes_status_" + str(now) + .json"))
