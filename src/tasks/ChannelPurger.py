@@ -26,7 +26,7 @@ async def ChannelPurger(bot: discord.ext.commands.bot.Bot):
     Gets the current server so we can look at the channels
     """
     guild = bot.guilds[0]
-    
+
     print(guild)
     """
     Will send the file to a specific channel on the server
@@ -58,7 +58,7 @@ async def ChannelPurger(bot: discord.ext.commands.bot.Bot):
     """
     for channels in guild.text_channels:
         if re.search("([a-z][a-z][a-z]\d\d\d\d)", channels.name):
-            print(channel.name)
+            print(channels.name)
             class_list.append(channels.name)
             class_data.append(channels)
         else:
