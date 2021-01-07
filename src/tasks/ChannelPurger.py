@@ -55,7 +55,7 @@ async def ChannelPurger(bot: discord.ext.commands.bot.Bot):
     and appends them to a list
     """
     for channels in guild.text_channels:
-        if re.search("[a-z][a-z][a-z]\d\d\d\d)", channels.name):
+        if re.search("([a-z][a-z][a-z]\d\d\d\d)", channels.name):
             class_list.append(channels.name)
             class_data.append(channels)
         else:
