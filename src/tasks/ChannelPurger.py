@@ -64,6 +64,7 @@ async def ChannelPurger(bot: discord.ext.commands.bot.Bot):
     Loops through the class list and grabs the channels, and looks at time stamp to determine what to do with it
     """
     print(class_list)
+    print(class_data)
     for channel_names in range(0, len(class_list)):
         """
         If there are no channels left, escape
