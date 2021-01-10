@@ -150,6 +150,22 @@ class CustomStudyRoom(commands.Cog):
 
         return
 
+    @commands.Cog.listener()
+    async def on_voice_state_update(self, member, before, after):
+        if before.channel is not None:
+            category = None
+            # Retrieves the category object for the Study Rooms category
+            for c in member.guild.categories:
+                if c.name == "Study Rooms":
+                    category = c
+                    break
+
+            # If the voice channel is in the Study Rooms category and follows the class regex, delete the voice channel if there's nobody in the channel
+            if before.channel.category.id == category.id:
+                match = re.match("([a-z][a-z][a-z]\d\d\d\d)", before.channel.name)
+                if len(before.channel.members) == 0 and match != None:
+                    await before.channel.delete()
+
 
 def setup(bot):
     bot.add_cog(CustomStudyRoom(bot))
