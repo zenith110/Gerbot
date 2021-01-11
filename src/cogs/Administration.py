@@ -118,20 +118,38 @@ class Administration(commands.Cog):
             try:
 
                 # The category where the classes will go under
-                category = discord.utils.get(context.guild.categories, name="Classes 2")
+                category = discord.utils.get(context.guild.categories, name="Classes 1")
+                category_1_length = len(category.channels)
+                if category_1_length > 50:
+                    category = discord.utils.get(
+                        context.guild.categories, name="Classes 2"
+                    )
+                    channel = await context.guild.create_text_channel(
+                        lower_name, overwrites=custom_settings, category=category
+                    )
+                    # Creates role with the same name as the channel
+                    role = await context.guild.create_role(name=lower_name)
 
-                channel = await context.guild.create_text_channel(
-                    lower_name, overwrites=custom_settings, category=category
-                )
-                # Creates role with the same name as the channel
-                role = await context.guild.create_role(name=lower_name)
+                    await channel.set_permissions(
+                        role, send_messages=True, read_messages=True
+                    )
+                    await context.channel.send(
+                        f"Created: {lower_name} channel and {lower_name} role"
+                    )
+                else:
+                    category = discord.utils.get(context.guild.categories, name="Classes 2")
+                    channel = await context.guild.create_text_channel(
+                        lower_name, overwrites=custom_settings, category=category
+                    )
+                    # Creates role with the same name as the channel
+                    role = await context.guild.create_role(name=lower_name)
 
-                await channel.set_permissions(
-                    role, send_messages=True, read_messages=True
-                )
-                await context.channel.send(
-                    f"Created: {lower_name} channel and {lower_name} role"
-                )
+                    await channel.set_permissions(
+                        role, send_messages=True, read_messages=True
+                    )
+                    await context.channel.send(
+                        f"Created: {lower_name} channel and {lower_name} role"
+                    )
             except:
                 await context.channel.send("[<3] Please check your syntax")
             return role

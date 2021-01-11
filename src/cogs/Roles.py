@@ -56,7 +56,7 @@ class Roles(commands.Cog):
         """
         if isinstance(error, commands.BadArgument):
             # strip the error for only the role name portion
-            body = context.message.content.replace("!role ", "")
+            body = context.message.content.replace("!role ", "").lower()
             member = context.message.author
 
             # valid classes must be detected in this format to be valid, and thus be created
