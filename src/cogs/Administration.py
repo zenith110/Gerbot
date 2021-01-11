@@ -118,7 +118,7 @@ class Administration(commands.Cog):
             try:
 
                 # The category where the classes will go under
-                category = discord.utils.get(context.guild.categories, name="Classes 1")
+                category = discord.utils.get(context.guild.categories, name="Classes 2")
 
                 channel = await context.guild.create_text_channel(
                     lower_name, overwrites=custom_settings, category=category
