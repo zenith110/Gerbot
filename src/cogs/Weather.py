@@ -26,8 +26,7 @@ class Weather(commands.Cog):
 
     @commands.command(aliases=["weather"])
     async def GetWeather(
-        self, context: discord.ext.commands.context.Context, *args: list
-    ):
+        self, context: discord.ext.commands.context.Context, *args):
         command_prefix = "!weather"
         command_name = "weather"
         alias = "weather"
@@ -85,7 +84,7 @@ class Weather(commands.Cog):
                 If the command is typed incorrectly display this message
                 """
                 await context.send(
-                    'Forecast not found. Please try again using "!weather <cityname>"'
+                    'Forecast not found. Please try again using "!weather cityname"'
                 )
 
 
