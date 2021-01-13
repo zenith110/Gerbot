@@ -24,7 +24,7 @@ class Report(commands.Cog):
     """
 
     @commands.command(aliases=["report"])
-    async def Report(self, context: discord.ext.commands.context.Context, *args: list):
+    async def Report(self, context: discord.ext.commands.context.Context, *args):
         command_prefix = "!report"
         command_name = "report"
         alias = "report"

@@ -23,7 +23,7 @@ def MakeCalendar():
     """
     calendar = AcademicCalendar()
 
-    url = "https://calendar.ucf.edu/2020/fall"
+    url = "https://calendar.ucf.edu/2021/spring"
     res = requests.get(url)
     res.raise_for_status()
 
