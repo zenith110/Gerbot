@@ -14,18 +14,26 @@ def convert_date(date):
     date = date.strftime("%m/%d/%y")
     date = datetime.strptime(date, "%m/%d/%y")
     return date
+"""
+Given a list, loop through till you found the server and return the index
+"""
 
 
+def return_position_server(server_list: list, server_name: str):
+    for i in range(0, len(server_list)):
+        if(server_list[i] == server_name):
+            return i
+    
 """
 Checks the classes channels and determines if the channel is inactive/unused past a period of time and deletes
 """
-
 
 async def ChannelPurger(bot: discord.ext.commands.bot.Bot):
     """
     Gets the current server so we can look at the channels
     """
-    guild = bot.guilds[0]
+    server_index = return_position_server(bot.guilds, "UCF IT")
+    guild = bot.guilds[server_index]
 
     """
     Will send the file to a specific channel on the server
@@ -218,9 +226,8 @@ async def ChannelPurger(bot: discord.ext.commands.bot.Bot):
     """
     Write the json file and send it to the channel
     """
-    now = datetime.now()
-    now = pytz.utc.localize(now)
-    with open("classes_status_" + str(now) + ".json", "w") as outfile:
+    
+    with open("classes_status.json", "w") as outfile:
         json.dump(data, outfile, indent=4, sort_keys=True)
     await channel_updates.send(
         file=discord.File("classes_status_" + str(now) + ".json")
