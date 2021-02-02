@@ -17,7 +17,7 @@ class Jokes(commands.Cog):
         self._last_member = None
 
     @commands.command(pass_context=True, aliases=["joke", "dadJoke", "dadjoke"])
-    async def GetJoke(self, context: discord.ext.commands.context.Context, *args: list):
+    async def GetJoke(self, context: discord.ext.commands.context.Context, *args):
         command_prefix = "!joke"
         command_name = "get joke"
         alias = "joke"

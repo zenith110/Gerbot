@@ -40,7 +40,7 @@ class Calendar(commands.Cog):
         calendar = academiccalendar.MakeCalendar()
         embeds = [
             discord.Embed(
-                title="UCF Fall 2020 Academic Calendar",
+                title="UCF Spring 2021 Academic Calendar",
                 description=calendar.strings[0],
                 inline=True,
                 color=0x115599,
@@ -48,7 +48,7 @@ class Calendar(commands.Cog):
                 url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
             ),
             discord.Embed(
-                title="UCF Fall 2020 Academic Calendar",
+                title="UCF Spring 2021 Academic Calendar",
                 description=calendar.strings[1],
                 inline=True,
                 color=0x5599FF,
@@ -56,7 +56,7 @@ class Calendar(commands.Cog):
                 url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
             ),
             discord.Embed(
-                title="UCF Fall 2020 Academic Calendar",
+                title="UCF Spring 2021 Academic Calendar",
                 description=calendar.strings[2],
                 inline=True,
                 color=0x5599FF,
@@ -64,7 +64,7 @@ class Calendar(commands.Cog):
                 url="https://cdn.discordapp.com/attachments/715261258622042162/776881557968388136/gerber-attack.gif"
             ),
             discord.Embed(
-                title="UCF Fall 2020 Academic Calendar",
+                title="UCF Spring 2021 Academic Calendar",
                 description=calendar.strings[3],
                 inline=True,
                 color=0x5599FF,

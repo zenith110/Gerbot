@@ -69,8 +69,7 @@ class Administration(commands.Cog):
 
     @commands.command()
     async def CreateRole(
-        self, context: discord.ext.commands.context.Context, *args: list
-    ):
+        self, context: discord.ext.commands.context.Context, *args):
         for role in args:
             lower_name = role.lower()
             if discord.utils.get(context.guild.text_channels, name=lower_name):
