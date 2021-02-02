@@ -20,9 +20,13 @@ Given a list, loop through till you found the server and return the index
 
 
 def return_position_server(server_list: list, server_name: str):
+    index = 0
     for i in range(0, len(server_list)):
-        if(server_list[i] == server_name):
-            return i
+        if(server_list[i].name == server_name):
+            index = i
+        else:
+            continue
+    return index
     
 """
 Checks the classes channels and determines if the channel is inactive/unused past a period of time and deletes
@@ -232,3 +236,4 @@ async def ChannelPurger(bot: discord.ext.commands.bot.Bot):
     await channel_updates.send(
         file=discord.File("classes_status_" + str(now) + ".json")
     )
+    print("Sent json!")
