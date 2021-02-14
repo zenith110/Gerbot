@@ -3,7 +3,7 @@ from discord.ext import commands
 import pubsub
 import json
 import re
-
+import pubsub
 
 class Pubsub(commands.Cog):
     """
@@ -86,7 +86,7 @@ class Pubsub(commands.Cog):
                     "pubsub-api.dev is currently down, please check later!"
                 )
             elif sub.status_code == "200":
-                sub_argument = sub.sub_argument
+                sub_argument = sub.sub_name
                 last_sale = sub.last_sale
                 status = sub.status
                 price = sub.price

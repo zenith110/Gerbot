@@ -18,7 +18,7 @@ class RandomSub:
 def GetAllSubs():
     sub = RandomSub()
     try:
-        url = "https://pubsub-api.dev/allsubs/"
+        url = "https://api.pubsub-api.dev/allsubs/"
         response = requests.get(url).json()
         sub_names = []
         for i in range(len(response)):
@@ -30,10 +30,9 @@ def GetAllSubs():
         sub.status_code = "404"
         return sub
 
-
 def GetPubSub(sub_name: str):
     sub_name = sub_name.replace(" ", "-")
-    url = "https://pubsub-api.dev/subs/?name=" + sub_name
+    url = "https://api.pubsub-api.dev/subs/?name=" + sub_name
     response = requests.get(url)
     try:
         response = response.json()
@@ -57,7 +56,7 @@ def GetPubSub(sub_name: str):
 
 def EmptySubInput():
     sub = RandomSub()
-    url = "https://pubsub-api.dev/subs/?name="
+    url = "https://api.pubsub-api.dev/subs/?name=random"
     response = requests.get(url)
     try:
         response = response.json()
