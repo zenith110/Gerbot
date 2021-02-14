@@ -5,6 +5,7 @@ import json
 import re
 import pubsub
 
+
 class Pubsub(commands.Cog):
     """
     sets up the basic components of the class
@@ -29,7 +30,9 @@ class Pubsub(commands.Cog):
                 subs = pubsub.GetAllSubs()
                 if subs.status_code == "200":
                     await context.send(
-                        f"{context.author.mention}, here is our list of subs! \n" + subs
+                        f"{context.author.mention}, here is our list of subs! \n```"
+                        + subs.sub_name
+                        + "```"
                     )
                 elif subs.status_code == "404":
                     print("API is down...")
@@ -52,7 +55,7 @@ class Pubsub(commands.Cog):
                     sub_argument_changed = sub_argument.replace(" ", "-")
                     if sub.status == "True":
                         await context.send(
-                            f"{context.author.mention}, here is your {original_sub_argument}, it's on sale!"
+                            f"{context.author.mention}"
                         )
                         pubsub_message = discord.Embed(
                             title="Latest deal for pubsubs",
@@ -94,7 +97,7 @@ class Pubsub(commands.Cog):
                 sub_argument = sub_argument.replace("-", " ")
                 if status == "True":
                     await context.send(
-                        f"{context.author.mention}, here is your {sub_argument}, it's on sale!"
+                        f"{context.author.mention}"
                     )
                     pubsub_message = discord.Embed(
                         title="Latest deal for pubsubs",
@@ -110,12 +113,15 @@ class Pubsub(commands.Cog):
                     pubsub_message.set_image(url=image)
                     await context.send(embed=pubsub_message)
                 else:
+                    await context.send(
+                        f"{context.author.mention}"
+                    )
                     pubsub_message = discord.Embed(
                         title="Latest deal for pubsubs",
                         description="Beep beep, I bring you the most current pubsub deals!",
                     )
                     pubsub_message.add_field(
-                        name="Last time " + sub_argument + " was on sale",
+                        name="Last time " + sub_argument + " sub was on sale",
                         value="Last sale was from " + sub.last_sale,
                     )
                     pubsub_message.set_image(url=sub.image)
