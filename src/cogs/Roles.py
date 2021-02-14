@@ -15,7 +15,7 @@ class Roles(commands.Cog):
         self.bot = bot
         self._last_member = None
 
-    @commands.command(aliases=["r"])
+    @commands.command(aliases=["r", "register"])
     async def role(
         self,
         context: discord.ext.commands.context.Context,
@@ -58,7 +58,7 @@ class Roles(commands.Cog):
             # strip the error for only the role name portion
             body = context.message.content.replace("!role ", "").lower()
             member = context.message.author
-
+            print(body)
             # valid classes must be detected in this format to be valid, and thus be created
             if re.search(r"\w+\d{4}c?-+\w", body):
                 # list containing current roster of IT/CS faculty
