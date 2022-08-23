@@ -136,7 +136,7 @@ class Roles(commands.Cog):
                         "wang",
                         "welch",
                         "weyuker",
-                        "whiting",
+                        "markle",
                         "wisniewski",
                         "wocjan",
                         "wu",
