@@ -54,9 +54,7 @@ class Pubsub(commands.Cog):
                     original_sub_argument = sub_argument.replace("-", " ")
                     sub_argument_changed = sub_argument.replace(" ", "-")
                     if sub.status == "True":
-                        await context.send(
-                            f"{context.author.mention}"
-                        )
+                        await context.send(f"{context.author.mention}")
                         pubsub_message = discord.Embed(
                             title="Latest deal for pubsubs",
                             description="Beep beep, I bring you the most current pubsub deals!",
@@ -96,9 +94,7 @@ class Pubsub(commands.Cog):
                 image = sub.image
                 sub_argument = sub_argument.replace("-", " ")
                 if status == "True":
-                    await context.send(
-                        f"{context.author.mention}"
-                    )
+                    await context.send(f"{context.author.mention}")
                     pubsub_message = discord.Embed(
                         title="Latest deal for pubsubs",
                         description="Beep beep, I bring you the most current pubsub deals!",
@@ -113,9 +109,7 @@ class Pubsub(commands.Cog):
                     pubsub_message.set_image(url=image)
                     await context.send(embed=pubsub_message)
                 else:
-                    await context.send(
-                        f"{context.author.mention}"
-                    )
+                    await context.send(f"{context.author.mention}")
                     pubsub_message = discord.Embed(
                         title="Latest deal for pubsubs",
                         description="Beep beep, I bring you the most current pubsub deals!",

@@ -68,8 +68,7 @@ class Administration(commands.Cog):
                 await context.channel.send("[!] Please check your role name")
 
     @commands.command()
-    async def CreateRole(
-        self, context: discord.ext.commands.context.Context, *args):
+    async def CreateRole(self, context: discord.ext.commands.context.Context, *args):
         for role in args:
             lower_name = role.lower()
             if discord.utils.get(context.guild.text_channels, name=lower_name):
@@ -136,7 +135,9 @@ class Administration(commands.Cog):
                         f"Created: {lower_name} channel and {lower_name} role"
                     )
                 else:
-                    category = discord.utils.get(context.guild.categories, name="Classes 2")
+                    category = discord.utils.get(
+                        context.guild.categories, name="Classes 2"
+                    )
                     channel = await context.guild.create_text_channel(
                         lower_name, overwrites=custom_settings, category=category
                     )

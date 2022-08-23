@@ -30,6 +30,7 @@ def GetAllSubs():
         sub.status_code = "404"
         return sub
 
+
 def GetPubSub(sub_name: str):
     sub_name = sub_name.replace(" ", "-")
     url = "https://api.pubsub-api.dev/subs/?name=" + sub_name
