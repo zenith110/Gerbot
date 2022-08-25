@@ -76,6 +76,7 @@ class Roles(commands.Cog):
                         "carbone",
                         "chatterjee",
                         "cruz-neira",
+                        "choi",
                         "dechev",
                         "demara",
                         "deo",
