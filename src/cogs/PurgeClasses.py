@@ -22,7 +22,7 @@ async def DeleteClasses(guild, name):
             await channel.delete()
 
 
-class Administration(commands.Cog):
+class PurgeClasses(commands.Cog):
     """
     Creates the instance of admin including its fields
     @bot - the bot itself
@@ -41,3 +41,7 @@ class Administration(commands.Cog):
         guild = bot.guilds[server_index]
         await DeleteClasses(guild, "Classes 1")
         await DeleteClasses(guild, "Classes 2")
+
+
+def setup(bot):
+    bot.add_cog(PurgeClasses(bot))
