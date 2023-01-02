@@ -15,7 +15,7 @@ class Roles(commands.Cog):
         self.bot = bot
         self._last_member = None
 
-    @commands.command(aliases=["r", "register"])
+    
     async def role(
         self,
         context: discord.ext.commands.context.Context,
@@ -30,7 +30,6 @@ class Roles(commands.Cog):
         member = context.message.author
         command_prefix = "!role"
         command_name = "role"
-        alias = "r"
         example = "!role <role-name>"
         # if the message author already has the role
         if role in member.roles:
