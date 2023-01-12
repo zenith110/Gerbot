@@ -46,7 +46,7 @@ class Roles(commands.Cog):
                 f"{member.mention}, you have been given the {role} role."
             )
 
-    @role.error
+    
     async def role_error(
         self, context: discord.ext.commands.context.Context, error: commands.BadArgument
     ):
