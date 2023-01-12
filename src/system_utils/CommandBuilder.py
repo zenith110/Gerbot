@@ -71,8 +71,6 @@ def CommandBuilder(bot: discord.ext.commands.bot.Bot, prod_mode: bool):
             {
                 "command-prefix": command_prefix[i],
                 "name": name[i],
-                "alias": alias[i],
-                "example": example[i],
             }
         )
 
