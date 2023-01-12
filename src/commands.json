@@ -37,28 +37,10 @@
       "example": "!cyber"
     },
     {
-      "command-prefix": "!dog",
-      "name": "get dog",
-      "alias": "doggo",
-      "example": "!dog (for a random dog), !dog <dog-breed>"
-    },
-    {
-      "command-prefix": "!dogs",
-      "name": "all dogs",
-      "alias": "doggos",
-      "example": "!dogs"
-    },
-    {
       "command-prefix": "!joke",
       "name": "get joke",
       "alias": "joke",
       "example": "!joke (for a random joke), !joke <topic>"
-    },
-    {
-      "command-prefix": "!class-review",
-      "name": "professor review",
-      "alias": "class-review",
-      "example": "!class-review matthew-gerber cop3502"
     },
     {
       "command-prefix": "!report",
@@ -75,7 +57,7 @@
     {
       "command-prefix": "!role",
       "name": "role",
-      "alias": "r",
+      "alias": "n/a",
       "example": "!role <role-name>"
     },
     {
