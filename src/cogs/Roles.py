@@ -145,6 +145,8 @@ class Roles(commands.Cog):
                         "zhang",
                         "zhou",
                         "zou",
+                        "roberts",
+                        "decaprio"
                     ]
                 )
 

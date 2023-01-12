@@ -1,13 +1,11 @@
 import traceback
 import datetime
 import pytz
-import discord
 from discord_webhook import DiscordWebhook, DiscordEmbed
-import discord_key
 
 
-def ContainerLogger():
-    webhook = DiscordWebhook(url=discord_key.api_key)
+def ContainerLogger(webhook_url):
+    webhook = DiscordWebhook(url=webhook_url)
     now = datetime.datetime.now(pytz.timezone("America/New_York"))
     if now.hour > 12:
         hour = now.hour - 12
