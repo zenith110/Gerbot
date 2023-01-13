@@ -1,9 +1,9 @@
 import discord
 
-# import parking
+# import
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
-
+import traceback
 """
 creates the class for admin commands
 """
@@ -97,6 +97,7 @@ class Administration(commands.Cog):
         command_name = "spawn class"
         alias = "spawn"
         example = "!spawn cop3502-gerber"
+        role = None
         # Make channel private
         custom_settings = {
             context.guild.default_role: discord.PermissionOverwrite(
@@ -118,7 +119,8 @@ class Administration(commands.Cog):
                 # The category where the classes will go under
                 category = discord.utils.get(context.guild.categories, name="Classes 1")
                 category_1_length = len(category.channels)
-                if category_1_length > 50:
+                
+                if category_1_length >= 50:
                     category = discord.utils.get(
                         context.guild.categories, name="Classes 2"
                     )
@@ -136,7 +138,7 @@ class Administration(commands.Cog):
                     )
                 else:
                     category = discord.utils.get(
-                        context.guild.categories, name="Classes 2"
+                        context.guild.categories, name="Classes 1"
                     )
                     channel = await context.guild.create_text_channel(
                         lower_name, overwrites=custom_settings, category=category
@@ -151,6 +153,7 @@ class Administration(commands.Cog):
                         f"Created: {lower_name} channel and {lower_name} role"
                     )
             except:
+                print(traceback.format_exc())
                 await context.channel.send("[<3] Please check your syntax")
             return role
 

@@ -1,5 +1,5 @@
 # set base image (host OS)
-FROM python:3.7.9-slim
+FROM python:3.10-slim
 
 
 # set the working directory in the container

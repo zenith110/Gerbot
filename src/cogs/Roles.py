@@ -15,18 +15,18 @@ class Roles(commands.Cog):
         self.bot = bot
         self._last_member = None
 
-    @commands.command()
+    @commands.command(aliases=["register"])
     async def role(
         self,
         context: discord.ext.commands.context.Context,
-        *,
-        role: discord.Role = None,
+        role
     ):
         """
         Allows for Discord users to add, modify, remove, or inquire about roles on the server.
         """
-
+        
         member = context.message.author
+        
         command_prefix = "!role"
         command_name = "role"
         example = "!role <role-name>"
@@ -40,134 +40,140 @@ class Roles(commands.Cog):
             await context.invoke(self.bot.get_command("PrintRoles"))
 
         else:
-            await member.add_roles(role)
-            await context.send(
-                f"{member.mention}, you have been given the {role} role."
-            )
+            try:
+                await member.add_roles(role)
+                await context.send(
+                    f"{member.mention}, you have been given the {role} role."
+                )
+            except:
+                await self.role_error(context)
+            
 
-    
     async def role_error(
-        self, context: discord.ext.commands.context.Context, error: commands.BadArgument
+        self, context: discord.ext.commands.context.Context
     ):
         """
         if the !role argument wasn't valid
         """
-        if isinstance(error, commands.BadArgument):
-            # strip the error for only the role name portion
+        
+        # strip the error for only the role name portion
+        if("!register" in context.message.content):
+            body = context.message.content.replace("!register ", "").lower()
+        else:
             body = context.message.content.replace("!role ", "").lower()
-            member = context.message.author
-            # valid classes must be detected in this format to be valid, and thus be created
-            if re.search(r"\w+\d{4}c?-+\w", body):
-                # list containing current roster of IT/CS faculty
-                professor_list = set(
-                    [
-                        "ahmed",
-                        "angell",
-                        "aria",
-                        "azevedo",
-                        "bagci",
-                        "baker",
-                        "bassiouni",
-                        "boloni",
-                        "boustique",
-                        "carbone",
-                        "chatterjee",
-                        "cruz-neira",
-                        "choi",
-                        "dechev",
-                        "demara",
-                        "deo",
-                        "dutton",
-                        "enyioha",
-                        "ewetz",
-                        "fallah",
-                        "foroosh",
-                        "fu",
-                        "garibay",
-                        "gazzillo",
-                        "gerber",
-                        "gonzalez",
-                        "guha",
-                        "guo",
-                        "heinrich",
-                        "hensel",
-                        "hollander",
-                        "hu",
-                        "hua",
-                        "hughes",
-                        "jahani",
-                        "kider",
-                        "koning",
-                        "lang",
-                        "laviola",
-                        "lazar",
-                        "leavens",
-                        "leinecker",
-                        "li",
-                        "liu",
-                        "llewellyn",
-                        "lobo",
-                        "mahalanobis",
-                        "mangold",
-                        "marinescu",
-                        "mcalpin",
-                        "mcmahan",
-                        "meade",
-                        "mell",
-                        "mohaisen",
-                        "montagne",
-                        "nassiff",
-                        "nedorost",
-                        "orooji",
-                        "pattanaik",
-                        "pirkelbauer",
-                        "singhspan",
-                        "reiners",
-                        "shah",
-                        "solihin",
-                        "stanley",
-                        "sukthankar",
-                        "szumlanski",
-                        "thankachan",
-                        "tidwell",
-                        "vu",
-                        "wang",
-                        "welch",
-                        "weyuker",
-                        "markle",
-                        "wisniewski",
-                        "wocjan",
-                        "wu",
-                        "yao",
-                        "yooseph",
-                        "zhang",
-                        "zhou",
-                        "zou",
-                        "roberts",
-                        "decaprio"
-                    ]
+        member = context.message.author
+        # valid classes must be detected in this format to be valid, and thus be created
+        if re.search(r"\w+\d{4}c?-+\w", body):
+            # list containing current roster of IT/CS faculty
+            professor_list = set(
+                [
+                    "ahmed",
+                    "angell",
+                    "aria",
+                    "azevedo",
+                    "bagci",
+                    "baker",
+                    "bassiouni",
+                    "boloni",
+                    "boustique",
+                    "carbone",
+                    "chatterjee",
+                    "cruz-neira",
+                    "choi",
+                    "dechev",
+                    "demara",
+                    "deo",
+                    "dutton",
+                    "enyioha",
+                    "ewetz",
+                    "fallah",
+                    "foroosh",
+                    "fu",
+                    "garibay",
+                    "gazzillo",
+                    "gerber",
+                    "gonzalez",
+                    "guha",
+                    "guo",
+                    "heinrich",
+                    "hensel",
+                    "hollander",
+                    "hu",
+                    "hua",
+                    "hughes",
+                    "jahani",
+                    "kider",
+                    "koning",
+                    "lang",
+                    "laviola",
+                    "lazar",
+                    "leavens",
+                    "leinecker",
+                    "li",
+                    "liu",
+                    "llewellyn",
+                    "lobo",
+                    "mahalanobis",
+                    "mangold",
+                    "marinescu",
+                    "mcalpin",
+                    "mcmahan",
+                    "meade",
+                    "mell",
+                    "mohaisen",
+                    "montagne",
+                    "nassiff",
+                    "nedorost",
+                    "orooji",
+                    "pattanaik",
+                    "pirkelbauer",
+                    "singhspan",
+                    "reiners",
+                    "shah",
+                    "solihin",
+                    "stanley",
+                    "sukthankar",
+                    "szumlanski",
+                    "thankachan",
+                    "tidwell",
+                    "vu",
+                    "wang",
+                    "welch",
+                    "weyuker",
+                    "markle",
+                    "wisniewski",
+                    "wocjan",
+                    "wu",
+                    "yao",
+                    "yooseph",
+                    "zhang",
+                    "zhou",
+                    "zou",
+                    "roberts",
+                    "decaprio"
+                ]
+            )
+
+            """
+            If the professor's name isn't valid or spelled correctly, throw an error.
+            """
+            if not (body.split("-")[1] in professor_list):
+                await context.channel.send(
+                    f"{body} is not a valid professor name. Please double check your spelling <3. \nOtherwise do !roles to see all the prof roles and look for your specified class \nIf your prof is not available, please submit a issue here: https://github.com/s1ag/Gerbot"
                 )
+                return
+            
+            """
+            Create the class
+            """
+            role = await admin.Administration.SpawnClass(self, context, body)
+            await member.add_roles(role)
+            await context.send(
+                f"{member.mention}, you're the first one in {body}. You have been given this role. Feel free to spread the word on your Webcourse's Discussions for this class."
+            )
 
-                """
-                If the professor's name isn't valid or spelled correctly, throw an error.
-                """
-                if not (body.split("-")[1] in professor_list):
-                    await context.channel.send(
-                        f"{body} is not a valid professor name. Please double check your spelling <3. \nOtherwise do !roles to see all the prof roles and look for your specified class \nIf your prof is not available, please submit a issue here: https://github.com/s1ag/Gerbot"
-                    )
-                    return
-
-                """
-                Create the class
-                """
-                role = await admin.Administration.SpawnClass(self, context, body)
-                await member.add_roles(role)
-                await context.send(
-                    f"{member.mention}, you're the first one in {body}. You have been given this role. Feel free to spread the word on your Webcourse's Discussions for this class."
-                )
-
-            else:
-                await context.send(f"{member.mention} That role was not found.")
+        else:
+            await context.send(f"{member.mention} That role was not found.")
 
     @commands.command(aliases=["roles"])
     async def PrintRoles(self, context: discord.ext.commands.context.Context):
@@ -246,7 +252,6 @@ class Roles(commands.Cog):
 """
 Setup function
 """
-
 
 def setup(bot):
     bot.add_cog(Roles(bot))

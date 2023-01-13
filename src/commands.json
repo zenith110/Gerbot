@@ -17,10 +17,6 @@
       "name": "role"
     },
     {
-      "command-prefix": "!class-review",
-      "name": "professor review"
-    },
-    {
       "command-prefix": "!calendar",
       "name": "ucf academic calendar"
     },
