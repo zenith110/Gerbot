@@ -14,7 +14,8 @@ def return_position_server(server_list: list, server_name: str):
 
 
 async def DeleteClasses(guild, name):
-    for channels in discord.utils.get(guild.categories, name=name):
+    categories = discord.utils.get(guild.categories, name=name)
+    for channels in categories.channels:
         if re.search("([a-z][a-z][a-z]\d\d\d\d)", channels.name):
             role_object = discord.utils.get(guild.roles, name=channels.name)
             await role_object.delete()
@@ -36,9 +37,9 @@ class PurgeClasses(commands.Cog):
 
     @commands.command(aliases=["purgeclasses", "pr"])
     @commands.has_role("Admin")
-    async def PurgeClassChannels(self, bot: discord.ext.commands.bot.Bot):
-        server_index = return_position_server(bot.guilds, "UCF IT")
-        guild = bot.guilds[server_index]
+    async def PurgeClassChannels(self, ctx: discord.ext.commands.context.Context):
+        server_index = return_position_server(self.bot.guilds, "UCF IT")
+        guild = self.bot.guilds[server_index]
         await DeleteClasses(guild, "Classes 1")
         await DeleteClasses(guild, "Classes 2")
 
