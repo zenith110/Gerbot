@@ -5,7 +5,6 @@ use pip install -r requirement.txt to install everything
 from dotenv import load_dotenv
 from os.path import join, dirname
 import os
-from discord import utils
 import discord
 from discord.ext import commands
 from system_utils.CommandBuilder import CommandBuilder
@@ -51,10 +50,6 @@ try:
 except:
     DebuggerOption(prod_mode, webhook_url)
 
-"""
-Terminal functions
-"""
-
 
 @bot.event
 async def on_connect():
@@ -86,7 +81,7 @@ Error handling whenever the command is not found
 
 @bot.event
 async def on_error(event, *args, **kwargs):
-    DebuggerOption(prod_mode)
+    DebuggerOption(prod_mode, webhook_url)
 
 
 bot.run(BOT_TOKEN)
