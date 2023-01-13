@@ -31,11 +31,12 @@ class Roles(commands.Cog):
         command_prefix = "!role"
         command_name = "role"
         example = "!role <role-name>"
+        print(role)
         # if the message author already has the role
         if role in member.roles:
             await member.remove_roles(role)
             await context.send(f"{member.mention}, took away that role.")
-
+        
         # if !role returns no arguments
         elif role is None:
             await context.invoke(self.bot.get_command("PrintRoles"))
