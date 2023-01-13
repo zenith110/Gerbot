@@ -54,15 +54,13 @@ def DefaultLoader(file_data: list, bot: discord.ext.commands.bot.Bot):
 
 def CommandBuilder(bot: discord.ext.commands.bot.Bot, prod_mode: bool):
     file_data = []
-    api_cogs = ["Stocks.py", "Cat.py"]
+    api_cogs = [""]
     if prod_mode == False:
         file_data = LocalLoader(api_cogs, file_data, bot)
     else:
         file_data = DefaultLoader(file_data, bot)
 
     name = CreateWordData("command_name = ", file_data)
-    alias = CreateWordData("alias = ", file_data)
-    example = CreateWordData("example = ", file_data)
     command_prefix = CreateWordData("command_prefix = ", file_data)
     data = {}
     data["commands"] = []
