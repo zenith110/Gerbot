@@ -7,11 +7,11 @@ from os.path import join, dirname
 import os
 from discord import utils
 import discord
-from discord.ext import commands, tasks
+from discord.ext import commands
 from system_utils.CommandBuilder import CommandBuilder
 from system_utils.DebuggerSwitch import DebuggerSwitch
 from system_utils.DebuggerOption import DebuggerOption
-from tasks.ChannelPurger import ChannelPurger
+
 
 """
 Loads the virtual enviroment
