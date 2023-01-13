@@ -2,9 +2,7 @@ from os import error
 import discord
 import requests
 from discord.ext import commands
-import weather
 import json
-import os
 from disputils import BotEmbedPaginator
 import help
 
@@ -47,7 +45,9 @@ class Help(commands.Cog):
         """
         Gets the total amount of pages and a starting point for the embed
         """
+        
         total_number_of_pages = len(commands_link) // 8
+        
         page_number = 0
         beginning = 0
         end = 7
@@ -75,7 +75,7 @@ class Help(commands.Cog):
                 beginning = beginning - 8
 
             page_number += 1
-
+        
         paginator = BotEmbedPaginator(context, embeds)
         await paginator.run()
 

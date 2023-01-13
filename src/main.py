@@ -67,11 +67,10 @@ async def on_ready():
     print("\n[*] Established bot onto server")
     print("-" * 40)
     
-
     """
     Changes the discord status to the current release
     """
-    await bot.change_presence(activity=discord.Game(name="v1.0"))
+    await bot.change_presence(activity=discord.Game(name="Cleeping"))
 
 
 """

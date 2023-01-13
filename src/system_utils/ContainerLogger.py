@@ -3,7 +3,6 @@ import datetime
 import pytz
 from discord_webhook import DiscordWebhook, DiscordEmbed
 
-
 def ContainerLogger(webhook_url):
     webhook = DiscordWebhook(url=webhook_url)
     now = datetime.datetime.now(pytz.timezone("America/New_York"))

@@ -5,14 +5,12 @@ __pycache__
 env/
 
 # global variables
-.env
+*/.env
 
 
 
 __pycache__/
 
-discord_key.py
 
-dockerhub_login.py
 
 

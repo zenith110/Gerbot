@@ -1,82 +1,52 @@
 {
   "commands": [
     {
-      "command-prefix": "!calendar",
-      "name": "ucf academic calendar",
-      "alias": "calendar",
-      "example": "!calendar"
+      "command-prefix": "!sr",
+      "name": "Custom Study Room"
     },
     {
       "command-prefix": "!spawn",
-      "name": "spawn class",
-      "alias": "spawn",
-      "example": "!spawn cop3502-gerber"
-    },
-    {
-      "command-prefix": "!cat",
-      "name": "get cat",
-      "alias": "cat",
-      "example": "!cat (for a random cat), !cat <cat-breed>"
-    },
-    {
-      "command-prefix": "!cats",
-      "name": "all cats",
-      "alias": "cats, kittens, allKittens",
-      "example": "!cats"
-    },
-    {
-      "command-prefix": "!sr",
-      "name": "Custom Study Room",
-      "alias": "createstudyroom, studyroom, sr",
-      "example": "!sr"
-    },
-    {
-      "command-prefix": "!cyber",
-      "name": "Cyberstarter",
-      "alias": "cyber, cyberstart, cybersecstart, cyberhelp, cybersechelp",
-      "example": "!cyber"
-    },
-    {
-      "command-prefix": "!joke",
-      "name": "get joke",
-      "alias": "joke",
-      "example": "!joke (for a random joke), !joke <topic>"
-    },
-    {
-      "command-prefix": "!report",
-      "name": "report",
-      "alias": "report",
-      "example": "!report <anonymous report message>"
+      "name": "spawn class"
     },
     {
       "command-prefix": "!certs",
-      "name": "cert roadmap",
-      "alias": "certs",
-      "example": "!certs"
+      "name": "cert roadmap"
     },
     {
       "command-prefix": "!role",
-      "name": "role",
-      "alias": "n/a",
-      "example": "!role <role-name>"
+      "name": "role"
+    },
+    {
+      "command-prefix": "!class-review",
+      "name": "professor review"
+    },
+    {
+      "command-prefix": "!calendar",
+      "name": "ucf academic calendar"
+    },
+    {
+      "command-prefix": "!joke",
+      "name": "get joke"
     },
     {
       "command-prefix": "!weather",
-      "name": "weather",
-      "alias": "weather",
-      "example": "!weather <city-name>"
+      "name": "weather"
+    },
+    {
+      "command-prefix": "!cyber",
+      "name": "Cyberstarter"
     },
     {
       "command-prefix": "!xkcd",
-      "name": "get comic",
-      "alias": "xkcd",
-      "example": "!xkcd (for today's comic), !xkcd <comic-number>"
+      "name": "get comic"
     },
     {
       "command-prefix": "!randxkcd",
-      "name": "get random comic",
-      "alias": "randxkcd",
-      "example": "!randxkcd"
+      "name": "get random comic"
+    },
+    {
+      "command-prefix": "!report",
+      "name": "report"
     }
   ]
 }

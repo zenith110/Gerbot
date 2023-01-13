@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import os.path
 from datetime import datetime
 
 """

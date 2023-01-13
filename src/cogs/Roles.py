@@ -15,14 +15,13 @@ class Roles(commands.Cog):
         self.bot = bot
         self._last_member = None
 
-    
+    @commands.command()
     async def role(
         self,
         context: discord.ext.commands.context.Context,
         *,
         role: discord.Role = None,
     ):
-
         """
         Allows for Discord users to add, modify, remove, or inquire about roles on the server.
         """
@@ -31,7 +30,6 @@ class Roles(commands.Cog):
         command_prefix = "!role"
         command_name = "role"
         example = "!role <role-name>"
-        print(role)
         # if the message author already has the role
         if role in member.roles:
             await member.remove_roles(role)
@@ -58,7 +56,6 @@ class Roles(commands.Cog):
             # strip the error for only the role name portion
             body = context.message.content.replace("!role ", "").lower()
             member = context.message.author
-            print(body)
             # valid classes must be detected in this format to be valid, and thus be created
             if re.search(r"\w+\d{4}c?-+\w", body):
                 # list containing current roster of IT/CS faculty

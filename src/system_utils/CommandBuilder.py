@@ -74,4 +74,4 @@ def CommandBuilder(bot: discord.ext.commands.bot.Bot, prod_mode: bool):
 
     with open("commands.json", "w", encoding="utf-8") as outfile:
         json.dump(data, outfile, indent=2)
-    print("commands_backup.json is exported, check it!")
+
