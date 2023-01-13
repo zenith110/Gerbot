@@ -40,7 +40,7 @@ terminal stuff
 """
 print("[!] Awakening Gerb's, standby...")
 print("=" * 40)
-
+webhook_url = os.getenv("webhook_url")
 """
 Switches all the prod_mode in all the cogs to the master prod_mode boolean here
 """
@@ -49,7 +49,7 @@ DebuggerSwitch(prod_mode)
 try:
     CommandBuilder(bot, prod_mode)
 except:
-    DebuggerOption(prod_mode)
+    DebuggerOption(prod_mode, webhook_url)
 
 """
 Terminal functions
@@ -61,16 +61,6 @@ async def on_connect():
     print("[*] Client sucessfully connected to Discord")
 
 
-"""
-Task that purges channels that are inactive/no messages for longer than 30 days
-Runs 24 hours and posts results to a channel
-"""
-
-
-@tasks.loop(hours=24)
-async def channel_purger_run():
-    channel_purge = await ChannelPurger(bot)
-
 
 """
 Upon successfully connecting to our server
@@ -81,8 +71,7 @@ Upon successfully connecting to our server
 async def on_ready():
     print("\n[*] Established bot onto server")
     print("-" * 40)
-    if prod_mode == True:
-        channel_purger_run.start()
+    
 
     """
     Changes the discord status to the current release
