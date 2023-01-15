@@ -150,7 +150,7 @@ class Roles(commands.Cog):
                     "zhou",
                     "zou",
                     "roberts",
-                    "dicaprio"
+                    "decaprio"
                 ]
             )
 
