@@ -30,22 +30,30 @@ class Roles(commands.Cog):
         command_prefix = "!role"
         command_name = "role"
         example = "!role <role-name>"
+        found_role = False
+        for roles in member.roles:
+            if(roles.name == role):
+                specified_role = roles
+                found_role = True
+                break
+                
+        
         # if the message author already has the role
-        if role in member.roles:
-            await member.remove_roles(role)
+        if found_role == True:
+            await member.remove_roles(specified_role)
             await context.send(f"{member.mention}, took away that role.")
         
-        # if !role returns no arguments
-        elif role is None:
-            await context.invoke(self.bot.get_command("PrintRoles"))
-
         else:
+            for roles in context.guild.roles:
+                if(roles.name == role):
+                    specified_role = roles
+                    break
             try:
-                await member.add_roles(role)
+                await member.add_roles(specified_role)
                 await context.send(
                     f"{member.mention}, you have been given the {role} role."
                 )
-            except:
+            except Exception as e:
                 await self.role_error(context)
             
 
