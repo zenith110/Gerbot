@@ -208,5 +208,3 @@ api_cogs = ["Stocks.py", "Cat.py", "Api.py"]
 
 #### Production Mode
 Within main.py lies a boolean, that will determine if it's in a deployed or development mode. If it's in development mode, certain features will be disabled for you, such as webhooks and will instead enable local debugging. It is preferable to disable when you are developing your features, and reenable when you have done a pull request. This variable is prod_mode, and can be toggled on or off.
-
-
