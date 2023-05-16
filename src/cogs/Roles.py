@@ -88,6 +88,7 @@ class Roles(commands.Cog):
                     "chatterjee",
                     "cruz-neira",
                     "choi",
+                    "cheng",
                     "dechev",
                     "demara",
                     "deo",
